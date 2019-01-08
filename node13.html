@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2018.3 (Released July 19, 2018) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Utility Functions</TITLE>
-<META NAME="description" CONTENT="Utility Functions">
+<TITLE>Pipes</TITLE>
+<META NAME="description" CONTENT="Pipes">
 <META NAME="keywords" CONTENT="R4RAF">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="R4RAF.css">
 
+<LINK REL="next" HREF="node14.html">
 <LINK REL="previous" HREF="node12.html">
 <LINK REL="next" HREF="node14.html">
 </HEAD>
@@ -26,113 +27,197 @@
  HREF="node14.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node8.html">
+ HREF="node12.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node12.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
 <BR>
 <B> Next:</B> <A
- HREF="node14.html">More Details About Plotting</A>
+ HREF="node14.html">Multi-Frame Plots</A>
 <B> Up:</B> <A
- HREF="node8.html">Overview of Ranadu functions</A>
+ HREF="node12.html">More Details About Plotting</A>
 <B> Previous:</B> <A
- HREF="node12.html">Computational Algorithms</A>
+ HREF="node12.html">More Details About Plotting</A>
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00350000000000000000">
-Utility Functions</A>
-</H1><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT>
+<H1><A ID="SECTION00410000000000000000">
+Pipes</A>
+</H1><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
 <P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">The following are some of the Ranadu functions that are provided to
-assist in various data-analysis tasks. The &ldquo;getNetCDF()&rdquo;, &ldquo;DataDirectory()&rdquo;
-and &ldquo;standardVariables()&rdquo; functions were already described. Others
-include:
-</FONT></FONT></FONT></FONT>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">When constructing plots, the use of &ldquo;pipes&rdquo; makes the logic clear
+and is recommended, so that is described first. All the code sequences
+described here can be implemented by saving the result from each step
+and then providing it to the next step, but pipes support the transmission
+of the result of a calculation to the next stage in the calculation
+without the need for intermediate storage. They are supported using
+the &ldquo;%&gt;%&rdquo; argument, which is enabled by the &ldquo;magrittr&rdquo; package
+for R. Perhaps the strongest argument for using pipes is that they
+make the logic of plot construction clear. You start with a data.frame,
+optionally construct new variables, make appropriate selection of
+variables and the time interval, apply filters to accept only data
+meeting particular tests, and then construct the plot using the resulting
+tailored data.frame. Here is an example, where the data.frame is piped
+to &ldquo;select()&rdquo; (part of the dplyr package that passes on only the
+listed variables) and where the result is then piped to &ldquo;Ranadu::selectTime()&rdquo;
+where only the specified time range is transmitted forward. The result
+is finally piped to Ranadu::plotWAC(), where the first argument is
+a data.frame. That is supplied by the pipe. The result is shown in
+Fig.&nbsp;<A HREF="#fig:pipe-example"><IMG  ALT="[*]" SRC="crossref.png"></A>. Alternately, ggplotWAC() could be used
+to produce a similar result. In addition to showing the explicit steps
+in the processing chain, code like this ensures that the plot will
+be constructed the same way if the code is re-used or moved.
+</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
+</FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT><FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue2133"><SPAN &nbsp;CLASS="textbf">library</SPAN></SPAN><SPAN ID="hue2136">(magrittr)</SPAN>
+<BR><SPAN ID="hue2138">Ranadu</SPAN><SPAN ID="hue2140">::</SPAN><SPAN ID="hue2142"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue2145">(fname, Variables)</SPAN> <SPAN ID="hue2147">%&gt;%</SPAN> &nbsp;&nbsp;&nbsp;<SPAN ID="hue2149"><SPAN &nbsp;CLASS="textit">## load the data.frame</SPAN></SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue2152">dplyr</SPAN><SPAN ID="hue2154">::</SPAN><SPAN ID="hue2156"><SPAN &nbsp;CLASS="textbf">filter</SPAN></SPAN><SPAN ID="hue2159">(TASX</SPAN> <SPAN ID="hue2161">&gt;</SPAN> <SPAN ID="hue2163">90</SPAN><SPAN ID="hue2165">)</SPAN> <SPAN ID="hue2167">%&gt;%</SPAN> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2169"><SPAN &nbsp;CLASS="textit">## limit based on airspeed </SPAN></SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue2172">dplyr</SPAN><SPAN ID="hue2174">::</SPAN><SPAN ID="hue2176"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue2179">(Time, ATX, DPXC)</SPAN> <SPAN ID="hue2181">%&gt;%</SPAN> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2183"><SPAN &nbsp;CLASS="textit">## select the variables to plot</SPAN></SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue2186">Ranadu</SPAN><SPAN ID="hue2188">::</SPAN><SPAN ID="hue2190"><SPAN &nbsp;CLASS="textbf">Rmutate</SPAN></SPAN><SPAN ID="hue2193">(</SPAN><SPAN ID="hue2195">DPD</SPAN> <SPAN ID="hue2197">= ATX</SPAN> <SPAN ID="hue2199">-</SPAN> <SPAN ID="hue2201">DPXC)</SPAN> <SPAN ID="hue2203">%&gt;%</SPAN> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2205"><SPAN &nbsp;CLASS="textit">## add the dewpoint-depression DPD</SPAN></SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue2208">Ranadu</SPAN><SPAN ID="hue2210">::</SPAN><SPAN ID="hue2212"><SPAN &nbsp;CLASS="textbf">selectTime</SPAN></SPAN><SPAN ID="hue2215">(</SPAN><SPAN ID="hue2217">220500</SPAN><SPAN ID="hue2219">,</SPAN> <SPAN ID="hue2221">221500</SPAN><SPAN ID="hue2223">)</SPAN> <SPAN ID="hue2225">%&gt;%</SPAN> &nbsp;&nbsp;<SPAN ID="hue2227"><SPAN &nbsp;CLASS="textit">## set the time range</SPAN></SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue2230">Ranadu</SPAN><SPAN ID="hue2232">::</SPAN><SPAN ID="hue2234"><SPAN &nbsp;CLASS="textbf">plotWAC</SPAN></SPAN><SPAN ID="hue2237">(</SPAN><SPAN ID="hue2239">col</SPAN><SPAN ID="hue2241">=</SPAN><SPAN ID="hue2243"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2246">(</SPAN><SPAN ID="hue2248">'blue'</SPAN><SPAN ID="hue2250">,</SPAN> <SPAN ID="hue2252">'forestgreen'</SPAN><SPAN ID="hue2254">,</SPAN> <SPAN ID="hue2256">'black'</SPAN><SPAN ID="hue2258">))</SPAN> &nbsp;<SPAN ID="hue2260"><SPAN &nbsp;CLASS="textit">## construct the plot</SPAN></SPAN>
+<BR></SPAN><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+</DIV>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<DIV class="CENTER"><A ID="fig:pipe-example"></A><A ID="528"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure:</STRONG>
+Example of a figure generated using pipes. The variables are air temperature (ATX), dew point temperature (DPXC), and a new generated variable representing the dew point depression (DPD=ATX-DPXC). From WECAN research flight 6, 3 August 2018.</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./pipe-example-1.png"
+ ALT="Image pipe-example-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
+
+<P></TD></TR>
+</TABLE>
+</DIV>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">More information on some of the utility functions used or available
+when constructing plots is provided in the following list:
+</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
 <OL>
-<LI><SPAN  CLASS="texttt">binStats( ):</SPAN> A function to calculate average values and standard
-deviations in bins of a specified variable, as might to useful when
-constructing error-bar or box-and-whisker plots.
+<LI><SPAN  CLASS="texttt">dplyr::filter(): </SPAN>This function is used to limit the range
+of accepted values. The arguments are a data.frame (provided above
+by the pipe) and a logical statement. Only rows for which the specified
+test is true are included in the resulting data.frame. An example
+where a statement like this might be useful is when fitting to determine
+the sensitivity coefficients for angle of attack, because it is useful
+to exclude slow flight when the gear and/or flaps might be deployed.
+Be sure to use the version from dplyr; the filter functions from the
+packages &ldquo;stats&rdquo; or &ldquo;signal&rdquo; have different behavior. An alternative
+method of creating a subset is to use the notation &ldquo;Data[Data$TASX
+&gt; 90, ]&rdquo;. The disadvantage of this method and of the &ldquo;select(Data,
+Data$TASX &gt; 90)&rdquo; function provided by base-R is that variable attributes
+are lost.<A ID="tex2html7"
+  HREF="footnode.html#foot536"><SUP><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A>
 </LI>
-<LI><SPAN  CLASS="texttt">detrend( ):</SPAN> Simple removal of the mean and trend from a time-series
-variable. Used in the spectral-analysis routines.
+<LI><SPAN  CLASS="texttt">dplyr::select(): </SPAN>This function creates a subset data.frame
+with only the desired variables. The desired list of names can be
+specified either as character names (with quotes) or variable names
+(without quotes). This also has the advantage over the &ldquo;[]&rdquo;
+or &ldquo;[[]]&rdquo; methods of subsetting that attributes of the
+data.frame and the variables are preserved.
 </LI>
-<LI><SPAN  CLASS="texttt">df2tibble( ):</SPAN> Convert a data.frame to a &ldquo;tibble&rdquo;, a related
-data structure particularly suited to many data-analysis steps. <SPAN  CLASS="texttt">tibble2df(
-)</SPAN> transforms from a tibble back to a data.frame.
+<LI><SPAN  CLASS="texttt">Ranadu::Rmutate( ):</SPAN> This function adds new variables to the
+data.frame according to formulas specified in the second argument.
+In this processing chain, the first argument is the data.frame provided
+by the pipe. This calls the routine <SPAN  CLASS="texttt">dplyr::mutate()</SPAN> but then,
+because that function does not preserve variable attributes, it transfers
+attributes from the input to the output data.frame. New variables,
+however, have no attributes (even the &ldquo;Dimension&rdquo; attribute) so
+the resulting data.frame has some limitations, notably not being accepted
+by &ldquo;makeNetCDF( )&rdquo;.
 </LI>
-<LI><SPAN  CLASS="texttt">LagrangeInterpolate()</SPAN> implements standard Lagrange interpolation.
+<LI><SPAN  CLASS="texttt">Ranadu::selectTime( ): </SPAN>This function limits the time range
+of the resulting data.frame to be between the times that are specified
+in HHMMSS format (hours, minutes, seconds). This is equivalent to
+using &ldquo;dplyr::filter( )&rdquo; with limits on the accepted times, but
+it avoids the need to provide those times in the POSIXct format used
+by Ranadu data.frames. It preserves attributes and is suitable for
+use in pipes.
 </LI>
-<LI><SPAN  CLASS="texttt">makeNetCDF( )</SPAN>: A utility that writes a new netCDF-format
-file from the measurements and attributes contained in a data.frame.
+<LI><SPAN  CLASS="texttt">Ranadu::Rsubset( ): </SPAN>This is not used in the present example
+but could be. It accepts start and end times like &ldquo;selectTime&rdquo;,
+selects variables like &ldquo;dplyr::select&rdquo;, and imposes limitations
+on the data like &ldquo;dplyr::filter( )&rdquo;, so several functions could
+be combined in one step: Ranadu::getNetCDF(fname, Variables) %&gt;%
+Ranadu::Rsubset(220500, 221500, c('ATX', 'DPXC')) %&gt;% plotWAC( ).
+This function also preserves attributes in the modified data.frame.
 </LI>
-<LI><SPAN  CLASS="texttt">ncsubset( ):</SPAN> Produce a subset netCDF file from an existing
-netCDF file.
-</LI>
-<LI><SPAN  CLASS="texttt">OpenInProgram( ):</SPAN> View the variables in a data.frame in another
-program like ncplot or Xanadu.
-</LI>
-<LI><SPAN  CLASS="texttt">RAFdata:</SPAN> This is a sample data.frame as might be constructed
-by getNetCDF(), containing a short period of measurements from an
-NSF/NCAR GV flight in a project called IDEAS-4.
-The data.frame contains a set of measurements, one row per second,
-and a Time variable. This is provided
-for use in the Ranadu examples.
-</LI>
-<LI><SPAN  CLASS="texttt">removeSpikes( ):</SPAN> Find &ldquo;spikes&rdquo; in a variable and replace
-them with linear-interpolated values. Useful in some studies of spectral
-variance where spikes distort the spectrum.
-</LI>
-<LI><SPAN  CLASS="texttt">RSubset( ):</SPAN> Produce a subset of a data.frame while preserving
-attributes. This is useful because some standard R subsetting actions
-do not preserve attributes.
-</LI>
-<LI><SPAN  CLASS="texttt">selectTimes( ):</SPAN> Produce a new data.frame with a subset of
-the time range included in the original data.frame. (Uses setRange.)
-This is of particular use in pipes.
-</LI>
-<LI><SPAN  CLASS="texttt">setRange( ):</SPAN> Find the data.frame indices corresponding to
-a specified time range in a data.frame.
-</LI>
-<LI><SPAN  CLASS="texttt">setVariableList( ):</SPAN> An interactive way of setting a list
-of variables.
-</LI>
-<LI><SPAN  CLASS="texttt">ShiftInTime( ):</SPAN> Move a time-series variable forward or backward
-in time.
-</LI>
-<LI><SPAN  CLASS="texttt">SmoothInterp( ):</SPAN> Fill missing values with linear interpolation
-and optionally smooth the resulting time series.
-</LI>
-<LI><SPAN  CLASS="texttt">theme_WAC( ):</SPAN> An optional theme available for use with &ldquo;ggplot2&rdquo;
-plots.
-</LI>
-<LI><SPAN  CLASS="texttt">XformLA( ):</SPAN> The transformation from the &ldquo;local&rdquo; Earth-relative
-reference frame to the aircraft or body reference frame, or the reverse.
-Used extensively in the Kalman processor and other GPS-updating functions.
-</LI>
-</OL><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT>
+</OL><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
+&ldquo;Ranadu::plotWAC( )&rdquo; is designed primarily for time-series plots,
+but scatterplots can also be generated. In that case, the first two
+variables in the data.frame should be the variables for the scatterplot,
+not the Time variable, and an explicit label &ldquo;xlab=xxx&rdquo; should
+be supplied. Here is an example:
+</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
 <P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
+</FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT><FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue2263">Data</SPAN> <SPAN ID="hue2265">%&gt;%</SPAN> <SPAN ID="hue2267"><SPAN &nbsp;CLASS="textbf">selectTime</SPAN></SPAN><SPAN ID="hue2270">(</SPAN><SPAN ID="hue2272">220000</SPAN><SPAN ID="hue2274">,</SPAN> <SPAN ID="hue2276">221500</SPAN><SPAN ID="hue2278">)</SPAN> <SPAN ID="hue2280">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2282">dplyr</SPAN><SPAN ID="hue2284">::</SPAN><SPAN ID="hue2286"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue2289">(ATX, DPXC)</SPAN> <SPAN ID="hue2291">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2293"><SPAN &nbsp;CLASS="textbf">plotWAC</SPAN></SPAN><SPAN ID="hue2296">(</SPAN><SPAN ID="hue2298">xlab</SPAN><SPAN ID="hue2300">=</SPAN><SPAN ID="hue2302">'ATX'</SPAN><SPAN ID="hue2304">,</SPAN> <SPAN ID="hue2306">type</SPAN><SPAN ID="hue2308">=</SPAN><SPAN ID="hue2310">'p'</SPAN><SPAN ID="hue2312">)</SPAN>
+<BR></SPAN><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+</DIV>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<DIV class="CENTER"><A ID="fig:scat-ex"></A><A ID="582"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure:</STRONG>
+Example scatterplot.</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./scat-ex-1.png"
+ ALT="Image scat-ex-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
+
+<P></TD></TR>
+</TABLE>
+</DIV>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
 <A
  HREF="node14.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node8.html">
+ HREF="node12.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node12.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
 <BR>
 <B> Next:</B> <A
- HREF="node14.html">More Details About Plotting</A>
+ HREF="node14.html">Multi-Frame Plots</A>
 <B> Up:</B> <A
- HREF="node8.html">Overview of Ranadu functions</A>
+ HREF="node12.html">More Details About Plotting</A>
 <B> Previous:</B> <A
- HREF="node12.html">Computational Algorithms</A></DIV>
+ HREF="node12.html">More Details About Plotting</A></DIV>
 <!--End of Navigation Panel-->
 
 </BODY>
