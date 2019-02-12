@@ -46,16 +46,16 @@
 <A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
 <UL CLASS="ChildLinks">
-<LI><A ID="tex2html60"
+<LI><A ID="tex2html63"
   HREF="node2.html#SECTION00210000000000000000"><SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">1</SPAN> DataFileInfo()</A>
-<LI><A ID="tex2html61"
+<LI><A ID="tex2html64"
   HREF="node2.html#SECTION00220000000000000000"><SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">2</SPAN> getNetCDF() and the resulting data.frame</A>
-<LI><A ID="tex2html62"
+<LI><A ID="tex2html65"
   HREF="node2.html#SECTION00230000000000000000"><SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">3</SPAN> Using the data.frame</A>
 <UL>
-<LI><A ID="tex2html63"
+<LI><A ID="tex2html66"
   HREF="node2.html#SECTION00231000000000000000"><SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">1</SPAN> Simple Plots</A>
-<LI><A ID="tex2html64"
+<LI><A ID="tex2html67"
   HREF="node2.html#SECTION00232000000000000000"><SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">2</SPAN> Using plotWAC() and ggplotWAC()</A>
 </UL></UL>
 <!--End of Table of Child-Links-->
@@ -73,11 +73,13 @@ the package in the &ldquo;RanaduManual.pdf<a href="https://drive.google.com/open
 and there it is also recommended to use RStudio as the user GUI for
 working with R. Once R, RStudio and Ranadu are installed, it will
 be simple to use the functions highlighted in the remainder of this
-chapter to get started. The key functions are getNetCDF(), for reading
-the netCDF file and producing an R data.frame with the measurements,
-and DataFileInfo(), for checking the properties of the netCDF file.
-These two functions provide a useful starting point for all data-analysis
-projects.
+chapter to get started. The recommended way to install the Ranadu
+package is via the R command <SPAN  CLASS="texttt">devtools::install_github(``WilliamCooper/Ranadu'')</SPAN>
+<A ID="tex2html1"
+  HREF="footnode.html#foot148"><SUP><SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A>. The key functions are getNetCDF(), for reading the netCDF file and
+producing an R data.frame with the measurements, and DataFileInfo(),
+for checking the properties of the netCDF file. These two functions
+provide a useful starting point for all data-analysis projects.
 
 <H1><A ID="SECTION00210000000000000000">
 <SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">1</SPAN> DataFileInfo()</A>
@@ -93,12 +95,12 @@ above) are shown below:
 <FONT COLOR="#585858"><HR>## Generating R code:
 <DIV CLASS="alltt" ALIGN="LEFT">
 <SPAN style="font-family:monospace">
- <SPAN ID="hue1949">Project</SPAN> <SPAN ID="hue1951">&lt;-</SPAN> <SPAN ID="hue1953">'WECAN'</SPAN>
-<BR><SPAN ID="hue1955">FlightNumber</SPAN> <SPAN ID="hue1957">&lt;-</SPAN> <SPAN ID="hue1959">6</SPAN>
-<BR><SPAN ID="hue1961">fname</SPAN> <SPAN ID="hue1963">&lt;-</SPAN> <SPAN ID="hue1965"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN> <SPAN ID="hue1968">(</SPAN><SPAN ID="hue1970">'%s%s/%srf%02d.nc'</SPAN><SPAN ID="hue1972">, Ranadu</SPAN><SPAN ID="hue1974">::</SPAN><SPAN ID="hue1976"><SPAN &nbsp;CLASS="textbf">DataDirectory</SPAN></SPAN><SPAN ID="hue1979">(),</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue1981">Project, Project, FlightNumber)</SPAN>
-<BR><SPAN ID="hue1983">FI</SPAN> <SPAN ID="hue1985">&lt;-</SPAN> <SPAN ID="hue1987"><SPAN &nbsp;CLASS="textbf">DataFileInfo</SPAN></SPAN><SPAN ID="hue1990">(fname)</SPAN>
-<BR><SPAN ID="hue1992"><SPAN &nbsp;CLASS="textbf">names</SPAN></SPAN> <SPAN ID="hue1995">(FI</SPAN><SPAN ID="hue1997">$</SPAN><SPAN ID="hue1999">Measurands)</SPAN>
+ <SPAN ID="hue2051">Project</SPAN> <SPAN ID="hue2053">&lt;-</SPAN> <SPAN ID="hue2055">'WECAN'</SPAN>
+<BR><SPAN ID="hue2057">FlightNumber</SPAN> <SPAN ID="hue2059">&lt;-</SPAN> <SPAN ID="hue2061">6</SPAN>
+<BR><SPAN ID="hue2063">fname</SPAN> <SPAN ID="hue2065">&lt;-</SPAN> <SPAN ID="hue2067"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN> <SPAN ID="hue2070">(</SPAN><SPAN ID="hue2072">'%s%s/%srf%02d.nc'</SPAN><SPAN ID="hue2074">, Ranadu</SPAN><SPAN ID="hue2076">::</SPAN><SPAN ID="hue2078"><SPAN &nbsp;CLASS="textbf">DataDirectory</SPAN></SPAN><SPAN ID="hue2081">(),</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2083">Project, Project, FlightNumber)</SPAN>
+<BR><SPAN ID="hue2085">FI</SPAN> <SPAN ID="hue2087">&lt;-</SPAN> <SPAN ID="hue2089"><SPAN &nbsp;CLASS="textbf">DataFileInfo</SPAN></SPAN><SPAN ID="hue2092">(fname)</SPAN>
+<BR><SPAN ID="hue2094"><SPAN &nbsp;CLASS="textbf">names</SPAN></SPAN> <SPAN ID="hue2097">(FI</SPAN><SPAN ID="hue2099">$</SPAN><SPAN ID="hue2101">Measurands)</SPAN>
 <BR></SPAN>
 </DIV>
 
@@ -140,7 +142,7 @@ the measurand name, as in the following example:
 <FONT COLOR="#585858"><HR>## Generating R code:
 <DIV CLASS="alltt" ALIGN="LEFT">
 <SPAN style="font-family:monospace">
- <SPAN ID="hue2001">FI</SPAN><SPAN ID="hue2003">$</SPAN><SPAN ID="hue2005">Measurands</SPAN><SPAN ID="hue2007">$</SPAN><SPAN ID="hue2009">air_temperature</SPAN>
+ <SPAN ID="hue2103">FI</SPAN><SPAN ID="hue2105">$</SPAN><SPAN ID="hue2107">Measurands</SPAN><SPAN ID="hue2109">$</SPAN><SPAN ID="hue2111">air_temperature</SPAN>
 <BR></SPAN>
 </DIV>
 
@@ -152,7 +154,7 @@ the measurand name, as in the following example:
 <FONT COLOR="#585858"><HR>## Generating R code:
 <DIV CLASS="alltt" ALIGN="LEFT">
 <SPAN style="font-family:monospace">
- <SPAN ID="hue2011">FI</SPAN><SPAN ID="hue2013">$</SPAN><SPAN ID="hue2015">LongNames[</SPAN><SPAN ID="hue2017"><SPAN &nbsp;CLASS="textbf">which</SPAN></SPAN><SPAN ID="hue2020">(</SPAN><SPAN ID="hue2022">'ATX'</SPAN> <SPAN ID="hue2024">==</SPAN> <SPAN ID="hue2026">FI</SPAN><SPAN ID="hue2028">$</SPAN><SPAN ID="hue2030">Variables)]</SPAN>
+ <SPAN ID="hue2113">FI</SPAN><SPAN ID="hue2115">$</SPAN><SPAN ID="hue2117">LongNames[</SPAN><SPAN ID="hue2119"><SPAN &nbsp;CLASS="textbf">which</SPAN></SPAN><SPAN ID="hue2122">(</SPAN><SPAN ID="hue2124">'ATX'</SPAN> <SPAN ID="hue2126">==</SPAN> <SPAN ID="hue2128">FI</SPAN><SPAN ID="hue2130">$</SPAN><SPAN ID="hue2132">Variables)]</SPAN>
 <BR></SPAN>
 </DIV>
 
@@ -164,7 +166,7 @@ list, print the names as follows:
 <FONT COLOR="#585858"><HR>## Generating R code:
 <DIV CLASS="alltt" ALIGN="LEFT">
 <SPAN style="font-family:monospace">
- <SPAN ID="hue2032"><SPAN &nbsp;CLASS="textbf">names</SPAN></SPAN><SPAN ID="hue2035">(FI)</SPAN>
+ <SPAN ID="hue2134"><SPAN &nbsp;CLASS="textbf">names</SPAN></SPAN><SPAN ID="hue2137">(FI)</SPAN>
 <BR></SPAN>
 </DIV>
 
@@ -177,8 +179,9 @@ data file.
 </FONT></FONT></FONT></FONT>
 <H1><A ID="SECTION00220000000000000000">
 <SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">2</SPAN> getNetCDF() and the resulting data.frame</A>
-</H1><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
-A central component of the Ranadu structure is the Ranadu data.frame,
+</H1><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">A central component of the Ranadu structure is the Ranadu data.frame,
 produced by reading the netCDF data file. It has a structure similar
 to that of a spreadsheet, with rows corresponding to measurement times
 and columns corresponding to measurements. The data.frame has these
@@ -216,13 +219,13 @@ An example of a subset of the data.frame is shown here:
 
 <DIV CLASS="alltt" ALIGN="LEFT">
 <FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue2037">Project</SPAN> <SPAN ID="hue2039">&lt;-</SPAN> <SPAN ID="hue2041">'WECAN'</SPAN>
-<BR><SPAN ID="hue2043">FlightNumber</SPAN> <SPAN ID="hue2045">&lt;-</SPAN> <SPAN ID="hue2047">6</SPAN>
-<BR><SPAN ID="hue2049">fname</SPAN> <SPAN ID="hue2051">&lt;-</SPAN> <SPAN ID="hue2053"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN> <SPAN ID="hue2056">(</SPAN><SPAN ID="hue2058">'%s%s/%srf%02d.nc'</SPAN><SPAN ID="hue2060">, Ranadu</SPAN><SPAN ID="hue2062">::</SPAN><SPAN ID="hue2064"><SPAN &nbsp;CLASS="textbf">DataDirectory</SPAN></SPAN><SPAN ID="hue2067">(),</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2069">Project, Project, FlightNumber)</SPAN>
-<BR><SPAN ID="hue2071">Variables</SPAN> <SPAN ID="hue2073">&lt;-</SPAN> <SPAN ID="hue2075">Ranadu</SPAN><SPAN ID="hue2077">::</SPAN><SPAN ID="hue2079"><SPAN &nbsp;CLASS="textbf">standardVariables</SPAN></SPAN><SPAN ID="hue2082">(</SPAN><SPAN ID="hue2084"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2087">(</SPAN><SPAN ID="hue2089">'UXC'</SPAN><SPAN ID="hue2091">,</SPAN> <SPAN ID="hue2093">'VYC'</SPAN><SPAN ID="hue2095">))</SPAN>
-<BR><SPAN ID="hue2097">Data</SPAN> <SPAN ID="hue2099">&lt;-</SPAN> <SPAN ID="hue2101">Ranadu</SPAN><SPAN ID="hue2103">::</SPAN><SPAN ID="hue2105"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue2108">(fname, Variables)</SPAN>
-<BR><SPAN ID="hue2110"><SPAN &nbsp;CLASS="textbf">print</SPAN></SPAN> <SPAN ID="hue2113">(</SPAN><SPAN ID="hue2115"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN> <SPAN ID="hue2118">(</SPAN><SPAN ID="hue2120">'Data from data file %s'</SPAN><SPAN ID="hue2122">, fname))</SPAN>
+ <SPAN ID="hue2139">Project</SPAN> <SPAN ID="hue2141">&lt;-</SPAN> <SPAN ID="hue2143">'WECAN'</SPAN>
+<BR><SPAN ID="hue2145">FlightNumber</SPAN> <SPAN ID="hue2147">&lt;-</SPAN> <SPAN ID="hue2149">6</SPAN>
+<BR><SPAN ID="hue2151">fname</SPAN> <SPAN ID="hue2153">&lt;-</SPAN> <SPAN ID="hue2155"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN> <SPAN ID="hue2158">(</SPAN><SPAN ID="hue2160">'%s%s/%srf%02d.nc'</SPAN><SPAN ID="hue2162">, Ranadu</SPAN><SPAN ID="hue2164">::</SPAN><SPAN ID="hue2166"><SPAN &nbsp;CLASS="textbf">DataDirectory</SPAN></SPAN><SPAN ID="hue2169">(),</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2171">Project, Project, FlightNumber)</SPAN>
+<BR><SPAN ID="hue2173">Variables</SPAN> <SPAN ID="hue2175">&lt;-</SPAN> <SPAN ID="hue2177">Ranadu</SPAN><SPAN ID="hue2179">::</SPAN><SPAN ID="hue2181"><SPAN &nbsp;CLASS="textbf">standardVariables</SPAN></SPAN><SPAN ID="hue2184">(</SPAN><SPAN ID="hue2186"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2189">(</SPAN><SPAN ID="hue2191">'UXC'</SPAN><SPAN ID="hue2193">,</SPAN> <SPAN ID="hue2195">'VYC'</SPAN><SPAN ID="hue2197">))</SPAN>
+<BR><SPAN ID="hue2199">Data</SPAN> <SPAN ID="hue2201">&lt;-</SPAN> <SPAN ID="hue2203">Ranadu</SPAN><SPAN ID="hue2205">::</SPAN><SPAN ID="hue2207"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue2210">(fname, Variables)</SPAN>
+<BR><SPAN ID="hue2212"><SPAN &nbsp;CLASS="textbf">print</SPAN></SPAN> <SPAN ID="hue2215">(</SPAN><SPAN ID="hue2217"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN> <SPAN ID="hue2220">(</SPAN><SPAN ID="hue2222">'Data from data file %s'</SPAN><SPAN ID="hue2224">, fname))</SPAN>
 <BR></SPAN></FONT>
 </DIV>
 <PRE>
@@ -232,7 +235,7 @@ An example of a subset of the data.frame is shown here:
 
 <DIV CLASS="alltt" ALIGN="LEFT">
 <FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue2124"><SPAN &nbsp;CLASS="textbf">print</SPAN></SPAN> <SPAN ID="hue2127">(tibble</SPAN><SPAN ID="hue2129">::</SPAN><SPAN ID="hue2131"><SPAN &nbsp;CLASS="textbf">as.tibble</SPAN></SPAN><SPAN ID="hue2134">(Data))</SPAN> &nbsp;<SPAN ID="hue2136"><SPAN &nbsp;CLASS="textit"># or print(head(Data))</SPAN></SPAN>
+ <SPAN ID="hue2226"><SPAN &nbsp;CLASS="textbf">print</SPAN></SPAN> <SPAN ID="hue2229">(tibble</SPAN><SPAN ID="hue2231">::</SPAN><SPAN ID="hue2233"><SPAN &nbsp;CLASS="textbf">as.tibble</SPAN></SPAN><SPAN ID="hue2236">(Data))</SPAN> &nbsp;<SPAN ID="hue2238"><SPAN &nbsp;CLASS="textit"># or print(head(Data))</SPAN></SPAN>
 <BR></SPAN></FONT>
 </DIV>
 <PRE>
@@ -267,8 +270,8 @@ used variable names. Additional variables provided to the routine
 (here, 'UXC' and 'VYC') are added to the variable list.
 </LI>
 <LI>Ranadu::getNetCDF() produces the data.frame. The special case where
-Variables &lt;- 'ALL' will return all available variables.<A ID="tex2html1"
-  HREF="#foot292"><SUP><SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A> Two additional optional arguments to getNetCDF() are &ldquo;Start&rdquo;
+Variables &lt;- 'ALL' will return all available variables.<A ID="tex2html2"
+  HREF="footnode.html#foot306"><SUP><SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A> Two additional optional arguments to getNetCDF() are &ldquo;Start&rdquo;
 and &ldquo;End&rdquo;; if set, the range of time values in the data.frame
 will be restricted to be between those two times. See &ldquo;?Ranadu::getNetCDF&rdquo;
 for complete information on this function.
@@ -303,11 +306,11 @@ using the data.frame loaded previously:
 
 <DIV CLASS="alltt" ALIGN="LEFT">
 <FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue2139"><SPAN &nbsp;CLASS="textbf">plot</SPAN></SPAN><SPAN ID="hue2142">(Data</SPAN><SPAN ID="hue2144">$</SPAN><SPAN ID="hue2146">Time, Data</SPAN><SPAN ID="hue2148">$</SPAN><SPAN ID="hue2150">GGALT,</SPAN> <SPAN ID="hue2152">type</SPAN><SPAN ID="hue2154">=</SPAN><SPAN ID="hue2156">'l'</SPAN><SPAN ID="hue2158">)</SPAN>
+ <SPAN ID="hue2241"><SPAN &nbsp;CLASS="textbf">plot</SPAN></SPAN><SPAN ID="hue2244">(Data</SPAN><SPAN ID="hue2246">$</SPAN><SPAN ID="hue2248">Time, Data</SPAN><SPAN ID="hue2250">$</SPAN><SPAN ID="hue2252">GGALT,</SPAN> <SPAN ID="hue2254">type</SPAN><SPAN ID="hue2256">=</SPAN><SPAN ID="hue2258">'l'</SPAN><SPAN ID="hue2260">)</SPAN>
 <BR></SPAN></FONT>
 </DIV>
 <FONT COLOR="#585858"><HR></FONT>
-<DIV class="CENTER"><A ID="fig:simple-plot1"></A><A ID="317"></A>
+<DIV class="CENTER"><A ID="fig:simple-plot1"></A><A ID="331"></A>
 <TABLE>
 <CAPTION class="BOTTOM"><STRONG>Figure 2.1:</STRONG>
 Geometric altitude vs time for WECAN research flight 6, 3 August 2018.</CAPTION>
@@ -373,11 +376,11 @@ other variable, which may not be what you want.
 
 <DIV CLASS="alltt" ALIGN="LEFT">
 <FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue2160"><SPAN &nbsp;CLASS="textbf">plotWAC</SPAN></SPAN><SPAN ID="hue2163">(Data[,</SPAN> <SPAN ID="hue2165"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2168">(</SPAN><SPAN ID="hue2170">'Time'</SPAN><SPAN ID="hue2172">,</SPAN> <SPAN ID="hue2174">'GGALT'</SPAN><SPAN ID="hue2176">)])</SPAN>
+ <SPAN ID="hue2262"><SPAN &nbsp;CLASS="textbf">plotWAC</SPAN></SPAN><SPAN ID="hue2265">(Data[,</SPAN> <SPAN ID="hue2267"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2270">(</SPAN><SPAN ID="hue2272">'Time'</SPAN><SPAN ID="hue2274">,</SPAN> <SPAN ID="hue2276">'GGALT'</SPAN><SPAN ID="hue2278">)])</SPAN>
 <BR></SPAN></FONT>
 </DIV>
 <FONT COLOR="#585858"><HR></FONT>
-<DIV class="CENTER"><A ID="fig:plotwac-ex"></A><A ID="349"></A>
+<DIV class="CENTER"><A ID="fig:plotwac-ex"></A><A ID="363"></A>
 <TABLE>
 <CAPTION class="BOTTOM"><STRONG>Figure 2.2:</STRONG>
 Example of the same plot as the preceding figure but generated with Ranadu::plotWAC().</CAPTION>
@@ -405,11 +408,11 @@ Example of the same plot as the preceding figure but generated with Ranadu::plot
 
 <DIV CLASS="alltt" ALIGN="LEFT">
 <FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue2178"><SPAN &nbsp;CLASS="textbf">ggplotWAC</SPAN></SPAN><SPAN ID="hue2181">(Data[,</SPAN> <SPAN ID="hue2183"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2186">(</SPAN><SPAN ID="hue2188">'Time'</SPAN><SPAN ID="hue2190">,</SPAN> <SPAN ID="hue2192">'GGALT'</SPAN><SPAN ID="hue2194">)])</SPAN>
+ <SPAN ID="hue2280"><SPAN &nbsp;CLASS="textbf">ggplotWAC</SPAN></SPAN><SPAN ID="hue2283">(Data[,</SPAN> <SPAN ID="hue2285"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2288">(</SPAN><SPAN ID="hue2290">'Time'</SPAN><SPAN ID="hue2292">,</SPAN> <SPAN ID="hue2294">'GGALT'</SPAN><SPAN ID="hue2296">)])</SPAN>
 <BR></SPAN></FONT>
 </DIV>
 <FONT COLOR="#585858"><HR></FONT>
-<DIV class="CENTER"><A ID="fig:ggplot-ex"></A><A ID="373"></A>
+<DIV class="CENTER"><A ID="fig:ggplot-ex"></A><A ID="387"></A>
 <TABLE>
 <CAPTION class="BOTTOM"><STRONG>Figure 2.3:</STRONG>
 Example of the same plot as the preceding figure but generated with Ranadu::ggplotWAC().</CAPTION>
@@ -437,16 +440,6 @@ and &ldquo;?Ranadu::ggplotWAC&rdquo;.
 
 <P>
 </FONT></FONT>
-<BR><HR><H4>Footnotes</H4>
-<DL>
-<DT><A ID="foot292">... variables.</A><A
- HREF="node2.html#tex2html1"><SUP><SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></DT>
-<DD>But use this cautiously because size-distribution variables are special
-and sometimes cause problems when manipulating the resulting data.frame.
-This is discussed later in association with &ldquo;tibbles.&rdquo;
-
-</DD>
-</DL>
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
 <A

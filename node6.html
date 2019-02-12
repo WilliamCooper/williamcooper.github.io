@@ -46,14 +46,16 @@
 <A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
 <UL CLASS="ChildLinks">
-<LI><A ID="tex2html83"
-  HREF="node6.html#SECTION00610000000000000000"><SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">1</SPAN> Combining flights</A>
-<LI><A ID="tex2html84"
-  HREF="node6.html#SECTION00620000000000000000"><SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">2</SPAN> Comments re &ldquo;tibbles&rdquo;</A>
-<LI><A ID="tex2html85"
-  HREF="node6.html#SECTION00630000000000000000"><SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">3</SPAN> Reproducible research</A>
 <LI><A ID="tex2html86"
-  HREF="node6.html#SECTION00640000000000000000"><SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">4</SPAN> The Ranadu Shiny app</A>
+  HREF="node6.html#SECTION00610000000000000000"><SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">1</SPAN> Combining flights</A>
+<LI><A ID="tex2html87"
+  HREF="node6.html#SECTION00620000000000000000"><SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">2</SPAN> Comments re &ldquo;tibbles&rdquo;</A>
+<LI><A ID="tex2html88"
+  HREF="node6.html#SECTION00630000000000000000"><SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">3</SPAN> Using Ranadu from Python</A>
+<LI><A ID="tex2html89"
+  HREF="node6.html#SECTION00640000000000000000"><SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">4</SPAN> Reproducible research</A>
+<LI><A ID="tex2html90"
+  HREF="node6.html#SECTION00650000000000000000"><SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">5</SPAN> The Ranadu Shiny app</A>
 </UL>
 <!--End of Table of Child-Links-->
 <HR>
@@ -84,34 +86,34 @@ be identified and easily separated in the combined data.frame.
 
 <DIV CLASS="alltt" ALIGN="LEFT">
 <FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue3660">VarList</SPAN> <SPAN ID="hue3662">&lt;-</SPAN> <SPAN ID="hue3664"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue3667">(</SPAN><SPAN ID="hue3669">&#34;ADIFR&#34;</SPAN><SPAN ID="hue3671">,</SPAN> <SPAN ID="hue3673">&#34;PITCH&#34;</SPAN><SPAN ID="hue3675">,</SPAN> <SPAN ID="hue3677">&#34;QCF&#34;</SPAN><SPAN ID="hue3679">,</SPAN> <SPAN ID="hue3681">&#34;PSF&#34;</SPAN><SPAN ID="hue3683">,</SPAN> <SPAN ID="hue3685">&#34;AKRD&#34;</SPAN><SPAN ID="hue3687">,</SPAN> <SPAN ID="hue3689">&#34;WIC&#34;</SPAN><SPAN ID="hue3691">,</SPAN>
-<BR>&nbsp;&nbsp;<SPAN ID="hue3693">&#34;TASF&#34;</SPAN><SPAN ID="hue3695">,</SPAN> <SPAN ID="hue3697">&#34;GGALT&#34;</SPAN><SPAN ID="hue3699">,</SPAN> <SPAN ID="hue3701">&#34;ROLL&#34;</SPAN><SPAN ID="hue3703">,</SPAN> <SPAN ID="hue3705">&#34;PSXC&#34;</SPAN><SPAN ID="hue3707">,</SPAN> <SPAN ID="hue3709">&#34;ATX&#34;</SPAN><SPAN ID="hue3711">,</SPAN> <SPAN ID="hue3713">&#34;DPXC&#34;</SPAN><SPAN ID="hue3715">,</SPAN> <SPAN ID="hue3717">&#34;QCXC&#34;</SPAN><SPAN ID="hue3719">,</SPAN>
-<BR>&nbsp;&nbsp;<SPAN ID="hue3721">&#34;EWX&#34;</SPAN><SPAN ID="hue3723">,</SPAN> <SPAN ID="hue3725">&#34;ACINS&#34;</SPAN><SPAN ID="hue3727">,</SPAN><SPAN ID="hue3729">&#34;GGLAT&#34;</SPAN><SPAN ID="hue3731">)</SPAN>
-<BR><SPAN ID="hue3733"><SPAN &nbsp;CLASS="textit">## add variables needed to recalculate wind</SPAN></SPAN>
-<BR><SPAN ID="hue3736">VarList</SPAN> <SPAN ID="hue3738">&lt;-</SPAN> <SPAN ID="hue3740"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue3743">(VarList,</SPAN> <SPAN ID="hue3745">&#34;TASX&#34;</SPAN><SPAN ID="hue3747">,</SPAN> <SPAN ID="hue3749">&#34;ATTACK&#34;</SPAN><SPAN ID="hue3751">,</SPAN> <SPAN ID="hue3753">&#34;SSLIP&#34;</SPAN><SPAN ID="hue3755">,</SPAN>
-<BR>&nbsp;&nbsp;<SPAN ID="hue3757">&#34;GGVEW&#34;</SPAN><SPAN ID="hue3759">,</SPAN> <SPAN ID="hue3761">&#34;GGVNS&#34;</SPAN><SPAN ID="hue3763">,</SPAN> <SPAN ID="hue3765">&#34;VEW&#34;</SPAN><SPAN ID="hue3767">,</SPAN> <SPAN ID="hue3769">&#34;VNS&#34;</SPAN><SPAN ID="hue3771">,</SPAN> <SPAN ID="hue3773">&#34;THDG&#34;</SPAN><SPAN ID="hue3775">)</SPAN>
-<BR><SPAN ID="hue3777">Data</SPAN> <SPAN ID="hue3779">&lt;-</SPAN> <SPAN ID="hue3781"><SPAN &nbsp;CLASS="textbf">data.frame</SPAN></SPAN><SPAN ID="hue3784">()</SPAN>
-<BR><SPAN ID="hue3786">Project</SPAN> <SPAN ID="hue3788">&lt;-</SPAN> <SPAN ID="hue3790">'CSET'</SPAN>
-<BR><SPAN ID="hue3792">Fl</SPAN> <SPAN ID="hue3794">&lt;-</SPAN> <SPAN ID="hue3796"><SPAN &nbsp;CLASS="textbf">sort</SPAN></SPAN> <SPAN ID="hue3799">(</SPAN><SPAN ID="hue3801"><SPAN &nbsp;CLASS="textbf">list.files</SPAN></SPAN> <SPAN ID="hue3804">(</SPAN> <SPAN ID="hue3806"><SPAN &nbsp;CLASS="textit">## get list of available flights</SPAN></SPAN>
-<BR>&nbsp;&nbsp;<SPAN ID="hue3809"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN> <SPAN ID="hue3812">(</SPAN><SPAN ID="hue3814">&#34;%s%s/&#34;</SPAN><SPAN ID="hue3816">,</SPAN> <SPAN ID="hue3818"><SPAN &nbsp;CLASS="textbf">DataDirectory</SPAN></SPAN><SPAN ID="hue3821">(), Project),</SPAN>
-<BR>&nbsp;&nbsp;<SPAN ID="hue3823"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN> <SPAN ID="hue3826">(</SPAN><SPAN ID="hue3828">&#34;%srf...nc$&#34;</SPAN><SPAN ID="hue3830">, Project)))</SPAN>
-<BR><SPAN ID="hue3832"><SPAN &nbsp;CLASS="textbf">for</SPAN></SPAN> <SPAN ID="hue3835">(flt</SPAN> <SPAN ID="hue3837"><SPAN &nbsp;CLASS="textbf">in</SPAN></SPAN> <SPAN ID="hue3840">Fl) {</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3842">fname</SPAN> <SPAN ID="hue3844">=</SPAN> <SPAN ID="hue3846"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN><SPAN ID="hue3849">(</SPAN><SPAN ID="hue3851">&#34;%s%s/%s&#34;</SPAN><SPAN ID="hue3853">,</SPAN> <SPAN ID="hue3855"><SPAN &nbsp;CLASS="textbf">DataDirectory</SPAN></SPAN><SPAN ID="hue3858">(), Project, flt)</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3860">fno</SPAN> <SPAN ID="hue3862">&lt;-</SPAN> <SPAN ID="hue3864"><SPAN &nbsp;CLASS="textbf">as.numeric</SPAN></SPAN><SPAN ID="hue3867">(</SPAN><SPAN ID="hue3869"><SPAN &nbsp;CLASS="textbf">sub</SPAN></SPAN><SPAN ID="hue3872">(</SPAN><SPAN ID="hue3874">'.*f([0-9]*).nc'</SPAN><SPAN ID="hue3876">,</SPAN> <SPAN ID="hue3878">'&#92;&#92;1'</SPAN><SPAN ID="hue3882">, flt))</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3884">D</SPAN> <SPAN ID="hue3886">&lt;-</SPAN> <SPAN ID="hue3888"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN> <SPAN ID="hue3891">(fname, VarList,</SPAN> <SPAN ID="hue3893">F</SPAN><SPAN ID="hue3895">=fno)</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3897">Data</SPAN> <SPAN ID="hue3899">&lt;-</SPAN> <SPAN ID="hue3901"><SPAN &nbsp;CLASS="textbf">rbind</SPAN></SPAN><SPAN ID="hue3904">(Data, D)</SPAN>
-<BR><SPAN ID="hue3906">}</SPAN>
-<BR><SPAN ID="hue3908"><SPAN &nbsp;CLASS="textit">## impose restrictions where good vertical wind expected</SPAN></SPAN>
-<BR><SPAN ID="hue3911">Data</SPAN> <SPAN ID="hue3913">&lt;-</SPAN> <SPAN ID="hue3915">dplyr</SPAN><SPAN ID="hue3917">::</SPAN><SPAN ID="hue3919"><SPAN &nbsp;CLASS="textbf">filter</SPAN></SPAN><SPAN ID="hue3922">(Data, TASX</SPAN> <SPAN ID="hue3924">&gt;</SPAN> <SPAN ID="hue3926">90</SPAN><SPAN ID="hue3928">,</SPAN> <SPAN ID="hue3930"><SPAN &nbsp;CLASS="textbf">abs</SPAN></SPAN><SPAN ID="hue3933">(ROLL)</SPAN> <SPAN ID="hue3935">&lt;</SPAN> <SPAN ID="hue3937">2</SPAN><SPAN ID="hue3939">)</SPAN> <SPAN ID="hue3941">%&gt;%</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3943">dplyr</SPAN><SPAN ID="hue3945">::</SPAN><SPAN ID="hue3947"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue3950">(Time, WIC, ATX, DPXC, EWX, GGALT, RF)</SPAN>
-<BR><SPAN ID="hue3952">Data</SPAN> <SPAN ID="hue3954">%&gt;%</SPAN> <SPAN ID="hue3956"><SPAN &nbsp;CLASS="textbf">ggplot</SPAN></SPAN><SPAN ID="hue3959">()</SPAN> <SPAN ID="hue3961">+</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3963"><SPAN &nbsp;CLASS="textbf">geom_boxplot</SPAN></SPAN><SPAN ID="hue3966">(</SPAN><SPAN ID="hue3968"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue3971">(RF, WIC,</SPAN> <SPAN ID="hue3973">group</SPAN><SPAN ID="hue3975">=RF),</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3977">color</SPAN><SPAN ID="hue3979">=</SPAN><SPAN ID="hue3981">'blue'</SPAN><SPAN ID="hue3983">,</SPAN> <SPAN ID="hue3985">na.rm</SPAN><SPAN ID="hue3987">=</SPAN><SPAN ID="hue3989">TRUE</SPAN><SPAN ID="hue3991">)</SPAN> <SPAN ID="hue3993">+</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3995"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue3998">()</SPAN>
+ <SPAN ID="hue3766">VarList</SPAN> <SPAN ID="hue3768">&lt;-</SPAN> <SPAN ID="hue3770"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue3773">(</SPAN><SPAN ID="hue3775">&#34;ADIFR&#34;</SPAN><SPAN ID="hue3777">,</SPAN> <SPAN ID="hue3779">&#34;PITCH&#34;</SPAN><SPAN ID="hue3781">,</SPAN> <SPAN ID="hue3783">&#34;QCF&#34;</SPAN><SPAN ID="hue3785">,</SPAN> <SPAN ID="hue3787">&#34;PSF&#34;</SPAN><SPAN ID="hue3789">,</SPAN> <SPAN ID="hue3791">&#34;AKRD&#34;</SPAN><SPAN ID="hue3793">,</SPAN> <SPAN ID="hue3795">&#34;WIC&#34;</SPAN><SPAN ID="hue3797">,</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3799">&#34;TASF&#34;</SPAN><SPAN ID="hue3801">,</SPAN> <SPAN ID="hue3803">&#34;GGALT&#34;</SPAN><SPAN ID="hue3805">,</SPAN> <SPAN ID="hue3807">&#34;ROLL&#34;</SPAN><SPAN ID="hue3809">,</SPAN> <SPAN ID="hue3811">&#34;PSXC&#34;</SPAN><SPAN ID="hue3813">,</SPAN> <SPAN ID="hue3815">&#34;ATX&#34;</SPAN><SPAN ID="hue3817">,</SPAN> <SPAN ID="hue3819">&#34;DPXC&#34;</SPAN><SPAN ID="hue3821">,</SPAN> <SPAN ID="hue3823">&#34;QCXC&#34;</SPAN><SPAN ID="hue3825">,</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3827">&#34;EWX&#34;</SPAN><SPAN ID="hue3829">,</SPAN> <SPAN ID="hue3831">&#34;ACINS&#34;</SPAN><SPAN ID="hue3833">,</SPAN><SPAN ID="hue3835">&#34;GGLAT&#34;</SPAN><SPAN ID="hue3837">)</SPAN>
+<BR><SPAN ID="hue3839"><SPAN &nbsp;CLASS="textit">## add variables needed to recalculate wind</SPAN></SPAN>
+<BR><SPAN ID="hue3842">VarList</SPAN> <SPAN ID="hue3844">&lt;-</SPAN> <SPAN ID="hue3846"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue3849">(VarList,</SPAN> <SPAN ID="hue3851">&#34;TASX&#34;</SPAN><SPAN ID="hue3853">,</SPAN> <SPAN ID="hue3855">&#34;ATTACK&#34;</SPAN><SPAN ID="hue3857">,</SPAN> <SPAN ID="hue3859">&#34;SSLIP&#34;</SPAN><SPAN ID="hue3861">,</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3863">&#34;GGVEW&#34;</SPAN><SPAN ID="hue3865">,</SPAN> <SPAN ID="hue3867">&#34;GGVNS&#34;</SPAN><SPAN ID="hue3869">,</SPAN> <SPAN ID="hue3871">&#34;VEW&#34;</SPAN><SPAN ID="hue3873">,</SPAN> <SPAN ID="hue3875">&#34;VNS&#34;</SPAN><SPAN ID="hue3877">,</SPAN> <SPAN ID="hue3879">&#34;THDG&#34;</SPAN><SPAN ID="hue3881">)</SPAN>
+<BR><SPAN ID="hue3883">Data</SPAN> <SPAN ID="hue3885">&lt;-</SPAN> <SPAN ID="hue3887"><SPAN &nbsp;CLASS="textbf">data.frame</SPAN></SPAN><SPAN ID="hue3890">()</SPAN>
+<BR><SPAN ID="hue3892">Project</SPAN> <SPAN ID="hue3894">&lt;-</SPAN> <SPAN ID="hue3896">'CSET'</SPAN>
+<BR><SPAN ID="hue3898">Fl</SPAN> <SPAN ID="hue3900">&lt;-</SPAN> <SPAN ID="hue3902"><SPAN &nbsp;CLASS="textbf">sort</SPAN></SPAN> <SPAN ID="hue3905">(</SPAN><SPAN ID="hue3907"><SPAN &nbsp;CLASS="textbf">list.files</SPAN></SPAN> <SPAN ID="hue3910">(</SPAN> <SPAN ID="hue3912"><SPAN &nbsp;CLASS="textit">## get list of available flights</SPAN></SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3915"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN> <SPAN ID="hue3918">(</SPAN><SPAN ID="hue3920">&#34;%s%s/&#34;</SPAN><SPAN ID="hue3922">,</SPAN> <SPAN ID="hue3924"><SPAN &nbsp;CLASS="textbf">DataDirectory</SPAN></SPAN><SPAN ID="hue3927">(), Project),</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3929"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN> <SPAN ID="hue3932">(</SPAN><SPAN ID="hue3934">&#34;%srf...nc$&#34;</SPAN><SPAN ID="hue3936">, Project)))</SPAN>
+<BR><SPAN ID="hue3938"><SPAN &nbsp;CLASS="textbf">for</SPAN></SPAN> <SPAN ID="hue3941">(flt</SPAN> <SPAN ID="hue3943"><SPAN &nbsp;CLASS="textbf">in</SPAN></SPAN> <SPAN ID="hue3946">Fl) {</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3948">fname</SPAN> <SPAN ID="hue3950">=</SPAN> <SPAN ID="hue3952"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN><SPAN ID="hue3955">(</SPAN><SPAN ID="hue3957">&#34;%s%s/%s&#34;</SPAN><SPAN ID="hue3959">,</SPAN> <SPAN ID="hue3961"><SPAN &nbsp;CLASS="textbf">DataDirectory</SPAN></SPAN><SPAN ID="hue3964">(), Project, flt)</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3966">fno</SPAN> <SPAN ID="hue3968">&lt;-</SPAN> <SPAN ID="hue3970"><SPAN &nbsp;CLASS="textbf">as.numeric</SPAN></SPAN><SPAN ID="hue3973">(</SPAN><SPAN ID="hue3975"><SPAN &nbsp;CLASS="textbf">sub</SPAN></SPAN><SPAN ID="hue3978">(</SPAN><SPAN ID="hue3980">'.*f([0-9]*).nc'</SPAN><SPAN ID="hue3982">,</SPAN> <SPAN ID="hue3984">'&#92;&#92;1'</SPAN><SPAN ID="hue3988">, flt))</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3990">D</SPAN> <SPAN ID="hue3992">&lt;-</SPAN> <SPAN ID="hue3994"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN> <SPAN ID="hue3997">(fname, VarList,</SPAN> <SPAN ID="hue3999">F</SPAN><SPAN ID="hue4001">=fno)</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4003">Data</SPAN> <SPAN ID="hue4005">&lt;-</SPAN> <SPAN ID="hue4007"><SPAN &nbsp;CLASS="textbf">rbind</SPAN></SPAN><SPAN ID="hue4010">(Data, D)</SPAN>
+<BR><SPAN ID="hue4012">}</SPAN>
+<BR><SPAN ID="hue4014"><SPAN &nbsp;CLASS="textit">## restrict to where good vertical wind is expected</SPAN></SPAN>
+<BR><SPAN ID="hue4017">dplyr</SPAN><SPAN ID="hue4019">::</SPAN><SPAN ID="hue4021"><SPAN &nbsp;CLASS="textbf">filter</SPAN></SPAN><SPAN ID="hue4024">(Data, TASX</SPAN> <SPAN ID="hue4026">&gt;</SPAN> <SPAN ID="hue4028">90</SPAN><SPAN ID="hue4030">,</SPAN> <SPAN ID="hue4032"><SPAN &nbsp;CLASS="textbf">abs</SPAN></SPAN><SPAN ID="hue4035">(ROLL)</SPAN> <SPAN ID="hue4037">&lt;</SPAN> <SPAN ID="hue4039">2</SPAN><SPAN ID="hue4041">)</SPAN> <SPAN ID="hue4043">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4045">dplyr</SPAN><SPAN ID="hue4047">::</SPAN><SPAN ID="hue4049"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue4052">(Time, WIC, ATX, DPXC, EWX, GGALT, RF)</SPAN> <SPAN ID="hue4054">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4056"><SPAN &nbsp;CLASS="textbf">ggplot</SPAN></SPAN><SPAN ID="hue4059">()</SPAN> <SPAN ID="hue4061">+</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4063"><SPAN &nbsp;CLASS="textbf">geom_boxplot</SPAN></SPAN><SPAN ID="hue4066">(</SPAN><SPAN ID="hue4068"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue4071">(RF, WIC,</SPAN> <SPAN ID="hue4073">group</SPAN><SPAN ID="hue4075">=RF),</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4077">color</SPAN><SPAN ID="hue4079">=</SPAN><SPAN ID="hue4081">'blue'</SPAN><SPAN ID="hue4083">,</SPAN> <SPAN ID="hue4085">na.rm</SPAN><SPAN ID="hue4087">=</SPAN><SPAN ID="hue4089">TRUE</SPAN><SPAN ID="hue4091">)</SPAN> <SPAN ID="hue4093">+</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4095"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue4098">()</SPAN>
 <BR></SPAN></FONT>
 </DIV>
 <FONT COLOR="#585858"><HR></FONT>
-<DIV class="CENTER"><A ID="fig:multiFlt"></A><A ID="1631"></A>
+<DIV class="CENTER"><A ID="fig:multiFlt"></A><A ID="1646"></A>
 <TABLE>
 <CAPTION class="BOTTOM"><STRONG>Figure 6.1:</STRONG>
 Distribution of values of the vertical wind for each research flight number.</CAPTION>
@@ -138,14 +140,14 @@ Distribution of values of the vertical wind for each research flight number.</CA
 
 <DIV CLASS="alltt" ALIGN="LEFT">
 <FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue4000">Data</SPAN> <SPAN ID="hue4002">%&gt;%</SPAN> <SPAN ID="hue4004">dplyr</SPAN><SPAN ID="hue4006">::</SPAN><SPAN ID="hue4008"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue4011">(ATX, GGALT, RF)</SPAN> <SPAN ID="hue4013">%&gt;%</SPAN> <SPAN ID="hue4015">dplyr</SPAN><SPAN ID="hue4017">::</SPAN><SPAN ID="hue4019"><SPAN &nbsp;CLASS="textbf">filter</SPAN></SPAN><SPAN ID="hue4022">(RF</SPAN> <SPAN ID="hue4024">&gt;=</SPAN> <SPAN ID="hue4026">3</SPAN> <SPAN ID="hue4028">&amp;</SPAN> <SPAN ID="hue4030">RF</SPAN> <SPAN ID="hue4032">&lt;=</SPAN> <SPAN ID="hue4034">6</SPAN><SPAN ID="hue4036">)</SPAN> <SPAN ID="hue4038">%&gt;%</SPAN>
-<BR>&nbsp;&nbsp;<SPAN ID="hue4040"><SPAN &nbsp;CLASS="textbf">Rmutate</SPAN></SPAN><SPAN ID="hue4043">(</SPAN><SPAN ID="hue4045">RF</SPAN> <SPAN ID="hue4047">=</SPAN> <SPAN ID="hue4049"><SPAN &nbsp;CLASS="textbf">as.character</SPAN></SPAN><SPAN ID="hue4052">(RF))</SPAN> <SPAN ID="hue4054">%&gt;%</SPAN>
-<BR>&nbsp;&nbsp;<SPAN ID="hue4056"><SPAN &nbsp;CLASS="textbf">ggplot</SPAN></SPAN><SPAN ID="hue4059">()</SPAN> <SPAN ID="hue4061">+</SPAN> <SPAN ID="hue4063"><SPAN &nbsp;CLASS="textbf">geom_point</SPAN></SPAN><SPAN ID="hue4066">(</SPAN><SPAN ID="hue4068"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue4071">(ATX, GGALT,</SPAN> <SPAN ID="hue4073">color</SPAN><SPAN ID="hue4075">=RF))</SPAN> <SPAN ID="hue4077">+</SPAN>
-<BR>&nbsp;&nbsp;<SPAN ID="hue4079"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue4082">()</SPAN>
+ <SPAN ID="hue4100">Data</SPAN> <SPAN ID="hue4102">%&gt;%</SPAN> <SPAN ID="hue4104">dplyr</SPAN><SPAN ID="hue4106">::</SPAN><SPAN ID="hue4108"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue4111">(ATX, GGALT, RF)</SPAN> <SPAN ID="hue4113">%&gt;%</SPAN> <SPAN ID="hue4115">dplyr</SPAN><SPAN ID="hue4117">::</SPAN><SPAN ID="hue4119"><SPAN &nbsp;CLASS="textbf">filter</SPAN></SPAN><SPAN ID="hue4122">(RF</SPAN> <SPAN ID="hue4124">&gt;=</SPAN> <SPAN ID="hue4126">3</SPAN> <SPAN ID="hue4128">&amp;</SPAN> <SPAN ID="hue4130">RF</SPAN> <SPAN ID="hue4132">&lt;=</SPAN> <SPAN ID="hue4134">6</SPAN><SPAN ID="hue4136">)</SPAN> <SPAN ID="hue4138">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue4140"><SPAN &nbsp;CLASS="textbf">Rmutate</SPAN></SPAN><SPAN ID="hue4143">(</SPAN><SPAN ID="hue4145">RF</SPAN> <SPAN ID="hue4147">=</SPAN> <SPAN ID="hue4149"><SPAN &nbsp;CLASS="textbf">as.character</SPAN></SPAN><SPAN ID="hue4152">(RF))</SPAN> <SPAN ID="hue4154">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue4156"><SPAN &nbsp;CLASS="textbf">ggplot</SPAN></SPAN><SPAN ID="hue4159">()</SPAN> <SPAN ID="hue4161">+</SPAN> <SPAN ID="hue4163"><SPAN &nbsp;CLASS="textbf">geom_point</SPAN></SPAN><SPAN ID="hue4166">(</SPAN><SPAN ID="hue4168"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue4171">(ATX, GGALT,</SPAN> <SPAN ID="hue4173">color</SPAN><SPAN ID="hue4175">=RF),</SPAN> <SPAN ID="hue4177">na.rm</SPAN><SPAN ID="hue4179">=</SPAN><SPAN ID="hue4181">TRUE</SPAN><SPAN ID="hue4183">)</SPAN> <SPAN ID="hue4185">+</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue4187"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue4190">()</SPAN>
 <BR></SPAN></FONT>
 </DIV>
 <FONT COLOR="#585858"><HR></FONT>
-<DIV class="CENTER"><A ID="fig:MF2"></A><A ID="1685"></A>
+<DIV class="CENTER"><A ID="fig:MF2"></A><A ID="1704"></A>
 <TABLE>
 <CAPTION class="BOTTOM"><STRONG>Figure 6.2:</STRONG>
 Measurements of temperature vs. altitude during research flights 3 to 6.</CAPTION>
@@ -172,16 +174,16 @@ Measurements of temperature vs. altitude during research flights 3 to 6.</CAPTIO
 
 <DIV CLASS="alltt" ALIGN="LEFT">
 <FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue4084">Data</SPAN> <SPAN ID="hue4086">%&gt;%</SPAN> <SPAN ID="hue4088">dplyr</SPAN><SPAN ID="hue4090">::</SPAN><SPAN ID="hue4092"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue4095">(WIC, GGALT, RF)</SPAN> <SPAN ID="hue4097">%&gt;%</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4099">dplyr</SPAN><SPAN ID="hue4101">::</SPAN><SPAN ID="hue4103"><SPAN &nbsp;CLASS="textbf">filter</SPAN></SPAN><SPAN ID="hue4106">(RF</SPAN> <SPAN ID="hue4108">==</SPAN> <SPAN ID="hue4110">4</SPAN> <SPAN ID="hue4112">|</SPAN> <SPAN ID="hue4114">RF</SPAN> <SPAN ID="hue4116">==</SPAN> <SPAN ID="hue4118">5</SPAN><SPAN ID="hue4120">)</SPAN> <SPAN ID="hue4122">%&gt;%</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4124"><SPAN &nbsp;CLASS="textbf">Rmutate</SPAN></SPAN><SPAN ID="hue4127">(</SPAN><SPAN ID="hue4129">RF</SPAN> <SPAN ID="hue4131">=</SPAN> <SPAN ID="hue4133"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN><SPAN ID="hue4136">(</SPAN><SPAN ID="hue4138">'research flight %d'</SPAN><SPAN ID="hue4140">, RF))</SPAN> <SPAN ID="hue4142">%&gt;%</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4144"><SPAN &nbsp;CLASS="textbf">ggplot</SPAN></SPAN><SPAN ID="hue4147">()</SPAN> <SPAN ID="hue4149">+</SPAN> <SPAN ID="hue4151"><SPAN &nbsp;CLASS="textbf">geom_point</SPAN></SPAN><SPAN ID="hue4154">(</SPAN><SPAN ID="hue4156"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue4159">(WIC, GGALT))</SPAN> <SPAN ID="hue4161">+</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4163"><SPAN &nbsp;CLASS="textbf">facet_wrap</SPAN></SPAN><SPAN ID="hue4166">(</SPAN><SPAN ID="hue4168">~</SPAN> <SPAN ID="hue4170">RF,</SPAN> <SPAN ID="hue4172">nrow</SPAN><SPAN ID="hue4174">=</SPAN><SPAN ID="hue4176">1</SPAN><SPAN ID="hue4178">)</SPAN> <SPAN ID="hue4180">+</SPAN> <SPAN ID="hue4182"><SPAN &nbsp;CLASS="textit">## see also facet_grid()</SPAN></SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4185"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue4188">()</SPAN>
+ <SPAN ID="hue4192">Data</SPAN> <SPAN ID="hue4194">%&gt;%</SPAN> <SPAN ID="hue4196">dplyr</SPAN><SPAN ID="hue4198">::</SPAN><SPAN ID="hue4200"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue4203">(WIC, GGALT, RF)</SPAN> <SPAN ID="hue4205">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4207">dplyr</SPAN><SPAN ID="hue4209">::</SPAN><SPAN ID="hue4211"><SPAN &nbsp;CLASS="textbf">filter</SPAN></SPAN><SPAN ID="hue4214">(RF</SPAN> <SPAN ID="hue4216">==</SPAN> <SPAN ID="hue4218">4</SPAN> <SPAN ID="hue4220">|</SPAN> <SPAN ID="hue4222">RF</SPAN> <SPAN ID="hue4224">==</SPAN> <SPAN ID="hue4226">5</SPAN><SPAN ID="hue4228">)</SPAN> <SPAN ID="hue4230">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4232"><SPAN &nbsp;CLASS="textbf">Rmutate</SPAN></SPAN><SPAN ID="hue4235">(</SPAN><SPAN ID="hue4237">RF</SPAN> <SPAN ID="hue4239">=</SPAN> <SPAN ID="hue4241"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN><SPAN ID="hue4244">(</SPAN><SPAN ID="hue4246">'research flight %d'</SPAN><SPAN ID="hue4248">, RF))</SPAN> <SPAN ID="hue4250">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4252"><SPAN &nbsp;CLASS="textbf">ggplot</SPAN></SPAN><SPAN ID="hue4255">()</SPAN> <SPAN ID="hue4257">+</SPAN> <SPAN ID="hue4259"><SPAN &nbsp;CLASS="textbf">geom_point</SPAN></SPAN><SPAN ID="hue4262">(</SPAN><SPAN ID="hue4264"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue4267">(WIC, GGALT),</SPAN> <SPAN ID="hue4269">na.rm</SPAN><SPAN ID="hue4271">=</SPAN><SPAN ID="hue4273">TRUE</SPAN><SPAN ID="hue4275">)</SPAN> <SPAN ID="hue4277">+</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4279"><SPAN &nbsp;CLASS="textbf">facet_wrap</SPAN></SPAN><SPAN ID="hue4282">(</SPAN><SPAN ID="hue4284">~</SPAN> <SPAN ID="hue4286">RF,</SPAN> <SPAN ID="hue4288">nrow</SPAN><SPAN ID="hue4290">=</SPAN><SPAN ID="hue4292">1</SPAN><SPAN ID="hue4294">)</SPAN> <SPAN ID="hue4296">+</SPAN> <SPAN ID="hue4298"><SPAN &nbsp;CLASS="textit">## see also facet_grid()</SPAN></SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4301"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue4304">()</SPAN>
 <BR></SPAN></FONT>
 </DIV>
 <FONT COLOR="#585858"><HR></FONT>
-<DIV class="CENTER"><A ID="fig:MF3"></A><A ID="1749"></A>
+<DIV class="CENTER"><A ID="fig:MF3"></A><A ID="1772"></A>
 <TABLE>
 <CAPTION class="BOTTOM"><STRONG>Figure 6.3:</STRONG>
 Example that uses faceted plots to show results from different research flights.</CAPTION>
@@ -208,19 +210,19 @@ Example that uses faceted plots to show results from different research flights.
 
 <DIV CLASS="alltt" ALIGN="LEFT">
 <FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue4190">Data</SPAN> <SPAN ID="hue4192">%&gt;%</SPAN> <SPAN ID="hue4194">dplyr</SPAN><SPAN ID="hue4196">::</SPAN><SPAN ID="hue4198"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue4201">(EWX, ATX, GGALT, RF)</SPAN> <SPAN ID="hue4203">%&gt;%</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4205">dplyr</SPAN><SPAN ID="hue4207">::</SPAN><SPAN ID="hue4209"><SPAN &nbsp;CLASS="textbf">filter</SPAN></SPAN><SPAN ID="hue4212">(RF</SPAN> <SPAN ID="hue4214">==</SPAN> <SPAN ID="hue4216">4</SPAN> <SPAN ID="hue4218">|</SPAN> <SPAN ID="hue4220">RF</SPAN> <SPAN ID="hue4222">==</SPAN> <SPAN ID="hue4224">5</SPAN><SPAN ID="hue4226">)</SPAN> <SPAN ID="hue4228">%&gt;%</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4230"><SPAN &nbsp;CLASS="textbf">Rmutate</SPAN></SPAN><SPAN ID="hue4233">(</SPAN><SPAN ID="hue4235">RF</SPAN> <SPAN ID="hue4237">=</SPAN> <SPAN ID="hue4239"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN><SPAN ID="hue4242">(</SPAN><SPAN ID="hue4244">'research flight %d'</SPAN><SPAN ID="hue4246">, RF))</SPAN> <SPAN ID="hue4248">%&gt;%</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4250"><SPAN &nbsp;CLASS="textbf">Rmutate</SPAN></SPAN><SPAN ID="hue4253">(</SPAN><SPAN ID="hue4255">RH</SPAN> <SPAN ID="hue4257">=</SPAN> <SPAN ID="hue4259">100</SPAN> <SPAN ID="hue4261">*</SPAN> <SPAN ID="hue4263">EWX</SPAN> <SPAN ID="hue4265">/</SPAN> <SPAN ID="hue4267"><SPAN &nbsp;CLASS="textbf">MurphyKoop</SPAN></SPAN><SPAN ID="hue4270">(ATX))</SPAN> <SPAN ID="hue4272">%&gt;%</SPAN> &nbsp;<SPAN ID="hue4274"><SPAN &nbsp;CLASS="textit">## new variable</SPAN></SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4277"><SPAN &nbsp;CLASS="textbf">ggplot</SPAN></SPAN><SPAN ID="hue4280">()</SPAN> <SPAN ID="hue4282">+</SPAN> <SPAN ID="hue4284"><SPAN &nbsp;CLASS="textbf">geom_path</SPAN></SPAN><SPAN ID="hue4287">(</SPAN><SPAN ID="hue4289"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue4292">(RH, GGALT,</SPAN> <SPAN ID="hue4294">color</SPAN><SPAN ID="hue4296">=RF))</SPAN> <SPAN ID="hue4298">+</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4300"><SPAN &nbsp;CLASS="textbf">ylim</SPAN></SPAN><SPAN ID="hue4303">(</SPAN><SPAN ID="hue4305"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue4308">(</SPAN><SPAN ID="hue4310">0</SPAN><SPAN ID="hue4312">,</SPAN> <SPAN ID="hue4314">7500</SPAN><SPAN ID="hue4316">))</SPAN> <SPAN ID="hue4318">+</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4320"><SPAN &nbsp;CLASS="textbf">xlab</SPAN></SPAN><SPAN ID="hue4323">(</SPAN><SPAN ID="hue4325">'relative humidity [%]'</SPAN><SPAN ID="hue4327">)</SPAN> <SPAN ID="hue4329">+</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4331"><SPAN &nbsp;CLASS="textbf">ylab</SPAN></SPAN><SPAN ID="hue4334">(</SPAN><SPAN ID="hue4336">'geometric altitude [m]'</SPAN><SPAN ID="hue4338">)</SPAN> <SPAN ID="hue4340">+</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4342"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue4345">()</SPAN>
+ <SPAN ID="hue4306">Data</SPAN> <SPAN ID="hue4308">%&gt;%</SPAN> <SPAN ID="hue4310">dplyr</SPAN><SPAN ID="hue4312">::</SPAN><SPAN ID="hue4314"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue4317">(EWX, ATX, GGALT, RF)</SPAN> <SPAN ID="hue4319">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4321">dplyr</SPAN><SPAN ID="hue4323">::</SPAN><SPAN ID="hue4325"><SPAN &nbsp;CLASS="textbf">filter</SPAN></SPAN><SPAN ID="hue4328">(RF</SPAN> <SPAN ID="hue4330">==</SPAN> <SPAN ID="hue4332">4</SPAN> <SPAN ID="hue4334">|</SPAN> <SPAN ID="hue4336">RF</SPAN> <SPAN ID="hue4338">==</SPAN> <SPAN ID="hue4340">5</SPAN><SPAN ID="hue4342">)</SPAN> <SPAN ID="hue4344">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4346"><SPAN &nbsp;CLASS="textbf">Rmutate</SPAN></SPAN><SPAN ID="hue4349">(</SPAN><SPAN ID="hue4351">RF</SPAN> <SPAN ID="hue4353">=</SPAN> <SPAN ID="hue4355"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN><SPAN ID="hue4358">(</SPAN><SPAN ID="hue4360">'research flight %d'</SPAN><SPAN ID="hue4362">, RF))</SPAN> <SPAN ID="hue4364">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4366"><SPAN &nbsp;CLASS="textbf">Rmutate</SPAN></SPAN><SPAN ID="hue4369">(</SPAN><SPAN ID="hue4371">RH</SPAN> <SPAN ID="hue4373">=</SPAN> <SPAN ID="hue4375">100</SPAN> <SPAN ID="hue4377">*</SPAN> <SPAN ID="hue4379">EWX</SPAN> <SPAN ID="hue4381">/</SPAN> <SPAN ID="hue4383"><SPAN &nbsp;CLASS="textbf">MurphyKoop</SPAN></SPAN><SPAN ID="hue4386">(ATX))</SPAN> <SPAN ID="hue4388">%&gt;%</SPAN> &nbsp;<SPAN ID="hue4390"><SPAN &nbsp;CLASS="textit">## new variable</SPAN></SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4393"><SPAN &nbsp;CLASS="textbf">ggplot</SPAN></SPAN><SPAN ID="hue4396">()</SPAN> <SPAN ID="hue4398">+</SPAN> <SPAN ID="hue4400"><SPAN &nbsp;CLASS="textbf">geom_path</SPAN></SPAN><SPAN ID="hue4403">(</SPAN><SPAN ID="hue4405"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue4408">(RH, GGALT,</SPAN> <SPAN ID="hue4410">color</SPAN><SPAN ID="hue4412">=RF),</SPAN> <SPAN ID="hue4414">na.rm</SPAN><SPAN ID="hue4416">=</SPAN><SPAN ID="hue4418">TRUE</SPAN><SPAN ID="hue4420">)</SPAN> <SPAN ID="hue4422">+</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4424"><SPAN &nbsp;CLASS="textbf">ylim</SPAN></SPAN><SPAN ID="hue4427">(</SPAN><SPAN ID="hue4429"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue4432">(</SPAN><SPAN ID="hue4434">0</SPAN><SPAN ID="hue4436">,</SPAN> <SPAN ID="hue4438">7500</SPAN><SPAN ID="hue4440">))</SPAN> <SPAN ID="hue4442">+</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4444"><SPAN &nbsp;CLASS="textbf">xlab</SPAN></SPAN><SPAN ID="hue4447">(</SPAN><SPAN ID="hue4449">'relative humidity [%]'</SPAN><SPAN ID="hue4451">)</SPAN> <SPAN ID="hue4453">+</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4455"><SPAN &nbsp;CLASS="textbf">ylab</SPAN></SPAN><SPAN ID="hue4458">(</SPAN><SPAN ID="hue4460">'geometric altitude [m]'</SPAN><SPAN ID="hue4462">)</SPAN> <SPAN ID="hue4464">+</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue4466"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue4469">()</SPAN>
 <BR></SPAN></FONT>
 </DIV>
 <FONT COLOR="#585858"><HR></FONT>
-<DIV class="CENTER"><A ID="fig:MF4"></A><A ID="1836"></A>
+<DIV class="CENTER"><A ID="fig:MF4"></A><A ID="1863"></A>
 <TABLE>
 <CAPTION class="BOTTOM"><STRONG>Figure 6.4:</STRONG>
 Example that uses faceted plots to show results from different research flights.</CAPTION>
@@ -247,29 +249,29 @@ Example that uses faceted plots to show results from different research flights.
 
 <DIV CLASS="alltt" ALIGN="LEFT">
 <FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue4347">Data</SPAN> <SPAN ID="hue4349">%&gt;%</SPAN> <SPAN ID="hue4351">dplyr</SPAN><SPAN ID="hue4353">::</SPAN><SPAN ID="hue4355"><SPAN &nbsp;CLASS="textbf">group_by</SPAN></SPAN><SPAN ID="hue4358">(RF)</SPAN> <SPAN ID="hue4360">%&gt;%</SPAN> <SPAN ID="hue4362"><SPAN &nbsp;CLASS="textbf">summarise</SPAN></SPAN><SPAN ID="hue4365">(</SPAN><SPAN ID="hue4367">mean</SPAN> <SPAN ID="hue4369">=</SPAN> <SPAN ID="hue4371"><SPAN &nbsp;CLASS="textbf">mean</SPAN></SPAN><SPAN ID="hue4374">(WIC,</SPAN> <SPAN ID="hue4376">na.rm</SPAN><SPAN ID="hue4378">=</SPAN><SPAN ID="hue4380">TRUE</SPAN><SPAN ID="hue4382">))</SPAN>
+ <SPAN ID="hue4471">Data</SPAN> <SPAN ID="hue4473">%&gt;%</SPAN> <SPAN ID="hue4475">dplyr</SPAN><SPAN ID="hue4477">::</SPAN><SPAN ID="hue4479"><SPAN &nbsp;CLASS="textbf">group_by</SPAN></SPAN><SPAN ID="hue4482">(RF)</SPAN> <SPAN ID="hue4484">%&gt;%</SPAN> <SPAN ID="hue4486"><SPAN &nbsp;CLASS="textbf">summarise</SPAN></SPAN><SPAN ID="hue4489">(</SPAN><SPAN ID="hue4491">mean</SPAN> <SPAN ID="hue4493">=</SPAN> <SPAN ID="hue4495"><SPAN &nbsp;CLASS="textbf">mean</SPAN></SPAN><SPAN ID="hue4498">(WIC,</SPAN> <SPAN ID="hue4500">na.rm</SPAN><SPAN ID="hue4502">=</SPAN><SPAN ID="hue4504">TRUE</SPAN><SPAN ID="hue4506">))</SPAN>
 <BR></SPAN></FONT>
 </DIV>
 <PRE>
 ## # A tibble: 16 x 2
-##       RF      mean
-##    &lt;dbl&gt;     &lt;dbl&gt;
-##  1     1  0.353   
-##  2     2  0.142   
-##  3     3  0.452   
-##  4     4  0.328   
-##  5     5  0.362   
-##  6     6 -0.000691
-##  7     7 -0.0391  
-##  8     8 -0.0322  
-##  9     9  0.0523  
-## 10    10  0.0434  
-## 11    11  0.0410  
-## 12    12  0.00624 
-## 13    13  0.0159  
-## 14    14 -0.00931 
-## 15    15  0.0351  
-## 16    16 -0.228
+##       RF     mean
+##    &lt;dbl&gt;    &lt;dbl&gt;
+##  1     1  0.329  
+##  2     2  0.150  
+##  3     3  0.419  
+##  4     4  0.311  
+##  5     5  0.326  
+##  6     6  0.00121
+##  7     7 -0.0337 
+##  8     8 -0.0271 
+##  9     9  0.0543 
+## 10    10  0.0533 
+## 11    11  0.0468 
+## 12    12  0.00970
+## 13    13  0.0220 
+## 14    14 -0.00305
+## 15    15  0.0375 
+## 16    16 -0.205
 </PRE><FONT COLOR="#585858"><HR></FONT>
 <P>
 </FONT></FONT></FONT></FONT></FONT>
@@ -294,7 +296,192 @@ with the Ranadu functions including plotting and algorithm calculations.
 <P>
 <FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT>
 <H1><A ID="SECTION00630000000000000000">
-<SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">3</SPAN> Reproducible research</A>
+<SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">3</SPAN> Using Ranadu from Python</A>
+</H1><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">The interface between Python and R is &ldquo;rpy2&rdquo;, which is available
+only for Python3. To install rpy2 and prepare for its use in Python,
+use commands like these after installing Ranadu in your local R installation:<A ID="tex2html27"
+  HREF="footnode.html#foot1899"><SUP><SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT>
+<DL COMPACT>
+<DT>
+<DD>sudo&nbsp;python3&nbsp;-m&nbsp;pip&nbsp;install&nbsp;rpy2
+
+<BR>
+#&nbsp;optional...
+
+<BR>
+#&nbsp;from&nbsp;numpy&nbsp;import&nbsp;*
+
+<BR>
+#&nbsp;import&nbsp;scipy&nbsp;as&nbsp;sp
+
+<BR>
+#&nbsp;from&nbsp;pandas&nbsp;import&nbsp;*
+
+<BR>
+#&nbsp;needed:
+
+<BR>
+from&nbsp;rpy2.robjects.packages&nbsp;import&nbsp;importr
+
+<BR>
+import&nbsp;rpy2.robjects&nbsp;as&nbsp;r
+
+<BR>
+from&nbsp;rpy2.robjects&nbsp;import&nbsp;pandas2ri
+
+<BR>
+pandas2ri.activate()
+
+<BR>
+from&nbsp;rpy2&nbsp;import&nbsp;robjects
+
+<BR>
+from&nbsp;rpy2.robjects&nbsp;import&nbsp;Formula,&nbsp;Environment
+
+<BR>
+from&nbsp;rpy2.robjects.vectors&nbsp;import&nbsp;IntVector,&nbsp;FloatVector
+
+<BR>
+from&nbsp;rpy2.robjects.lib&nbsp;import&nbsp;grid
+
+<BR>
+from&nbsp;rpy2.robjects.packages&nbsp;import&nbsp;importr,&nbsp;data
+
+<BR>
+from&nbsp;rpy2.rinterface&nbsp;import&nbsp;RRuntimeError
+
+<BR>
+import&nbsp;warnings
+
+<BR>
+#&nbsp;The&nbsp;R&nbsp;'print'&nbsp;function
+
+<BR>
+rprint&nbsp;=&nbsp;robjects.globalenv.get('print')
+
+<BR>
+stats&nbsp;=&nbsp;importr('stats')
+
+<BR>
+grdevices&nbsp;=&nbsp;importr('grDevices')
+
+<BR>
+base&nbsp;=&nbsp;importr('base')
+
+<BR>
+datasets&nbsp;=&nbsp;importr('datasets')
+
+<BR>
+grid.activate()
+
+<BR>
+import&nbsp;math,&nbsp;datetime
+
+<BR>
+import&nbsp;rpy2.robjects.lib.ggplot2&nbsp;as&nbsp;ggplot2
+
+<BR>
+Ranadu&nbsp;=&nbsp;importr('Ranadu')
+
+<BR>
+magrittr&nbsp;=&nbsp;importr('magrittr')&nbsp;#&nbsp;this&nbsp;is&nbsp;required&nbsp;to&nbsp;use&nbsp;''%&gt;%''&nbsp;pipes
+
+<P>
+</DD>
+</DL><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">You can then import data.frames generated by Ranadu::getNetCDF() using
+Python commands like the following:
+</FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT>
+<DL COMPACT>
+<DT>
+<DD>Data&nbsp;=&nbsp;robjects.r(&quot;&quot;&quot;
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;get&nbsp;data.frame&nbsp;from&nbsp;R
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Project&nbsp;=&nbsp;'WECAN'
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flight&nbsp;=&nbsp;1
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename&nbsp;=&nbsp;sprintf('%s%s/%srf%02d.nc',&nbsp;
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DataDirectory(),&nbsp;Project,&nbsp;Project,&nbsp;Flight)&nbsp;
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data&nbsp;=&nbsp;getNetCDF(filename)
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&quot;&quot;)
+
+<BR>
+#&nbsp;Data.head()&nbsp;&nbsp;#&nbsp;use&nbsp;this&nbsp;to&nbsp;see&nbsp;the&nbsp;structure&nbsp;of&nbsp;Data
+</DD>
+</DL><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">You can now reference the columns in &ldquo;Data&rdquo; using the syntax &ldquo;Data['Time']&rdquo;,
+&ldquo;Data['ATX']&rdquo;, etc. For example, to plot the time series of
+the measurement ATX use:
+</FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT>
+<DL COMPACT>
+<DT>
+<DD>from&nbsp;matplotlib&nbsp;import&nbsp;pyplot&nbsp;as&nbsp;plt
+
+<BR>
+plt.plot(Data['Time'],&nbsp;Data['ATX'])
+
+<BR>
+plt.show()
+
+<P>
+#
+
+<BR>
+#&nbsp;another&nbsp;example&nbsp;in&nbsp;Python,&nbsp;relying&nbsp;on&nbsp;the&nbsp;ggplot2&nbsp;import&nbsp;above:
+
+<BR>
+g&nbsp;=&nbsp;ggplot2.ggplot(Data)&nbsp;+&nbsp;ggplot2.aes_string(x='Time',&nbsp;y='ATX')&nbsp;+&nbsp;&#92;
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;ggplot2.geom_path()
+
+<BR>
+g.plot()
+</DD>
+</DL><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">A subsequent command like the following will generate and display
+a plot using the Ranadu function &ldquo;plotWAC()&rdquo; instead:
+</FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT>
+<DL COMPACT>
+<DT>
+<DD>robjects.r('Data&nbsp;%&gt;%&nbsp;dplyr::select(Time,&nbsp;WIC)&nbsp;%&gt;%&nbsp;plotWAC()')
+
+<BR>
+#&nbsp;to&nbsp;dismiss&nbsp;the&nbsp;R&nbsp;window&nbsp;that&nbsp;appears,&nbsp;use&nbsp;&ldquo;robjects.r('dev.off()')&rdquo;
+</DD>
+</DL><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">The &ldquo;Time&rdquo; variable in the R data.frame is a POSIX-format time,
+but the resulting Python object uses units of seconds since 1970.
+You may have to deal with this difference when constructing plots
+using Python.
+</FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">It is also possible to place data generated using Python back into
+the local R instance to use R routines for analysis. See the &ldquo;rpy2&rdquo;
+documentation for further information regarding this.
+</FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT>
+<H1><A ID="SECTION00640000000000000000">
+<SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">4</SPAN> Reproducible research</A>
 </H1><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT>
 <P>
 <FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">With the tools now available, it is possible to document analysis
@@ -344,8 +531,8 @@ of as guidance to a person wishing to verify or extend the results.
 research. The &ldquo;knitr&rdquo; package (see references) makes it possible
 to assemble the text and code in the same file and to use knitr functions
 to reference results from the code in the text or embed graphics in
-the document as generated in the code. The &ldquo;Rnw&rdquo; format or other
-alternative formats support this approach, and running that program
+the document as generated in the code. The &ldquo;Rnw&rdquo; format (and other
+alternative formats) support this approach, and running that program
 can generate the project report while running the specified code.
 This avoids ad hoc assembly of figures, tables, and text from different
 sources, which often obscures efforts to reproduce the work. A suggested
@@ -359,8 +546,8 @@ in the &ldquo;reproducibility&rdquo; tab.
 </FONT></FONT></FONT></FONT></FONT></FONT>
 <P>
 <FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT>
-<H1><A ID="SECTION00640000000000000000">
-<SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">4</SPAN> The Ranadu Shiny app</A>
+<H1><A ID="SECTION00650000000000000000">
+<SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">5</SPAN> The Ranadu Shiny app</A>
 </H1><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT>
 <P>
 <FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">A shiny app that uses the Ranadu package to examine data files is
