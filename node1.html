@@ -1,102 +1,110 @@
-<!DOCTYPE HTML>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>1. Introduction</title>
+	<meta name="generator" content="LibreOffice 6.1.4.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changedby" content="Al Cooper"/>
+	<meta name="changed" content="2019-02-13T09:54:44.860710931"/>
+	<meta name="description" content="1. Introduction"/>
+	<meta name="keywords" content="R4RAF"/>
+	<meta name="distribution" content="global"/>
+	<meta name="resource-type" content="document"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<!DOCTYPE HTML>
+	<!--Converted with LaTeX2HTML 2018.3 (Released July 19, 2018) -->
+	<!--Navigation Panel-->
+	<style type="text/css">
+		p { margin-bottom: 0.1in; text-align: justify }
+		h1 { text-align: justify }
+		h1.cjk { font-family: "Source Han Sans CN" }
+		h1.ctl { font-family: "Lohit Devanagari" }
+	</style>
+</head>
+<body lang="en-US" dir="ltr"><p><a href="node2.html">
+  <font color="#000080">
+    <img src="next.png" name="Image1" alt="next" align="bottom" width="37" height="24" border="1"/>
+  </font>
+</a>
 
-<!--Converted with LaTeX2HTML 2018.3 (Released July 19, 2018) -->
-<HTML lang="EN">
-<HEAD>
-<TITLE>1. Introduction</TITLE>
-<META NAME="description" CONTENT="1. Introduction">
-<META NAME="keywords" CONTENT="R4RAF">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
+<a href="R4RAF.html">
+  <font color="#000080">
+    <img src="up.png" name="Image2" alt="up" align="bottom" width="26" height="24" border="1"/>
+  </font>
+</a>
 
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
-<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2018.3">
+<a href="R4RAF.html">
+  <font color="#000080">
+    <img src="prev.png" name="Image3" alt="previous" align="bottom" width="63" height="24" border="1"/>
+  </font>
+</a>
 
-<LINK REL="STYLESHEET" HREF="R4RAF.css">
-
-<LINK REL="next" HREF="node2.html">
-<LINK REL="previous" HREF="R4RAF.html">
-<LINK REL="next" HREF="node2.html">
-</HEAD>
-
-<BODY >
-
-<DIV CLASS="navigation"><!--Navigation Panel-->
-<A
- HREF="node2.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="R4RAF.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="R4RAF.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
-<BR>
-<B> Next:</B> <A
- HREF="node2.html">2. Getting Started</A>
-<B> Up:</B> <A
- HREF="R4RAF.html">R4RAF</A>
-<B> Previous:</B> <A
- HREF="R4RAF.html">R4RAF</A>
-<BR>
-<BR></DIV>
-<!--End of Navigation Panel-->
-
-<H1><A ID="SECTION00100000000000000000">
-<SPAN CLASS="arabic">1</SPAN>. Introduction</A>
-</H1>
-The intent of this web site is to assist new users of NCAR/EOL/RAF-produced
-aircraft data if they would like to use R in their data analysis projects.
-The intent here is to provide &ldquo;layers&rdquo;, starting with a very simple
-guide to constructing preliminary plots and extending to the use of
-R, RStudio, and knitr to produce manuscripts and reproducible and
-documented data-analysis projects. The emphasis here is on &ldquo;Ranadu&rdquo;,
-an R package that is intended to facilitate use of the data archives
-produced by the data systems on the NSF/NCAR/EOL/RAF research aircraft.
-(NSF=National Science Foundation; NCAR=National Center for Atmospheric
-Research; EOL=Earth Observing Laboratory; RAF=Research Aviation Facility)
-All the recent data files are in netCDF format, so that is the format
-emphasized here. Those files contain measurements made in field campaigns
-that use the NSF research aircraft operated by NCAR, presently consisting
+<br/>
+<b>Next:</b> <a href="node2.html">2. Getting Started</a> <b>Up:</b>
+<a href="R4RAF.html">R4RAF</a> <b>Previous:</b> <a href="R4RAF.html">R4RAF</a>
+</p>
+<h1 class="western"><a name="SECTION00100000000000000000"></a><!--End of Navigation Panel-->1.
+Introduction 
+</h1>
+<p>The intent of this web site is to assist new users of
+NCAR/EOL/RAF-produced aircraft data if they would like to use R in
+their data analysis projects. The intent here is to provide “layers”,
+starting with a very simple guide to constructing preliminary plots
+and extending to the use of R, RStudio, and knitr to produce
+manuscripts and reproducible and documented data-analysis projects.
+The emphasis here is on “Ranadu”, an R package that is intended
+to facilitate use of the data archives produced by the data systems
+on the NSF/NCAR/EOL/RAF research aircraft. (NSF=National Science
+Foundation; NCAR=National Center for Atmospheric Research; EOL=Earth
+Observing Laboratory; RAF=Research Aviation Facility) All the recent
+data files are in netCDF format, so that is the format emphasized
+here. Those files contain measurements made in field campaigns that
+use the NSF research aircraft operated by NCAR, presently consisting
 of a C-130 and a Gulfstream V. A list of recent projects is available
-at <a href="http://www.eol.ucar.edu/all-field-projects-and-deployments/">this EOL web page</a>,
-and data requests can be made via links on that page. Information
-regarding the instruments and the processing algorithms are available
-at these respective web sites: <a href="https://www.eol.ucar.edu/aircraft-instrumentation">https://www.eol.ucar.edu/aircraft-instrumentation</a>
-and ProcessingAlgorithms.pdf. The latter also provides references
-to the netCDF format, the variable names in common use, and algorithms
-used to calculate the variables in the data files.
-<P>
-This package can also be used to ingest the data into Python3 so that
-subsequent processing can use the tools of Python3. The plotting functions
-and all other functions can be called from Python3 via &ldquo;rpy2&rdquo;
-as described in Chapter 6.3.
-<P>
-If you prefer to see a PDF-format version of the information at this
-web site, you can download a copy 
-<a href="https://drive.google.com/open?id=1rJtqJmEOCr60EYaRPiimtPJd5QaFrz54">
-at this URL</a>.
+at <a href="http://www.eol.ucar.edu/all-field-projects-and-deployments/">this
+EOL web page</a>, and data requests can be made via links on that
+page. Information regarding the instruments and the processing
+algorithms are available at these respective web sites:
+<a href="https://www.eol.ucar.edu/aircraft-instrumentation">https://www.eol.ucar.edu/aircraft-instrumentation</a>
+and <a href="https://github.com/NCAR/aircraft_ProcessingAlgorithms/blob/master/ProcessingAlgorithms.pdf">ProcessingAlgorithms.pdf</a>.
+The latter also provides references to the netCDF format, the
+variable names in common use, and algorithms used to calculate the
+variables in the data files. 
+</p>
+<p>This package can also be used to ingest the data into Python3 so
+that subsequent processing can use the tools of Python3. The plotting
+functions and all other functions can be called from Python3 via
+“rpy2” as described in Chapter 6.3. 
+</p>
+<p style="margin-bottom: 0in">If you prefer to see a PDF-format
+version of the information at this web site, you can download a copy
+<a href="https://williamcooper.github.io/R4RAF.pdf">at
+this URL</a>. 
+</p>
+<hr/>
 
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node2.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="R4RAF.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="R4RAF.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
-<BR>
-<B> Next:</B> <A
- HREF="node2.html">2. Getting Started</A>
-<B> Up:</B> <A
- HREF="R4RAF.html">R4RAF</A>
-<B> Previous:</B> <A
- HREF="R4RAF.html">R4RAF</A></DIV>
-<!--End of Navigation Panel-->
+<p style="margin-bottom: 0in"><!--Navigation Panel--><a href="node2.html">
+  <font color="#000080">
+    <img src="next.png" name="Image4" alt="next" align="bottom" width="37" height="24" border="1"/>
+  </font>
+</a>
 
-</BODY>
-</HTML>
+<a href="R4RAF.html">
+  <font color="#000080">
+    <img src="up.png" name="Image5" alt="up" align="bottom" width="26" height="24" border="1"/>
+  </font>
+</a>
+
+<a href="R4RAF.html">
+  <font color="#000080">
+    <img src="prev.png" name="Image6" alt="previous" align="bottom" width="63" height="24" border="1"/>
+  </font>
+</a>
+
+<br/>
+<b>Next:</b> <a href="node2.html">2. Getting Started</a> <b>Up:</b>
+<a href="R4RAF.html">R4RAF</a> <b>Previous:</b> <a href="R4RAF.html">R4RAF</a></p>
+<p style="margin-bottom: 0in"><!--End of Navigation Panel--></p>
+</body>
+</html>
