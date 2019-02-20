@@ -1,495 +1,463 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html>
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title>2. Getting Started</title>
-	<meta name="generator" content="LibreOffice 6.1.4.2 (Linux)"/>
-	<meta name="created" content="00:00:00"/>
-	<meta name="changedby" content="Al Cooper"/>
-	<meta name="changed" content="2019-02-13T10:03:12.523945412"/>
-	<meta name="description" content="2. Getting Started"/>
-	<meta name="keywords" content="R4RAF"/>
-	<meta name="distribution" content="global"/>
-	<meta name="resource-type" content="document"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<!DOCTYPE HTML>
-	<!--Converted with LaTeX2HTML 2018.3 (Released July 19, 2018) -->
-	<!--Navigation Panel-->
-	<style type="text/css">
-		p { margin-bottom: 0.1in; text-align: justify }
-		h1 { text-align: justify }
-		h1.cjk { font-family: "Source Han Sans CN" }
-		h1.ctl { font-family: "Lohit Devanagari" }
-		h2 { text-align: justify }
-		h2.cjk { font-family: "Source Han Sans CN" }
-		h2.ctl { font-family: "Lohit Devanagari" }
-		pre { text-align: justify }
-		pre.cjk { font-family: "Source Han Sans CN", monospace }
-		td p { text-align: justify }
-	</style>
-</head>
-<body lang="en-US" dir="ltr"><p><a href="node3.html">
-  <font color="#000080">
-    <img src="next.png" name="Image1" alt="next" align="bottom" width="37" height="24" border="1"/>
-  </font>
-</a>
+<!DOCTYPE HTML>
 
-<a href="R4RAF.html">
-  <font color="#000080">
-    <img src="up.png" name="Image2" alt="up" align="bottom" width="26" height="24" border="1"/>
-  </font>
-</a>
+<!--Converted with LaTeX2HTML 2018.3 (Released July 19, 2018) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>2. Getting Started</TITLE>
+<META NAME="description" CONTENT="2. Getting Started">
+<META NAME="keywords" CONTENT="R4RAF">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
 
-<a href="node1.html">
-  <font color="#800000">
-    <img src="prev.png" name="Image3" alt="previous" align="bottom" width="63" height="24" border="1"/>
-  </font>
-</a>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2018.3">
 
-<br/>
-<b>Next:</b> <a href="node3.html">3. Overview of Ranadu</a> <b>Up:</b>
-<a href="R4RAF.html">R4RAF</a> <b>Previous:</b> <a href="node1.html">1.
-Introduction</a> 
-</p>
-<p><a name="CHILD_LINKS"></a><strong><!--End of Navigation Panel--><!--Table of Child-Links-->Subsections</strong>
-</p>
-<ul>
-	<li><p style="margin-bottom: 0in"><a name="tex2html63"></a><a href="#SECTION00210000000000000000">2.1
-	DataFileInfo()</a> 
-	</p>
-	<li><p style="margin-bottom: 0in"><a name="tex2html64"></a><a href="#SECTION00220000000000000000">2.2
-	getNetCDF() and the resulting data.frame</a> 
-	</p>
-	<li><p style="margin-bottom: 0in"><a name="tex2html65"></a><a href="#SECTION00230000000000000000">2.3
-	Using the data.frame</a> 
-	</p>
-	<ul>
-		<li><p style="margin-bottom: 0in"><a name="tex2html66"></a><a href="#SECTION00231000000000000000">2.3.1
-		Simple Plots</a> 
-		</p>
-		<li><p><a name="tex2html67"></a><a href="#SECTION00232000000000000000">2.3.2
-		Using plotWAC() and ggplotWAC()</a> 
-		</p>
-	</ul>
-</ul>
-<p style="margin-bottom: 0.2in; border-top: none; border-bottom: 1px double #808080; border-left: none; border-right: none; padding: 0in; line-height: 100%">
-<!--End of Table of Child-Links--></p>
-<h1 class="western"><a name="SECTION00200000000000000000"></a>2.
-Getting Started 
-</h1>
-<p><a name="tex2html1"></a>This chapter or “layer” summarizes a
-few key tools that will enable a new user to get started. Of course,
-it is certainly possible to work with the NCAR/EOL/RAF data files
-using R routines without reference to the “Ranadu” package
-featured here, but this discussion will describe use of that package.
-There are instructions for installing the package in
-“<a href="https://github.com/NCAR/Ranadu/blob/master/inst/RanaduManual.pdf">RanaduManual.pdf</a>”,
+<LINK REL="STYLESHEET" HREF="R4RAF.css">
+
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="R4RAF.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node3.html">3. Overview of Ranadu</A>
+<B> Up:</B> <A
+ HREF="R4RAF.html">Ranadu: An R Package</A>
+<B> Previous:</B> <A
+ HREF="node1.html">1. Introduction</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html61"
+  HREF="node2.html#SECTION00210000000000000000"><SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">1</SPAN> DataFileInfo()</A>
+<LI><A ID="tex2html62"
+  HREF="node2.html#SECTION00220000000000000000"><SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">2</SPAN> getNetCDF() and the resulting data.frame</A>
+<LI><A ID="tex2html63"
+  HREF="node2.html#SECTION00230000000000000000"><SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">3</SPAN> Using the data.frame</A>
+<UL>
+<LI><A ID="tex2html64"
+  HREF="node2.html#SECTION00231000000000000000"><SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">1</SPAN> Simple Plots</A>
+<LI><A ID="tex2html65"
+  HREF="node2.html#SECTION00232000000000000000"><SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">2</SPAN> Using plotWAC() and ggplotWAC()</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A ID="SECTION00200000000000000000">
+<SPAN CLASS="arabic">2</SPAN>. Getting Started</A>
+</H1>
+This chapter or &ldquo;layer&rdquo; summarizes a few key tools that will enable
+a new user to get started. Of course, it is certainly possible to
+work with the NCAR/EOL/RAF data files using R routines without reference
+to the &ldquo;Ranadu&rdquo; package featured here, but this discussion will
+describe use of that package. There are instructions for installing
+the package in the &ldquo;<a href="https://github.com/NCAR/Ranadu/blob/master/inst/RanaduManual.pdf">RanaduManual.pdf</a>&rdquo;,
 and there it is also recommended to use RStudio as the user GUI for
-working with R. Once R, RStudio and Ranadu are installed, it will be
-simple to use the functions highlighted in the remainder of this
+working with R. Once R, RStudio and Ranadu are installed, it will
+be simple to use the functions highlighted in the remainder of this
 chapter to get started. The recommended way to install the Ranadu
-package is via the R command
-devtools::install_github(``NCAR/Ranadu'') <a href="footnode.html#foot148"><sup>2.1</sup></a>.
+package is via the R command <SPAN  CLASS="texttt">devtools::install_github(``NCAR/Ranadu'')</SPAN>.
 The key functions are getNetCDF(), for reading the netCDF file and
 producing an R data.frame with the measurements, and DataFileInfo(),
 for checking the properties of the netCDF file. These two functions
-provide a useful starting point for all data-analysis projects. 
-</p>
-<h1 class="western"><a name="SECTION00210000000000000000"></a>2.1
-DataFileInfo() 
-</h1>
-<p style="margin-bottom: 0in">A useful first look at a netCDF file is
-provided by Ranadu::DataFileInfo(), which returns characteristics
-like the project name, flight number, date/times, variable names, and
-the data rate. In addition, this function returns a set of
-“measurands” (measured properties of the atmosphere like air
-temperature) and the set of variables that provide measurements of
-that measurand. The measurands in a particular file (the one
-referenced above) are shown below: 
-</p>
-<hr/>
+provide a useful starting point for all data-analysis projects.
 
-<p style="margin-bottom: 0in"><font color="#585858">## Generating R
-code: </font>
-</p>
-<p align="left"><a name="hue2051"></a><a name="hue2053"></a><a name="hue2055"></a><a name="hue2057"></a><a name="hue2059"></a><a name="hue2061"></a><a name="hue2063"></a><a name="hue2065"></a><a name="hue2067"></a><a name="hue2070"></a><a name="hue2072"></a><a name="hue2074"></a><a name="hue2076"></a><a name="hue2078"></a><a name="hue2081"></a><a name="hue2083"></a><a name="hue2085"></a><a name="hue2087"></a><a name="hue2089"></a><a name="hue2092"></a><a name="hue2094"></a><a name="hue2097"></a><a name="hue2099"></a><a name="hue2101"></a>
-<font color="#585858"><font face="monospace">Project &lt;- 'WECAN'
-<br/>
-<font color="#317ecc">FlightNumber</font> &lt;- <font color="#bc5a65">6</font>
-<br/>
-fname &lt;- sprintf ('%s%s/%srf%02d.nc',
-Ranadu<font color="#bc5a65">::</font>DataDirectory<font color="#000000">(),</font>
-<br/>
-                   Project, Project, FlightNumber) <br/>
-<font color="#000000">FI</font>
-&lt;- <font color="#55aa55">DataFileInfo</font>(fname) <br/>
-names
-<font color="#bc5a65">(FI</font>$Measurands) </font></font>
-</p>
-<pre class="western"><font color="#585858">##  [1] &quot;&quot;                                     </font>
-<font color="#585858">##  [2] &quot;altitude&quot;                             </font>
-<font color="#585858">##  [3] &quot;air_temperature&quot;                      </font>
-<font color="#585858">##  [4] &quot;air_pressure&quot;                         </font>
-<font color="#585858">##  [5] &quot;dew_point_temperature&quot;                </font>
-<font color="#585858">##  [6] &quot;water_vapor_pressure&quot;                 </font>
-<font color="#585858">##  [7] &quot;latitude&quot;                             </font>
-<font color="#585858">##  [8] &quot;longitude&quot;                            </font>
-<font color="#585858">##  [9] &quot;height&quot;                               </font>
-<font color="#585858">## [10] &quot;humidity_mixing_ratio&quot;                </font>
-<font color="#585858">## [11] &quot;barometric_altitude&quot;                  </font>
-<font color="#585858">## [12] &quot;platform_pitch_angle&quot;                 </font>
-<font color="#585858">## [13] &quot;atmosphere_cloud_liquid_water_content&quot;</font>
-<font color="#585858">## [14] &quot;air_pressure_at_sea_level&quot;            </font>
-<font color="#585858">## [15] &quot;relative_humidity&quot;                    </font>
-<font color="#585858">## [16] &quot;platform_roll_angle&quot;                  </font>
-<font color="#585858">## [17] &quot;solar_azimuth_angle&quot;                  </font>
-<font color="#585858">## [18] &quot;solar_elevation_angle&quot;                </font>
-<font color="#585858">## [19] &quot;solar_zenith_angle&quot;                   </font>
-<font color="#585858">## [20] &quot;platform_speed_wrt_air&quot;               </font>
-<font color="#585858">## [21] &quot;platform_orientation&quot;                 </font>
-<font color="#585858">## [22] &quot;air_potential_temperature&quot;            </font>
-<font color="#585858">## [23] &quot;equivelent_potential_temperature&quot;     </font>
-<font color="#585858">## [24] &quot;platform_course&quot;                      </font>
-<font color="#585858">## [25] &quot;virtual_temperature&quot;                  </font>
-<font color="#585858">## [26] &quot;eastward_wind&quot;                        </font>
-<font color="#585858">## [27] &quot;northward_wind&quot;                       </font>
-<font color="#585858">## [28] &quot;wind_from_direction&quot;                  </font>
-<font color="#585858">## [29] &quot;upward_air_velocity&quot;                  </font>
-<font color="#585858">## [30] &quot;wind_speed&quot;</font></pre>
-<hr/>
+<H1><A ID="SECTION00210000000000000000">
+<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">1</SPAN> DataFileInfo()</A>
+</H1>
+A useful first look at a netCDF file is provided by Ranadu::DataFileInfo(),
+which returns characteristics like the project name, flight number,
+date/times, variable names, and the data rate. In addition, this function
+returns a set of &ldquo;measurands&rdquo; (measured properties of the atmosphere
+like air temperature) and the set of variables that provide measurements
+of that measurand. The measurands in a particular file (the one referenced
+above) are shown below:
 
-<p style="margin-bottom: 0in"><font color="#585858">The variables
-that provide redundant measurements of a specific measurand are named
-lists with the measurand name and can be displayed by printing the
-measurand name, as in the following example: </font>
-</p>
-<hr/>
+<FONT COLOR="#585858"><HR>## Generating R code:
+<DIV CLASS="alltt" ALIGN="LEFT">
+<SPAN style="font-family:monospace">
+ <SPAN ID="hue2044">Project</SPAN> <SPAN ID="hue2046">&lt;-</SPAN> <SPAN ID="hue2048">'WECAN'</SPAN>
+<BR><SPAN ID="hue2050">FlightNumber</SPAN> <SPAN ID="hue2052">&lt;-</SPAN> <SPAN ID="hue2054">6</SPAN>
+<BR><SPAN ID="hue2056">fname</SPAN> <SPAN ID="hue2058">&lt;-</SPAN> <SPAN ID="hue2060"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN> <SPAN ID="hue2063">(</SPAN><SPAN ID="hue2065">'%s%s/%srf%02d.nc'</SPAN><SPAN ID="hue2067">, Ranadu</SPAN><SPAN ID="hue2069">::</SPAN><SPAN ID="hue2071"><SPAN &nbsp;CLASS="textbf">DataDirectory</SPAN></SPAN><SPAN ID="hue2074">(),</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2076">Project, Project, FlightNumber)</SPAN>
+<BR><SPAN ID="hue2078">FI</SPAN> <SPAN ID="hue2080">&lt;-</SPAN> <SPAN ID="hue2082"><SPAN &nbsp;CLASS="textbf">DataFileInfo</SPAN></SPAN><SPAN ID="hue2085">(fname)</SPAN>
+<BR><SPAN ID="hue2087"><SPAN &nbsp;CLASS="textbf">names</SPAN></SPAN> <SPAN ID="hue2090">(FI</SPAN><SPAN ID="hue2092">$</SPAN><SPAN ID="hue2094">Measurands)</SPAN>
+<BR></SPAN>
+</DIV>
 
-<p style="margin-bottom: 0in"><font color="#585858">## Generating R
-code: </font>
-</p>
-<p align="left"><a name="hue2103"></a><a name="hue2105"></a><a name="hue2107"></a><a name="hue2109"></a><a name="hue2111"></a>
-<font color="#585858"><font face="monospace">FI$<font color="#317ecc">Measurands</font>$<font color="#317ecc">air_temperature</font>
-</font></font>
-</p>
-<pre class="western" style="margin-bottom: 0.2in"><font color="#585858">## [1] &quot;ATF1&quot; &quot;ATH1&quot; &quot;ATH2&quot; &quot;ATX&quot;</font></pre>
-<hr/>
+<PRE>
+##  [1] ""                                     
+##  [2] "altitude"                             
+##  [3] "air_temperature"                      
+##  [4] "air_pressure"                         
+##  [5] "dew_point_temperature"                
+##  [6] "water_vapor_pressure"                 
+##  [7] "latitude"                             
+##  [8] "longitude"                            
+##  [9] "height"                               
+## [10] "humidity_mixing_ratio"                
+## [11] "barometric_altitude"                  
+## [12] "platform_pitch_angle"                 
+## [13] "atmosphere_cloud_liquid_water_content"
+## [14] "air_pressure_at_sea_level"            
+## [15] "relative_humidity"                    
+## [16] "platform_roll_angle"                  
+## [17] "solar_azimuth_angle"                  
+## [18] "solar_elevation_angle"                
+## [19] "solar_zenith_angle"                   
+## [20] "platform_speed_wrt_air"               
+## [21] "platform_orientation"                 
+## [22] "air_potential_temperature"            
+## [23] "equivelent_potential_temperature"     
+## [24] "platform_course"                      
+## [25] "virtual_temperature"                  
+## [26] "eastward_wind"                        
+## [27] "northward_wind"                       
+## [28] "wind_from_direction"                  
+## [29] "upward_air_velocity"                  
+## [30] "wind_speed"
+</PRE><HR>The variables that provide redundant measurements of a specific measurand
+are named lists with the measurand name and can be displayed by printing
+the measurand name, as in the following example:
 
-<p style="margin-bottom: 0in"><font color="#585858">In addition, the
-“long_name” describing a variable (e.g., here “ATX”) can be
-found as follows: </font>
-</p>
-<hr/>
+<FONT COLOR="#585858"><HR>## Generating R code:
+<DIV CLASS="alltt" ALIGN="LEFT">
+<SPAN style="font-family:monospace">
+ <SPAN ID="hue2096">FI</SPAN><SPAN ID="hue2098">$</SPAN><SPAN ID="hue2100">Measurands</SPAN><SPAN ID="hue2102">$</SPAN><SPAN ID="hue2104">air_temperature</SPAN>
+<BR></SPAN>
+</DIV>
 
-<p style="margin-bottom: 0in"><font color="#585858">## Generating R
-code: </font>
-</p>
-<p align="left"><a name="hue2113"></a><a name="hue2115"></a><a name="hue2117"></a><a name="hue2119"></a><a name="hue2122"></a><a name="hue2124"></a><a name="hue2126"></a><a name="hue2128"></a><a name="hue2130"></a><a name="hue2132"></a>
-<font color="#585858"><font face="monospace">FI<font color="#bc5a65">$</font>LongNames[which('ATX'
-== FI$Variables)] </font></font>
-</p>
-<pre class="western" style="margin-bottom: 0.2in"><font color="#585858">## [1] &quot;Ambient Temperature, Reference&quot;</font></pre>
-<hr/>
+<PRE>
+## [1] "ATF1" "ATH1" "ATH2" "ATX"
+</PRE><HR>In addition, the &ldquo;long_name&rdquo; describing a variable (e.g., here
+&ldquo;ATX&rdquo;) can be found as follows:
 
-<p style="margin-bottom: 0in"><font color="#585858">To see all the
-lists of information contained in the DataFileInfo list, print the
-names as follows: </font>
-</p>
-<hr/>
+<FONT COLOR="#585858"><HR>## Generating R code:
+<DIV CLASS="alltt" ALIGN="LEFT">
+<SPAN style="font-family:monospace">
+ <SPAN ID="hue2106">FI</SPAN><SPAN ID="hue2108">$</SPAN><SPAN ID="hue2110">LongNames[</SPAN><SPAN ID="hue2112"><SPAN &nbsp;CLASS="textbf">which</SPAN></SPAN><SPAN ID="hue2115">(</SPAN><SPAN ID="hue2117">'ATX'</SPAN> <SPAN ID="hue2119">==</SPAN> <SPAN ID="hue2121">FI</SPAN><SPAN ID="hue2123">$</SPAN><SPAN ID="hue2125">Variables)]</SPAN>
+<BR></SPAN>
+</DIV>
 
-<p style="margin-bottom: 0in"><font color="#585858">## Generating R
-code: </font>
-</p>
-<p align="left"><a name="hue2134"></a><a name="hue2137"></a><font color="#585858"><font face="monospace">names(FI)
-</font></font>
-</p>
-<pre class="western"><font color="#585858">##  [1] &quot;Number&quot;     &quot;Project&quot;    &quot;Platform&quot;   &quot;DataFile&quot;   &quot;Start&quot;     </font>
-<font color="#585858">##  [6] &quot;End&quot;        &quot;Rate&quot;       &quot;LatMin&quot;     &quot;LatMax&quot;     &quot;LonMin&quot;    </font>
-<font color="#585858">## [11] &quot;LonMax&quot;     &quot;Variables&quot;  &quot;LongNames&quot;  &quot;Measurands&quot;</font></pre>
-<hr/>
+<PRE>
+## [1] "Ambient Temperature, Reference"
+</PRE><HR>To see all the lists of information contained in the DataFileInfo
+list, print the names as follows:
 
-<p><font color="#585858">Examining these can help a user understand
-what is included in a particular data file. </font>
-</p>
-<h1 class="western"><a name="SECTION00220000000000000000"></a>2.2
-getNetCDF() and the resulting data.frame 
-</h1>
-<p><font color="#585858">A central component of the Ranadu structure
-is the Ranadu data.frame, produced by reading the netCDF data file.
-It has a structure similar to that of a spreadsheet, with rows
-corresponding to measurement times and columns corresponding to
-measurements. The data.frame has these features: </font>
-</p>
-<ol>
-	<li><p style="margin-bottom: 0in">Each row corresponds to a unique
-	time, and times are sequential (possibly with gaps). For data rates
-	higher than 1&nbsp;Hz, rows are produced for each time interval;
-	i.e., 25 rows per second for 25-Hz files. When variables are present
-	in the netCDF file at a slower rate, interpolation is used to
-	produce the higher rate. 
-	</p>
-	<li><p style="margin-bottom: 0in">Each measurement corresponds to a
-	single column. When there are multiple measurements of a given
-	measurand (e.g., temperature), each individual measurement has its
-	own column. There is a significant exception: For instruments
-	producing size-distribution arrays, the entire array occupies one
-	column of the data.frame. 
-	</p>
-	<li><p>Attributes describing the data.frame and the variables are
-	carried with the data.frame. For example, variables often have
-	“short_name” and “long_name” attributes, and these can be
-	examined by looking at the variable attributes. 
-	</p>
-</ol>
-<p><font color="#585858">The data.frame is constructed by
-Ranadu::getNetCDF(fname, variables), which uses the ncdf4 package of
-routines to read the netCDF file. An example of a subset of the
-data.frame is shown here: </font>
-</p>
-<hr/>
+<FONT COLOR="#585858"><HR>## Generating R code:
+<DIV CLASS="alltt" ALIGN="LEFT">
+<SPAN style="font-family:monospace">
+ <SPAN ID="hue2127"><SPAN &nbsp;CLASS="textbf">names</SPAN></SPAN><SPAN ID="hue2130">(FI)</SPAN>
+<BR></SPAN>
+</DIV>
 
-<p><font color="#585858">## Generating R code: </font>
-</p>
-<p align="left"><a name="hue2139"></a><a name="hue2141"></a><a name="hue2143"></a><a name="hue2145"></a><a name="hue2147"></a><a name="hue2149"></a><a name="hue2151"></a><a name="hue2153"></a><a name="hue2155"></a><a name="hue2158"></a><a name="hue2160"></a><a name="hue2162"></a><a name="hue2164"></a><a name="hue2166"></a><a name="hue2169"></a><a name="hue2171"></a><a name="hue2173"></a><a name="hue2175"></a><a name="hue2177"></a><a name="hue2179"></a><a name="hue2181"></a><a name="hue2184"></a><a name="hue2186"></a><a name="hue2189"></a><a name="hue2191"></a><a name="hue2193"></a><a name="hue2195"></a><a name="hue2197"></a><a name="hue2199"></a><a name="hue2201"></a><a name="hue2203"></a><a name="hue2205"></a><a name="hue2207"></a><a name="hue2210"></a><a name="hue2212"></a><a name="hue2215"></a><a name="hue2217"></a><a name="hue2220"></a><a name="hue2222"></a><a name="hue2224"></a>
-<font color="#585858"><font face="monospace">Project &lt;- 'WECAN'
-<br/>
-FlightNumber <font color="#000000">&lt;-</font> <font color="#ad95af">6</font>
-<br/>
-fname &lt;- sprintf ('%s%s/%srf%02d.nc',
-Ranadu::DataDirectory<font color="#ad95af">(),</font> <br/>
-         
-        Project, Project, FlightNumber) <br/>
-Variables &lt;-
-Ranadu::<font color="#000000">standardVariables</font>(c('UXC',
-<font color="#55aa55">'VYC'</font>)) <br/>
-<font color="#000000">Data</font>
-&lt;- <font color="#000000">Ranadu</font><font color="#ad95af">::</font>getNetCDF<font color="#000000">(fname,
-Variables)</font> <br/>
-<font color="#bc5a65">print</font> (<font color="#af0f91">sprintf</font>
-('Data from data file %s', fname)) </font></font>
-</p>
-<pre class="western" style="margin-bottom: 0.2in"><font color="#585858">## [1] &quot;Data from data file /Data/WECAN/WECANrf06.nc&quot;</font></pre><p align="left">
-<a name="hue2226"></a><a name="hue2229"></a><a name="hue2231"></a><a name="hue2233"></a><a name="hue2236"></a><a name="hue2238"></a>
-<font color="#585858"><font face="monospace">print
-(tibble::as.tibble(Data))  # or print(head(Data)) </font></font>
-</p>
-<pre class="western"><font color="#585858">## # A tibble: 23,701 x 18</font>
-<font color="#585858">##    Time                  ATX  DPXC   EWX GGALT  LATC  LONC   MACHX    MR</font>
-<font color="#585858">##    &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</font>
-<font color="#585858">##  1 2018-08-03 19:55:00  29.9    NA    NA  865.  43.6 -116. 0.00125    NA</font>
-<font color="#585858">##  2 2018-08-03 19:55:01  29.9    NA    NA  865.  43.6 -116. 0.00125    NA</font>
-<font color="#585858">##  3 2018-08-03 19:55:02  29.9    NA    NA  865.  43.6 -116. 0.00125    NA</font>
-<font color="#585858">##  4 2018-08-03 19:55:03  29.9    NA    NA  865.  43.6 -116. 0.00125    NA</font>
-<font color="#585858">##  5 2018-08-03 19:55:04  29.9    NA    NA  865.  43.6 -116. 0.00125    NA</font>
-<font color="#585858">##  6 2018-08-03 19:55:05  29.9    NA    NA  865.  43.6 -116. 0.00125    NA</font>
-<font color="#585858">##  7 2018-08-03 19:55:06  29.9    NA    NA  865.  43.6 -116. 0.00125    NA</font>
-<font color="#585858">##  8 2018-08-03 19:55:07  29.9    NA    NA  865.  43.6 -116. 0.00125    NA</font>
-<font color="#585858">##  9 2018-08-03 19:55:08  29.9    NA    NA  865.  43.6 -116. 0.00125    NA</font>
-<font color="#585858">## 10 2018-08-03 19:55:09  29.9    NA    NA  865.  43.6 -116. 0.00125    NA</font>
-<font color="#585858">## # ... with 23,691 more rows, and 9 more variables: PALT &lt;dbl&gt;, PSXC &lt;dbl&gt;,</font>
-<font color="#585858">## #   QCXC &lt;dbl&gt;, TASX &lt;dbl&gt;, WDC &lt;dbl&gt;, WSC &lt;dbl&gt;, WIC &lt;dbl&gt;, UXC &lt;dbl&gt;,</font>
-<font color="#585858">## #   VYC &lt;dbl&gt;</font></pre>
-<hr/>
+<PRE>
+##  [1] "Number"     "Project"    "Platform"   "DataFile"   "Start"     
+##  [6] "End"        "Rate"       "LatMin"     "LatMax"     "LonMin"    
+## [11] "LonMax"     "Variables"  "LongNames"  "Measurands"
+</PRE><HR>Examining these can help a user understand what is included in a particular
+data file.
+</FONT></FONT></FONT></FONT>
+<H1><A ID="SECTION00220000000000000000">
+<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">2</SPAN> getNetCDF() and the resulting data.frame</A>
+</H1><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">A central component of the Ranadu structure is the Ranadu data.frame,
+produced by reading the netCDF data file. It has a structure similar
+to that of a spreadsheet, with rows corresponding to measurement times
+and columns corresponding to measurements. The data.frame has these
+features:
+</FONT></FONT></FONT></FONT>
+<OL>
+<LI>Each row corresponds to a unique time, and times are sequential (possibly
+with gaps). For data rates higher than 1&nbsp;Hz, rows are produced for
+each time interval; i.e., 25 rows per second for 25-Hz files. When
+variables are present in the netCDF file at a slower rate, interpolation
+is used to produce the higher rate.
+</LI>
+<LI>Each measurement corresponds to a single column. When there are multiple
+measurements of a given measurand (e.g., temperature), each individual
+measurement has its own column. There is a significant exception:
+For instruments producing size-distribution arrays, the entire array
+occupies one column of the data.frame. 
+</LI>
+<LI>Attributes describing the data.frame and the variables are carried
+with the data.frame. For example, variables often have &ldquo;short_name&rdquo;
+and &ldquo;long_name&rdquo; attributes, and these can be examined by looking
+at the variable attributes. 
+</LI>
+</OL><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
+The data.frame is constructed by Ranadu::getNetCDF(fname, variables),
+which uses the ncdf4 package of routines to read the netCDF file.
+An example of a subset of the data.frame is shown here:
+</FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
+</FONT></FONT></FONT><FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<P>
 
-<p><font color="#585858">Here is an explanation of some aspects of
-loading this data.frame: </font>
-</p>
-<ol>
-	<li><p style="margin-bottom: 0in"><font color="#585858">Ranadu::DataDirectory()
-	returns the location of the data directory on various systems, to
-	avoid the necessity of changing this when moving among systems. It
-	may return '/scr/raf_data/' or '/Data/' or '~/Data/' depending on
-	the file system. </font>
-	</p>
-	<li><p style="margin-bottom: 0in"><font color="#585858">The function
-	Ranadu::standardVariables() returns a set of commonly used variable
-	names. Additional variables provided to the routine (here, 'UXC' and
-	'VYC') are added to the variable list. </font>
-	</p>
-	<li><p style="margin-bottom: 0in"><a name="tex2html2"></a><font color="#585858">Ranadu::getNetCDF()
-	produces the data.frame. The special case where Variables &lt;-
-	'ALL' will return all available variables.</font><a href="footnode.html#foot306"><font color="#585858"><sup>2.2</sup></font></a><font color="#585858">
-	Two additional optional arguments to getNetCDF() are “Start” and
-	“End”; if set, the range of time values in the data.frame will
-	be restricted to be between those two times. See
-	“?Ranadu::getNetCDF” for complete information on this function. </font>
-	</p>
-	<li><p><font color="#585858">The last statement, where the
-	data.frame is converted to a tibble, is used here because the print
-	function for tibbles produces a more concise and clearer format than
-	that for a data.frame. “print (head (Data))” could have been
-	used also. More information on tibbles is included later in this
-	document. The resulting data.frame has 23,701 rows and 18 columns. </font>
-	</p>
-</ol>
-<h1 class="western"><a name="SECTION00230000000000000000"></a>2.3
-Using the data.frame 
-</h1>
-<h2 class="western"><a name="SECTION00231000000000000000"></a>2.3.1
-Simple Plots 
-</h2>
-<p><font color="#585858">It is straightforward to plot variables in
-the data.frame using standard R functions. For example, the following
-code plots the altitude vs.&nbsp;time using the data.frame loaded
-previously: </font>
-</p>
-<hr/>
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue2132">Project</SPAN> <SPAN ID="hue2134">&lt;-</SPAN> <SPAN ID="hue2136">'WECAN'</SPAN>
+<BR><SPAN ID="hue2138">FlightNumber</SPAN> <SPAN ID="hue2140">&lt;-</SPAN> <SPAN ID="hue2142">6</SPAN>
+<BR><SPAN ID="hue2144">fname</SPAN> <SPAN ID="hue2146">&lt;-</SPAN> <SPAN ID="hue2148"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN> <SPAN ID="hue2151">(</SPAN><SPAN ID="hue2153">'%s%s/%srf%02d.nc'</SPAN><SPAN ID="hue2155">, Ranadu</SPAN><SPAN ID="hue2157">::</SPAN><SPAN ID="hue2159"><SPAN &nbsp;CLASS="textbf">DataDirectory</SPAN></SPAN><SPAN ID="hue2162">(),</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2164">Project, Project, FlightNumber)</SPAN>
+<BR><SPAN ID="hue2166">Variables</SPAN> <SPAN ID="hue2168">&lt;-</SPAN> <SPAN ID="hue2170">Ranadu</SPAN><SPAN ID="hue2172">::</SPAN><SPAN ID="hue2174"><SPAN &nbsp;CLASS="textbf">standardVariables</SPAN></SPAN><SPAN ID="hue2177">(</SPAN><SPAN ID="hue2179"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2182">(</SPAN><SPAN ID="hue2184">'UXC'</SPAN><SPAN ID="hue2186">,</SPAN> <SPAN ID="hue2188">'VYC'</SPAN><SPAN ID="hue2190">))</SPAN>
+<BR><SPAN ID="hue2192">Data</SPAN> <SPAN ID="hue2194">&lt;-</SPAN> <SPAN ID="hue2196">Ranadu</SPAN><SPAN ID="hue2198">::</SPAN><SPAN ID="hue2200"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue2203">(fname, Variables)</SPAN>
+<BR><SPAN ID="hue2205"><SPAN &nbsp;CLASS="textbf">print</SPAN></SPAN> <SPAN ID="hue2208">(</SPAN><SPAN ID="hue2210"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN> <SPAN ID="hue2213">(</SPAN><SPAN ID="hue2215">'Data from data file %s'</SPAN><SPAN ID="hue2217">, fname))</SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<PRE>
+## [1] "Data from data file /Data/WECAN/WECANrf06.nc"
+</PRE>
+<P>
 
-<p><font color="#585858">## Generating R code: </font>
-</p>
-<p align="left" style="margin-bottom: 0in"><a name="hue2241"></a><a name="hue2244"></a><a name="hue2246"></a><a name="hue2248"></a><a name="hue2250"></a><a name="hue2252"></a><a name="hue2254"></a><a name="hue2256"></a><a name="hue2258"></a><a name="hue2260"></a>
-<font color="#585858"><font face="monospace">plot(Data$<font color="#317ecc">Time,
-Data</font>$<font color="#317ecc">GGALT,</font> type<font color="#317ecc">=</font>'l'<font color="#ad95af">)</font>
-</font></font>
-</p>
-<hr/>
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue2219"><SPAN &nbsp;CLASS="textbf">print</SPAN></SPAN> <SPAN ID="hue2222">(tibble</SPAN><SPAN ID="hue2224">::</SPAN><SPAN ID="hue2226"><SPAN &nbsp;CLASS="textbf">as.tibble</SPAN></SPAN><SPAN ID="hue2229">(Data))</SPAN> &nbsp;<SPAN ID="hue2231"><SPAN &nbsp;CLASS="textit"># or print(head(Data))</SPAN></SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<PRE>
+## # A tibble: 23,701 x 18
+##    Time                  ATX  DPXC   EWX GGALT  LATC  LONC   MACHX    MR
+##    &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+##  1 2018-08-03 19:55:00  29.9    NA    NA  865.  43.6 -116. 0.00125    NA
+##  2 2018-08-03 19:55:01  29.9    NA    NA  865.  43.6 -116. 0.00125    NA
+##  3 2018-08-03 19:55:02  29.9    NA    NA  865.  43.6 -116. 0.00125    NA
+##  4 2018-08-03 19:55:03  29.9    NA    NA  865.  43.6 -116. 0.00125    NA
+##  5 2018-08-03 19:55:04  29.9    NA    NA  865.  43.6 -116. 0.00125    NA
+##  6 2018-08-03 19:55:05  29.9    NA    NA  865.  43.6 -116. 0.00125    NA
+##  7 2018-08-03 19:55:06  29.9    NA    NA  865.  43.6 -116. 0.00125    NA
+##  8 2018-08-03 19:55:07  29.9    NA    NA  865.  43.6 -116. 0.00125    NA
+##  9 2018-08-03 19:55:08  29.9    NA    NA  865.  43.6 -116. 0.00125    NA
+## 10 2018-08-03 19:55:09  29.9    NA    NA  865.  43.6 -116. 0.00125    NA
+## # ... with 23,691 more rows, and 9 more variables: PALT &lt;dbl&gt;, PSXC &lt;dbl&gt;,
+## #   QCXC &lt;dbl&gt;, TASX &lt;dbl&gt;, WDC &lt;dbl&gt;, WSC &lt;dbl&gt;, WIC &lt;dbl&gt;, UXC &lt;dbl&gt;,
+## #   VYC &lt;dbl&gt;
+</PRE><FONT COLOR="#585858"><HR></FONT>
+<P>
+<FONT COLOR="#585858">Here is an explanation of some aspects of loading this data.frame:
+</FONT>
+<OL>
+<LI>Ranadu::DataDirectory() returns the location of the data directory
+on various systems, to avoid the necessity of changing this when moving
+among systems. It may return '/scr/raf_data/' or '/Data/' or '~/Data/'
+depending on the file system.
+</LI>
+<LI>The function Ranadu::standardVariables() returns a set of commonly
+used variable names. Additional variables provided to the routine
+(here, 'UXC' and 'VYC') are added to the variable list.
+</LI>
+<LI>Ranadu::getNetCDF() produces the data.frame. The special case where
+Variables &lt;- 'ALL' will return all available variables.<A ID="tex2html1"
+  HREF="footnode.html#foot310"><SUP><SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A> Two additional optional arguments to getNetCDF() are &ldquo;Start&rdquo;
+and &ldquo;End&rdquo;; if set, the range of time values in the data.frame
+will be restricted to be between those two times. See &ldquo;?Ranadu::getNetCDF&rdquo;
+for complete information on this function.
+</LI>
+<LI>The last statement, where the data.frame is converted to a tibble,
+is used here because the print function for tibbles produces a more
+concise and clearer format than that for a data.frame. &ldquo;print (head
+(Data))&rdquo; could have been used also. More information on tibbles
+is included later in this document. The resulting data.frame has 23,701
+rows and 18 columns.
+</LI>
+</OL>
+<P>
+</FONT>
+<H1><A ID="SECTION00230000000000000000">
+<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">3</SPAN> Using the data.frame</A>
+</H1><FONT COLOR="#585858"></FONT>
+<P>
+<FONT COLOR="#585858"></FONT>
+<H2><A ID="SECTION00231000000000000000">
+<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">1</SPAN> Simple Plots</A>
+</H2><FONT COLOR="#585858"></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858">It is straightforward to plot variables in the data.frame using standard
+R functions. For example, the following code plots the altitude vs.&nbsp;time
+using the data.frame loaded previously:
+</FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858">
+</FONT><FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<P>
 
-<p style="margin-bottom: 0in; line-height: 100%"><a name="fig:simple-plot1"></a><a name="331"></a>
-<br/>
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue2234"><SPAN &nbsp;CLASS="textbf">plot</SPAN></SPAN><SPAN ID="hue2237">(Data</SPAN><SPAN ID="hue2239">$</SPAN><SPAN ID="hue2241">Time, Data</SPAN><SPAN ID="hue2243">$</SPAN><SPAN ID="hue2245">GGALT,</SPAN> <SPAN ID="hue2247">type</SPAN><SPAN ID="hue2249">=</SPAN><SPAN ID="hue2251">'l'</SPAN><SPAN ID="hue2253">)</SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<FONT COLOR="#585858"><HR></FONT>
+<DIV class="CENTER"><A ID="fig:simple-plot1"></A><A ID="335"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure 2.1:</STRONG>
+Geometric altitude vs time for WECAN research flight 6, 3 August 2018.</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./simple-plot1-1.png"
+ ALT="Image simple-plot1-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
 
-</p>
-<p align="center" style="margin-bottom: 0in"><strong>Figure 2.1:</strong>
-Geometric altitude vs time for WECAN research flight 6, 3 August
-2018.</p>
-<center>
-	<table cellpadding="2" cellspacing="2">
-		<tr>
-			<td style="border: none; padding: 0in"><p align="center"><img src="simple-plot1-1.png" name="Image4" alt="Image simple-plot1-1" align="bottom" width="432" height="360" border="0"/>
+<P></TD></TR>
+</TABLE>
+</DIV>
 
-								</p>
-			</td>
-		</tr>
-	</table>
-</center>
-<p><font color="#585858">Many of the Ranadu tools are aimed at making
-construction of such plots straightforward while supporting various
-manipulations of the style and content of the plots. Many of these
-are discussed in later chapters. However, at this point you will be
-able to conduct extensive data-analysis projects using only the
-standard tools provided by R. </font>
-</p>
-<h2 class="western"><a name="SECTION00232000000000000000"></a>2.3.2
-Using plotWAC() and ggplotWAC() 
-</h2>
-<p><font color="#585858">The function Ranadu::plotWAC() calls the
-standard R function “plot” with a particular set of conventions.
-Some reasons you may want to consider using it include the following:
-</font>
-</p>
-<ul>
-	<li><p style="margin-bottom: 0in">[time&nbsp;offset:] The convention
-	in the NCAR/EOL/RAF netCDF files is that the time variable
-	represents the start of the interval over which measurements are
-	averaged, so a 1-Hz variable with a specified time is actually an
-	average where the mean time is 0.5&nbsp;s later. Plots generated by
-	plotWAC() adjust for this offset. For this same reason, you may want
-	to use the routine Ranadu::lineWAC() to add lines to the plot,
-	instead of the standard “lines” routine provided by R. 
-	</p>
-	<li><p style="margin-bottom: 0in">[plot&nbsp;format:] The set of
-	conventions regarding time labels, axis formats, and legends may be
-	preferable to those that are standard with “plot()” and will
-	save you from making those tailoring adjustments. 
-	</p>
-	<li><p>[pipe_compatible:] The function plotWAC() can be used in a
-	pipe where the piped variable is a data.frame tailored to contain
-	specified variables to construct multiple-variable plots. A similar
-	pipe to “plot()” will produce a faceted plot of each variable
-	vs.&nbsp;each other variable, which may not be what you want. 
-	</p>
-</ul>
-<p><font color="#585858">Figure <a href="#fig:plotwac-ex">2.2</a>
-shows an example. </font>
-</p>
-<hr/>
+<P>
 
-<p><font color="#585858">## Generating R code: </font>
-</p>
-<p align="left" style="margin-bottom: 0in"><a name="hue2262"></a><a name="hue2265"></a><a name="hue2267"></a><a name="hue2270"></a><a name="hue2272"></a><a name="hue2274"></a><a name="hue2276"></a><a name="hue2278"></a>
-<font color="#585858"><font face="monospace">plotWAC<font color="#000000">(Data[,</font>
-<font color="#bc5a65">c</font>(<font color="#af0f91">'Time'</font>,
-<font color="#af0f91">'GGALT'</font>)]) </font></font>
-</p>
-<hr/>
+<P>
+<FONT COLOR="#585858">Many of the Ranadu tools are aimed at making construction of such
+plots straightforward while supporting various manipulations of the
+style and content of the plots. Many of these are discussed in later
+chapters. However, at this point you will be able to conduct extensive
+data-analysis projects using only the standard tools provided by R.
+</FONT>
+<P>
 
-<p style="margin-bottom: 0in; line-height: 100%"><a name="fig:plotwac-ex"></a><a name="363"></a>
-<br/>
+<P>
+</FONT>
+<H2><A ID="SECTION00232000000000000000">
+<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">2</SPAN> Using plotWAC() and ggplotWAC()</A>
+</H2><FONT COLOR="#585858"></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858">The function Ranadu::plotWAC() calls the standard R function &ldquo;plot&rdquo;
+with a particular set of conventions. Some reasons you may want to
+consider using it include the following:
+</FONT></FONT>
+<UL>
+<LI>[time&nbsp;offset:] The convention in the NCAR/EOL/RAF netCDF files
+is that the time variable represents the start of the interval over
+which measurements are averaged, so a 1-Hz variable with a specified
+time is actually an average where the mean time is 0.5&nbsp;s later. Plots
+generated by plotWAC() adjust for this offset. For this same reason,
+you may want to use the routine Ranadu::lineWAC() to add lines to
+the plot, instead of the standard &ldquo;lines&rdquo; routine provided by
+R.
+</LI>
+<LI>[plot&nbsp;format:] The set of conventions regarding time labels, axis
+formats, and legends may be preferable to those that are standard
+with &ldquo;plot()&rdquo; and will save you from making those tailoring adjustments.
+</LI>
+<LI>[pipe&nbsp;compatible:] The function plotWAC() can be used in a pipe
+where the piped variable is a data.frame tailored to contain specified
+variables to construct multiple-variable plots. A similar pipe to
+&ldquo;plot()&rdquo; will produce a faceted plot of each variable vs.&nbsp;each
+other variable, which may not be what you want.
+</LI>
+</UL><FONT COLOR="#585858"><FONT COLOR="#585858">Figure <A HREF="#fig:plotwac-ex">2.2</A> shows an example.
+</FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858">
+</FONT><FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<P>
 
-</p>
-<p align="center" style="margin-bottom: 0in"><strong>Figure 2.2:</strong>
-Example of the same plot as the preceding figure but generated with
-Ranadu::plotWAC().</p>
-<center>
-	<table cellpadding="2" cellspacing="2">
-		<tr>
-			<td style="border: none; padding: 0in"><p align="center"><img src="plotwac-ex-1.png" name="Image5" alt="Image plotwac-ex-1" align="bottom" width="432" height="360" border="0"/>
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue2255"><SPAN &nbsp;CLASS="textbf">plotWAC</SPAN></SPAN><SPAN ID="hue2258">(Data[,</SPAN> <SPAN ID="hue2260"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2263">(</SPAN><SPAN ID="hue2265">'Time'</SPAN><SPAN ID="hue2267">,</SPAN> <SPAN ID="hue2269">'GGALT'</SPAN><SPAN ID="hue2271">)])</SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<FONT COLOR="#585858"><HR></FONT>
+<DIV class="CENTER"><A ID="fig:plotwac-ex"></A><A ID="367"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure 2.2:</STRONG>
+Example of the same plot as the preceding figure but generated with Ranadu::plotWAC().</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./plotwac-ex-1.png"
+ ALT="Image plotwac-ex-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
 
-								</p>
-			</td>
-		</tr>
-	</table>
-</center>
-<p><font color="#585858">Another option is provided by
-Ranadu::ggplotWAC(), as shown in Fig.&nbsp;<a href="#fig:ggplot-ex">2.3</a>:
-</font>
-</p>
-<hr/>
+<P></TD></TR>
+</TABLE>
+</DIV>
 
-<p><font color="#585858">## Generating R code: </font>
-</p>
-<p align="left" style="margin-bottom: 0in"><a name="hue2280"></a><a name="hue2283"></a><a name="hue2285"></a><a name="hue2288"></a><a name="hue2290"></a><a name="hue2292"></a><a name="hue2294"></a><a name="hue2296"></a>
-<font color="#585858"><font face="monospace"><font color="#000000">ggplotWAC</font>(Data[,
-c('Time', 'GGALT')]) </font></font>
-</p>
-<hr/>
+<P>
 
-<p style="margin-bottom: 0in; line-height: 100%"><a name="fig:ggplot-ex"></a><a name="387"></a>
-<br/>
+<P>
+<FONT COLOR="#585858">Another option is provided by Ranadu::ggplotWAC(), as shown in Fig.&nbsp;<A HREF="#fig:ggplot-ex">2.3</A>:
+</FONT>
+<P>
+<FONT COLOR="#585858">
+<FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<P>
 
-</p>
-<p align="center" style="margin-bottom: 0in"><strong>Figure 2.3:</strong>
-Example of the same plot as the preceding figure but generated with
-Ranadu::ggplotWAC().</p>
-<center>
-	<table cellpadding="2" cellspacing="2">
-		<tr>
-			<td style="border: none; padding: 0in"><p align="center"><img src="ggplot-ex-1.png" name="Image6" alt="Image ggplot-ex-1" align="bottom" width="432" height="360" border="0"/>
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue2273"><SPAN &nbsp;CLASS="textbf">ggplotWAC</SPAN></SPAN><SPAN ID="hue2276">(Data[,</SPAN> <SPAN ID="hue2278"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2281">(</SPAN><SPAN ID="hue2283">'Time'</SPAN><SPAN ID="hue2285">,</SPAN> <SPAN ID="hue2287">'GGALT'</SPAN><SPAN ID="hue2289">)])</SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<FONT COLOR="#585858"><HR></FONT>
+<DIV class="CENTER"><A ID="fig:ggplot-ex"></A><A ID="391"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure 2.3:</STRONG>
+Example of the same plot as the preceding figure but generated with Ranadu::ggplotWAC().</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./ggplot-ex-1.png"
+ ALT="Image ggplot-ex-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
 
-								</p>
-			</td>
-		</tr>
-	</table>
-</center>
-<p><font color="#585858">Additional examples showing the advantages
-of constructing plots with pipes will be presented in later chapters
-of this document. For more information on the use of these plotting
-routines, see                              “?Ranadu::plotWAC” and
-“?Ranadu::ggplotWAC”. </font>
-</p>
-<hr/>
+<P></TD></TR>
+</TABLE>
+</DIV>
 
-<p style="margin-bottom: 0in"><!--Navigation Panel--><a href="node3.html">
-  <font color="#000080">
-    <img src="next.png" name="Image7" alt="next" align="bottom" width="37" height="24" border="1"/>
-  </font>
-</a>
+<P>
 
-<a href="R4RAF.html">
-  <font color="#000080">
-    <img src="up.png" name="Image8" alt="up" align="bottom" width="26" height="24" border="1"/>
-  </font>
-</a>
+<P>
+<FONT COLOR="#585858">Additional examples showing the advantages of constructing plots with
+pipes will be presented in later chapters of this document. For more
+information on the use of these plotting routines, see &ldquo;?Ranadu::plotWAC&rdquo;
+and &ldquo;?Ranadu::ggplotWAC&rdquo;.
+</FONT>
+<P>
 
-<a href="node1.html">
-  <font color="#800000">
-    <img src="prev.png" name="Image9" alt="previous" align="bottom" width="63" height="24" border="1"/>
-  </font>
-</a>
+<P>
+</FONT></FONT>
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="R4RAF.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node3.html">3. Overview of Ranadu</A>
+<B> Up:</B> <A
+ HREF="R4RAF.html">Ranadu: An R Package</A>
+<B> Previous:</B> <A
+ HREF="node1.html">1. Introduction</A></DIV>
+<!--End of Navigation Panel-->
 
-<br/>
-<b>Next:</b> <a href="node3.html">3. Overview of Ranadu</a> <b>Up:</b>
-<a href="R4RAF.html">R4RAF</a> <b>Previous:</b> <a href="node1.html">1.
-Introduction</a></p>
-<p style="margin-bottom: 0in"><!--End of Navigation Panel--></p>
-</body>
-</html>
+</BODY>
+</HTML>

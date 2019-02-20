@@ -1,909 +1,738 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html>
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title>4. More Details About Plotting</title>
-	<meta name="generator" content="LibreOffice 6.1.4.2 (Linux)"/>
-	<meta name="created" content="00:00:00"/>
-	<meta name="changedby" content="Al Cooper"/>
-	<meta name="changed" content="2019-02-13T10:09:14.757499672"/>
-	<meta name="description" content="4. More Details About Plotting"/>
-	<meta name="keywords" content="R4RAF"/>
-	<meta name="distribution" content="global"/>
-	<meta name="resource-type" content="document"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<!DOCTYPE HTML>
-	<!--Converted with LaTeX2HTML 2018.3 (Released July 19, 2018) -->
-	<!--Navigation Panel-->
-	<style type="text/css">
-		p { margin-bottom: 0.1in; text-align: justify }
-		h1 { text-align: justify }
-		h1.cjk { font-family: "Source Han Sans CN" }
-		h1.ctl { font-family: "Lohit Devanagari" }
-		h2 { text-align: justify }
-		h2.cjk { font-family: "Source Han Sans CN" }
-		h2.ctl { font-family: "Lohit Devanagari" }
-		td p { text-align: justify }
-	</style>
-</head>
-<body lang="en-US" dir="ltr"><p><a href="node5.html">
-  <font color="#000080">
-    <img src="next.png" name="Image1" alt="next" align="bottom" width="37" height="24" border="1"/>
-  </font>
-</a>
+<!DOCTYPE HTML>
 
-<a href="R4RAF.html">
-  <font color="#000080">
-    <img src="up.png" name="Image2" alt="up" align="bottom" width="26" height="24" border="1"/>
-  </font>
-</a>
+<!--Converted with LaTeX2HTML 2018.3 (Released July 19, 2018) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>4. More Details About Plotting</TITLE>
+<META NAME="description" CONTENT="4. More Details About Plotting">
+<META NAME="keywords" CONTENT="R4RAF">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
 
-<a href="node3.html">
-  <font color="#800000">
-    <img src="prev.png" name="Image3" alt="previous" align="bottom" width="63" height="24" border="1"/>
-  </font>
-</a>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2018.3">
 
-<br/>
-<b>Next:</b> <a href="node5.html">5. Variance Spectra</a> <b>Up:</b>
-<a href="R4RAF.html">R4RAF</a> <b>Previous:</b> <a href="node3.html">3.
-Overview of Ranadu</a> 
-</p>
-<p><a name="CHILD_LINKS"></a><strong><!--End of Navigation Panel--><!--Table of Child-Links-->Subsections</strong>
-</p>
-<ul>
-	<li><p style="margin-bottom: 0in"><a name="tex2html73"></a><a href="#SECTION00410000000000000000">4.1
-	Pipes</a> 
-	</p>
-	<li><p style="margin-bottom: 0in"><a name="tex2html74"></a><a href="#SECTION00420000000000000000">4.2
-	Multi-Frame Plots</a> 
-	</p>
-	<ul>
-		<li><p style="margin-bottom: 0in"><a name="tex2html75"></a><a href="#SECTION00421000000000000000">4.2.1
-		Multiple plotWAC( ) plots:</a> 
-		</p>
-		<li><p style="margin-bottom: 0in"><a name="tex2html76"></a><a href="#SECTION00422000000000000000">4.2.2
-		Panels and Facets in ggplotWAC( ):</a> 
-		</p>
-	</ul>
-	<p style="margin-bottom: 0in"></p>
-	<li><p style="margin-bottom: 0in"><a name="tex2html77"></a><a href="#SECTION00430000000000000000">4.3
-	Plotting the density of events</a> 
-	</p>
-	<li><p style="margin-bottom: 0in"><a name="tex2html78"></a><a href="#SECTION00440000000000000000">4.4
-	Error bars and box-and-whisker plots</a> 
-	</p>
-	<li><p style="margin-bottom: 0in"><a name="tex2html79"></a><a href="#SECTION00450000000000000000">4.5
-	The skew-T thermodynamic diagram</a> 
-	</p>
-	<li><p><a name="tex2html80"></a><a href="#SECTION00460000000000000000">4.6
-	Aerosol- and hydrometeor-size distributions</a> 
-	</p>
-</ul>
-<p style="margin-bottom: 0.2in; border-top: none; border-bottom: 1px double #808080; border-left: none; border-right: none; padding: 0in; line-height: 100%">
-<!--End of Table of Child-Links--></p>
-<h1 class="western"><a name="SECTION00400000000000000000"></a>4. More
-Details About Plotting 
-</h1>
-<p><font color="#585858">This chapter includes additional details
-about the plot functions available in Ranadu. </font>
-</p>
-<h1 class="western"><a name="SECTION00410000000000000000"></a>4.1
-Pipes 
-</h1>
-<p><font color="#585858">When constructing plots, the use of “pipes”
-makes the logic clear and is recommended, so that is described first.
-All the code sequences described here can be implemented by saving
-the result from each step and then providing it to the next step, but
-pipes support the transmission of the result of a calculation to the
-next stage in the calculation without the need for intermediate
-storage. They are supported using the “%&gt;%” argument, which is
-enabled by the “magrittr” package for R. Perhaps the strongest
-argument for using pipes is that they make the logic of plot
-construction clear. You start with a data.frame, optionally construct
-new variables, make appropriate selection of variables and the time
-interval, apply filters to accept only data meeting particular tests,
-and then construct the plot using the resulting tailored data.frame.
-Here is an example, where the data.frame is piped to “select()”
-(part of the dplyr package that passes on only the listed variables)
-and where the result is then piped to “Ranadu::selectTime()”
-where only the specified time range is transmitted forward. The
-result is finally piped to Ranadu::plotWAC(), where the first
-argument is a data.frame. That is supplied by the pipe. The result is
-shown in Fig.&nbsp;<a href="#fig:pipe-example">4.1</a>. Alternately,
-ggplotWAC() could be used to produce a similar result. In addition to
-showing the explicit steps in the processing chain, code like this
-ensures that the plot will be constructed the same way if the code is
-re-used or moved. </font>
-</p>
-<hr/>
+<LINK REL="STYLESHEET" HREF="R4RAF.css">
 
-<p><font color="#585858">## Generating R code: </font>
-</p>
-<p align="left" style="margin-bottom: 0in"><a name="hue2298"></a><a name="hue2301"></a><a name="hue2303"></a><a name="hue2305"></a><a name="hue2307"></a><a name="hue2310"></a><a name="hue2312"></a><a name="hue2314"></a><a name="hue2317"></a><a name="hue2319"></a><a name="hue2321"></a><a name="hue2324"></a><a name="hue2326"></a><a name="hue2328"></a><a name="hue2330"></a><a name="hue2332"></a><a name="hue2334"></a><a name="hue2337"></a><a name="hue2339"></a><a name="hue2341"></a><a name="hue2344"></a><a name="hue2346"></a><a name="hue2348"></a><a name="hue2351"></a><a name="hue2353"></a><a name="hue2355"></a><a name="hue2358"></a><a name="hue2360"></a><a name="hue2362"></a><a name="hue2364"></a><a name="hue2366"></a><a name="hue2368"></a><a name="hue2370"></a><a name="hue2373"></a><a name="hue2375"></a><a name="hue2377"></a><a name="hue2380"></a><a name="hue2382"></a><a name="hue2384"></a><a name="hue2386"></a><a name="hue2388"></a><a name="hue2390"></a><a name="hue2392"></a><a name="hue2395"></a><a name="hue2397"></a><a name="hue2399"></a><a name="hue2402"></a><a name="hue2404"></a><a name="hue2406"></a><a name="hue2408"></a><a name="hue2411"></a><a name="hue2413"></a><a name="hue2415"></a><a name="hue2417"></a><a name="hue2419"></a><a name="hue2421"></a><a name="hue2423"></a><a name="hue2425"></a>
-<font color="#585858"><font face="monospace"><font color="#55aa55">library</font>(magrittr)
-<br/>
-Ranadu::getNetCDF<font color="#317ecc">(fname, Variables)</font>
-%&gt;% &nbsp;&nbsp;&nbsp;<font color="#bc5a65">## load the data.frame</font>
-<br/>
-&nbsp;&nbsp;dplyr<font color="#bc5a65">::</font>filter<font color="#af0f91">(TASX</font>
-<font color="#000000">&gt;</font> <font color="#af0f91">90</font>)
-<font color="#55aa55">%&gt;%</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;##
-limit based on airspeed <br/>
-&nbsp;&nbsp;dplyr::select<font color="#bc5a65">(Time,
-ATX, DPXC)</font> %&gt;% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;##
-select the variables to plot <br/>
-&nbsp;&nbsp;Ranadu<font color="#af0f91">::</font>Rmutate(DPD
-= ATX - <font color="#af0f91">DPXC)</font> %&gt;% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#af0f91">##
-add the dewpoint-depression DPD</font> <br/>
-&nbsp;&nbsp;Ranadu::selectTime(220500,
-221500) %&gt;% &nbsp;&nbsp;<font color="#af0f91">## set the time
-range</font> <br/>
-&nbsp;&nbsp;Ranadu::plotWAC(<font color="#af0f91">col</font>=<font color="#000000">c</font>('blue',
-'forestgreen', 'black'<font color="#af0f91">))</font> &nbsp;##
-construct the plot </font></font>
-</p>
-<hr/>
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
 
-<p style="margin-bottom: 0in; line-height: 100%"><a name="fig:pipe-example"></a><a name="565"></a>
-<br/>
+<BODY >
 
-</p>
-<p align="left" style="margin-bottom: 0in"><strong>Figure 4.1:</strong>
-Example of a figure generated using pipes. The variables are air
-temperature (ATX), dew point temperature (DPXC), and a new generated
-variable representing the dew point depression (DPD = ATX -DPXC).
-From WECAN research flight 6, 3 August 2018.</p>
-<center>
-	<table cellpadding="2" cellspacing="2">
-		<tr>
-			<td style="border: none; padding: 0in"><p align="center"><img src="pipe-example-1.png" name="Image4" alt="Image pipe-example-1" align="bottom" width="432" height="360" border="0"/>
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="R4RAF.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node5.html">5. Variance Spectra</A>
+<B> Up:</B> <A
+ HREF="R4RAF.html">Ranadu: An R Package</A>
+<B> Previous:</B> <A
+ HREF="node3.html">3. Overview of Ranadu</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-								</p>
-			</td>
-		</tr>
-	</table>
-</center>
-<p><font color="#585858">More information on some of the utility
-functions used or available when constructing plots is provided in
-the following list: </font>
-</p>
-<ol>
-	<li><p style="margin-bottom: 0in"><a name="tex2html8"></a><font color="#585858">dplyr::filter():
-	This function is used to limit the range of accepted values. The
-	arguments are a data.frame (provided above by the pipe) and a
-	logical statement. Only rows for which the specified test is true
-	are included in the resulting data.frame. An example where a
-	statement like this might be useful is when fitting to determine the
-	sensitivity coefficients for angle of attack, because it is useful
-	to exclude slow flight when the gear and/or flaps might be deployed.
-	Be sure to use the version from dplyr; the filter functions from the
-	packages “stats” or “signal” have different behavior. An
-	alternative method of creating a subset is to use the notation
-	“Data[Data$TASX &gt; 90, ]”. The disadvantage of this method and
-	of the “select(Data, Data$TASX &gt; 90)” function provided by
-	base-R is that variable attributes are lost.</font><a href="footnode.html#foot573"><font color="#585858"><sup>4.1</sup></font></a><font color="#585858">
-	</font>
-	</p>
-	<li><p style="margin-bottom: 0in"><font color="#585858">dplyr::select():
-	This function creates a subset data.frame with only the desired
-	variables. The desired list of names can be specified either as
-	character names (with quotes) or variable names (without quotes).
-	This also has the advantage over the “[]” or “[[]]” methods
-	of subsetting that attributes of the data.frame and the variables
-	are preserved. </font>
-	</p>
-	<li><p style="margin-bottom: 0in"><font color="#585858">Ranadu::Rmutate(
-	): This function adds new variables to the data.frame according to
-	formulas specified in the second argument. In this processing chain,
-	the first argument is the data.frame provided by the pipe. This
-	calls the routine dplyr::mutate() but then, because that function
-	does not preserve variable attributes, it transfers attributes from
-	the input to the output data.frame. New variables, however, have no
-	attributes (even the “Dimension” attribute) so the resulting
-	data.frame has some limitations, notably not being accepted by
-	“makeNetCDF( )”. </font>
-	</p>
-	<li><p style="margin-bottom: 0in"><font color="#585858">Ranadu::selectTime(
-	): This function limits the time range of the resulting data.frame
-	to be between the times that are specified in HHMMSS format (hours,
-	minutes, seconds). This is equivalent to using “dplyr::filter( )”
-	with limits on the accepted times, but it avoids the need to provide
-	those times in the POSIXct format used by Ranadu data.frames. It
-	preserves attributes and is suitable for use in pipes. </font>
-	</p>
-	<li><p><font color="#585858">Ranadu::Rsubset( ): This is not used in
-	the present example but could be. It accepts start and end times
-	like “selectTime”, selects variables like “dplyr::select”,
-	and imposes limitations on the data like “dplyr::filter( )”, so
-	several functions could be combined in one step:
-	Ranadu::getNetCDF(fname, Variables) %&gt;% Ranadu::Rsubset(220500,
-	221500, c('ATX', 'DPXC')) %&gt;% plotWAC( ). This function also
-	preserves attributes in the modified data.frame. </font>
-	</p>
-</ol>
-<p><font color="#585858">“Ranadu::plotWAC( )” is designed
-primarily for time-series plots, but scatterplots can also be
-generated. In that case, the first two variables in the data.frame
-should be the variables for the scatterplot, not the Time variable,
-and an explicit label “xlab=xxx” should be supplied. Here is an
-example: </font>
-</p>
-<hr/>
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html71"
+  HREF="node4.html#SECTION00410000000000000000"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN> Pipes</A>
+<LI><A ID="tex2html72"
+  HREF="node4.html#SECTION00420000000000000000"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">2</SPAN> Multi-Frame Plots</A>
+<UL>
+<LI><A ID="tex2html73"
+  HREF="node4.html#SECTION00421000000000000000"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">1</SPAN> Multiple plotWAC( ) plots:</A>
+<LI><A ID="tex2html74"
+  HREF="node4.html#SECTION00422000000000000000"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">2</SPAN> Panels and Facets in ggplotWAC( ):</A>
+</UL>
+<BR>
+<LI><A ID="tex2html75"
+  HREF="node4.html#SECTION00430000000000000000"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">3</SPAN> Plotting the density of events</A>
+<LI><A ID="tex2html76"
+  HREF="node4.html#SECTION00440000000000000000"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">4</SPAN> Error bars and box-and-whisker plots</A>
+<LI><A ID="tex2html77"
+  HREF="node4.html#SECTION00450000000000000000"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">5</SPAN> The skew-T thermodynamic diagram</A>
+<LI><A ID="tex2html78"
+  HREF="node4.html#SECTION00460000000000000000"><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">6</SPAN> Aerosol- and hydrometeor-size distributions</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
 
-<p><font color="#585858">## Generating R code: </font>
-</p>
-<p align="left" style="margin-bottom: 0in"><a name="hue2428"></a><a name="hue2430"></a><a name="hue2432"></a><a name="hue2435"></a><a name="hue2437"></a><a name="hue2439"></a><a name="hue2441"></a><a name="hue2443"></a><a name="hue2445"></a><a name="hue2447"></a><a name="hue2449"></a><a name="hue2451"></a><a name="hue2454"></a><a name="hue2456"></a><a name="hue2458"></a><a name="hue2461"></a><a name="hue2463"></a><a name="hue2465"></a><a name="hue2467"></a><a name="hue2469"></a><a name="hue2471"></a><a name="hue2473"></a><a name="hue2475"></a><a name="hue2477"></a>
-<font color="#585858"><font face="monospace">Data %&gt;%
-selectTime<font color="#af0f91">(</font>220000, <font color="#000000">221500</font>)
-<font color="#000000">%&gt;%</font> <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#bc5a65">dplyr</font>::select<font color="#bc5a65">(ATX,
-DPXC)</font> %&gt;% <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plotWAC(<font color="#bc5a65">xlab</font>='ATX',
-type<font color="#317ecc">=</font>'p'<font color="#317ecc">)</font> </font></font>
-</p>
-<hr/>
+<H1><A ID="SECTION00400000000000000000">
+<SPAN CLASS="arabic">4</SPAN>. More Details About Plotting</A>
+</H1><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">This chapter includes additional details about the plot functions
+available in Ranadu.
+</FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT>
+<H1><A ID="SECTION00410000000000000000">
+<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN> Pipes</A>
+</H1><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">When constructing plots, the use of &ldquo;pipes&rdquo; makes the logic clear
+and is recommended, so that is described first. All the code sequences
+described here can be implemented by saving the result from each step
+and then providing it to the next step, but pipes support the transmission
+of the result of a calculation to the next stage in the calculation
+without the need for intermediate storage. They are supported using
+the &ldquo;%&gt;%&rdquo; argument, which is enabled by the &ldquo;magrittr&rdquo; package
+for R. Perhaps the strongest argument for using pipes is that they
+make the logic of plot construction clear. You start with a data.frame,
+optionally construct new variables, make appropriate selection of
+variables and the time interval, apply filters to accept only data
+meeting particular tests, and then construct the plot using the resulting
+tailored data.frame. Here is an example, where the data.frame is piped
+to &ldquo;select()&rdquo; (part of the dplyr package that passes on only the
+listed variables) and where the result is then piped to &ldquo;Ranadu::selectTime()&rdquo;
+where only the specified time range is transmitted forward. The result
+is finally piped to Ranadu::plotWAC(), where the first argument is
+a data.frame. That is supplied by the pipe. The result is shown in
+Fig.&nbsp;<A HREF="#fig:pipe-example">4.1</A>. Alternately, ggplotWAC() could be used
+to produce a similar result. In addition to showing the explicit steps
+in the processing chain, code like this ensures that the plot will
+be constructed the same way if the code is re-used or moved.
+</FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
+</FONT></FONT><FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<P>
 
-<p style="margin-bottom: 0in; line-height: 100%"><a name="fig:scat-ex"></a><a name="621"></a>
-<br/>
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue2291"><SPAN &nbsp;CLASS="textbf">library</SPAN></SPAN><SPAN ID="hue2294">(magrittr)</SPAN>
+<BR><SPAN ID="hue2296">Ranadu</SPAN><SPAN ID="hue2298">::</SPAN><SPAN ID="hue2300"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue2303">(fname, Variables)</SPAN> <SPAN ID="hue2305">%&gt;%</SPAN> &nbsp;&nbsp;&nbsp;<SPAN ID="hue2307"><SPAN &nbsp;CLASS="textit">## load the data.frame</SPAN></SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue2310">dplyr</SPAN><SPAN ID="hue2312">::</SPAN><SPAN ID="hue2314"><SPAN &nbsp;CLASS="textbf">filter</SPAN></SPAN><SPAN ID="hue2317">(TASX</SPAN> <SPAN ID="hue2319">&gt;</SPAN> <SPAN ID="hue2321">90</SPAN><SPAN ID="hue2323">)</SPAN> <SPAN ID="hue2325">%&gt;%</SPAN> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2327"><SPAN &nbsp;CLASS="textit">## limit based on airspeed </SPAN></SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue2330">dplyr</SPAN><SPAN ID="hue2332">::</SPAN><SPAN ID="hue2334"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue2337">(Time, ATX, DPXC)</SPAN> <SPAN ID="hue2339">%&gt;%</SPAN> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2341"><SPAN &nbsp;CLASS="textit">## select the variables to plot</SPAN></SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue2344">Ranadu</SPAN><SPAN ID="hue2346">::</SPAN><SPAN ID="hue2348"><SPAN &nbsp;CLASS="textbf">Rmutate</SPAN></SPAN><SPAN ID="hue2351">(</SPAN><SPAN ID="hue2353">DPD</SPAN> <SPAN ID="hue2355">= ATX</SPAN> <SPAN ID="hue2357">-</SPAN> <SPAN ID="hue2359">DPXC)</SPAN> <SPAN ID="hue2361">%&gt;%</SPAN> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2363"><SPAN &nbsp;CLASS="textit">## add the dewpoint-depression DPD</SPAN></SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue2366">Ranadu</SPAN><SPAN ID="hue2368">::</SPAN><SPAN ID="hue2370"><SPAN &nbsp;CLASS="textbf">selectTime</SPAN></SPAN><SPAN ID="hue2373">(</SPAN><SPAN ID="hue2375">220500</SPAN><SPAN ID="hue2377">,</SPAN> <SPAN ID="hue2379">221500</SPAN><SPAN ID="hue2381">)</SPAN> <SPAN ID="hue2383">%&gt;%</SPAN> &nbsp;&nbsp;<SPAN ID="hue2385"><SPAN &nbsp;CLASS="textit">## set the time range</SPAN></SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue2388">Ranadu</SPAN><SPAN ID="hue2390">::</SPAN><SPAN ID="hue2392"><SPAN &nbsp;CLASS="textbf">plotWAC</SPAN></SPAN><SPAN ID="hue2395">(</SPAN><SPAN ID="hue2397">col</SPAN><SPAN ID="hue2399">=</SPAN><SPAN ID="hue2401"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2404">(</SPAN><SPAN ID="hue2406">'blue'</SPAN><SPAN ID="hue2408">,</SPAN> <SPAN ID="hue2410">'forestgreen'</SPAN><SPAN ID="hue2412">,</SPAN> <SPAN ID="hue2414">'black'</SPAN><SPAN ID="hue2416">))</SPAN> &nbsp;<SPAN ID="hue2418"><SPAN &nbsp;CLASS="textit">## construct the plot</SPAN></SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<FONT COLOR="#585858"><HR></FONT>
+<DIV class="CENTER"><A ID="fig:pipe-example"></A><A ID="569"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure 4.1:</STRONG>
+Example of a figure generated using pipes. The variables are air temperature (ATX), dew point temperature (DPXC), and a new generated variable representing the dew point depression (DPD=ATX-DPXC). From WECAN research flight 6, 3 August 2018.</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./pipe-example-1.png"
+ ALT="Image pipe-example-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
 
-</p>
-<p align="center" style="margin-bottom: 0in"><strong>Figure 4.2:</strong>
-Example scatterplot.</p>
-<center>
-	<table cellpadding="2" cellspacing="2">
-		<tr>
-			<td style="border: none; padding: 0in"><p align="center"><img src="scat-ex-1.png" name="Image5" alt="Image scat-ex-1" align="bottom" width="432" height="360" border="0"/>
+<P></TD></TR>
+</TABLE>
+</DIV>
 
-								</p>
-			</td>
-		</tr>
-	</table>
-</center>
-<h1 class="western"><a name="SECTION00420000000000000000"></a>4.2
-Multi-Frame Plots 
-</h1>
-<p><font color="#585858">It is often desirable to combine several
-plots into a single plot. There are several ways to do this with
-Ranadu routines: </font>
-</p>
-<h2 class="western"><a name="SECTION00421000000000000000"></a>4.2.1
-Multiple plotWAC( ) plots: 
-</h2>
-<p><font color="#585858">The “layout()” function in base-R can be
-used. Here is an example. The matrix layout can also be used to
-display plots in multiple columns or in multiple rows and columns. </font>
-</p>
-<hr/>
+<P>
 
-<p><font color="#585858">## Generating R code: </font>
-</p>
-<p align="left" style="margin-bottom: 0in"><a name="hue2479"></a><a name="hue2482"></a><a name="hue2484"></a><a name="hue2487"></a><a name="hue2489"></a><a name="hue2491"></a><a name="hue2493"></a><a name="hue2495"></a><a name="hue2497"></a><a name="hue2499"></a><a name="hue2501"></a><a name="hue2503"></a><a name="hue2505"></a><a name="hue2507"></a><a name="hue2509"></a><a name="hue2512"></a><a name="hue2514"></a><a name="hue2516"></a><a name="hue2518"></a><a name="hue2520"></a><a name="hue2522"></a><a name="hue2524"></a><a name="hue2526"></a><a name="hue2529"></a><a name="hue2531"></a><a name="hue2533"></a><a name="hue2535"></a><a name="hue2537"></a><a name="hue2539"></a><a name="hue2541"></a><a name="hue2543"></a><a name="hue2546"></a><a name="hue2548"></a><a name="hue2550"></a><a name="hue2552"></a><a name="hue2555"></a><a name="hue2557"></a><a name="hue2559"></a><a name="hue2561"></a><a name="hue2563"></a><a name="hue2565"></a><a name="hue2567"></a><a name="hue2569"></a><a name="hue2571"></a><a name="hue2573"></a><a name="hue2575"></a><a name="hue2577"></a><a name="hue2579"></a><a name="hue2581"></a><a name="hue2583"></a><a name="hue2586"></a><a name="hue2588"></a><a name="hue2590"></a><a name="hue2592"></a><a name="hue2594"></a><a name="hue2596"></a><a name="hue2598"></a><a name="hue2600"></a><a name="hue2602"></a><a name="hue2604"></a><a name="hue2606"></a><a name="hue2608"></a><a name="hue2610"></a><a name="hue2612"></a><a name="hue2615"></a><a name="hue2617"></a><a name="hue2619"></a><a name="hue2622"></a><a name="hue2624"></a><a name="hue2626"></a><a name="hue2628"></a><a name="hue2631"></a><a name="hue2633"></a><a name="hue2636"></a><a name="hue2638"></a><a name="hue2640"></a><a name="hue2642"></a><a name="hue2644"></a><a name="hue2646"></a><a name="hue2648"></a><a name="hue2650"></a><a name="hue2653"></a><a name="hue2655"></a><a name="hue2657"></a><a name="hue2659"></a><a name="hue2662"></a><a name="hue2664"></a><a name="hue2666"></a><a name="hue2668"></a><a name="hue2670"></a><a name="hue2672"></a><a name="hue2674"></a><a name="hue2676"></a><a name="hue2678"></a><a name="hue2680"></a><a name="hue2682"></a><a name="hue2684"></a><a name="hue2686"></a><a name="hue2688"></a><a name="hue2690"></a><a name="hue2692"></a><a name="hue2694"></a><a name="hue2697"></a><a name="hue2699"></a><a name="hue2701"></a><a name="hue2704"></a><a name="hue2706"></a><a name="hue2708"></a><a name="hue2710"></a><a name="hue2713"></a><a name="hue2715"></a><a name="hue2718"></a><a name="hue2720"></a><a name="hue2722"></a>
-<font color="#585858"><font face="monospace">layout(matrix(1:2,
-ncol<font color="#af0f91">=</font>1<font color="#af0f91">),</font>
-widths<font color="#af0f91">=</font>c(8,8), heights=c<font color="#bc5a65">(</font>5.5,8))
-<br/>
-op <font color="#55aa55">&lt;-</font> par (mar<font color="#bc5a65">=</font>c<font color="#317ecc">(</font>2,<font color="#b05a65">4</font><font color="#317ecc">,</font><font color="#ad95af">1</font>,1)+0.1,
-oma=<font color="#317ecc">c</font>(1.1,0,0,0)) <br/>
-Data %&gt;%
-dplyr::select(Time, ATX) %&gt;%
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plotWAC(ylab=expression(paste(&quot;T
-[&quot;, degree, &quot;C]&quot;))) <br/>
-op &lt;- par
-(mar=c(<font color="#bc5a65">5</font>,4,1,1)+0.1) <br/>
-Data %&gt;%
-<font color="#bc5a65">dplyr</font>::select(Time, WIC) <font color="#317ecc">%&gt;%</font>
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plotWAC(ylab=expression(paste(<font color="#af0f91">'W
-[m/s]'</font>))) </font></font>
-</p>
-<hr/>
+<P>
+<FONT COLOR="#585858">More information on some of the utility functions used or available
+when constructing plots is provided in the following list:
+</FONT>
+<OL>
+<LI><SPAN  CLASS="texttt">dplyr::filter(): </SPAN>This function is used to limit the range
+of accepted values. The arguments are a data.frame (provided above
+by the pipe) and a logical statement. Only rows for which the specified
+test is true are included in the resulting data.frame. An example
+where a statement like this might be useful is when fitting to determine
+the sensitivity coefficients for angle of attack, because it is useful
+to exclude slow flight when the gear and/or flaps might be deployed.
+Be sure to use the version from dplyr; the filter functions from the
+packages &ldquo;stats&rdquo; or &ldquo;signal&rdquo; have different behavior. An alternative
+method of creating a subset is to use the notation &ldquo;Data[Data$TASX
+&gt; 90, ]&rdquo;. The disadvantage of this method and of the &ldquo;select(Data,
+Data$TASX &gt; 90)&rdquo; function provided by base-R is that variable attributes
+are lost.<A ID="tex2html7"
+  HREF="footnode.html#foot577"><SUP><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A>
+</LI>
+<LI><SPAN  CLASS="texttt">dplyr::select(): </SPAN>This function creates a subset data.frame
+with only the desired variables. The desired list of names can be
+specified either as character names (with quotes) or variable names
+(without quotes). This also has the advantage over the &ldquo;[]&rdquo;
+or &ldquo;[[]]&rdquo; methods of subsetting that attributes of the
+data.frame and the variables are preserved.
+</LI>
+<LI><SPAN  CLASS="texttt">Ranadu::Rmutate( ):</SPAN> This function adds new variables to the
+data.frame according to formulas specified in the second argument.
+In this processing chain, the first argument is the data.frame provided
+by the pipe. This calls the routine <SPAN  CLASS="texttt">dplyr::mutate()</SPAN> but then,
+because that function does not preserve variable attributes, it transfers
+attributes from the input to the output data.frame. New variables,
+however, have no attributes (even the &ldquo;Dimension&rdquo; attribute) so
+the resulting data.frame has some limitations, notably not being accepted
+by &ldquo;makeNetCDF( )&rdquo;.
+</LI>
+<LI><SPAN  CLASS="texttt">Ranadu::selectTime( ): </SPAN>This function limits the time range
+of the resulting data.frame to be between the times that are specified
+in HHMMSS format (hours, minutes, seconds). This is equivalent to
+using &ldquo;dplyr::filter( )&rdquo; with limits on the accepted times, but
+it avoids the need to provide those times in the POSIXct format used
+by Ranadu data.frames. It preserves attributes and is suitable for
+use in pipes.
+</LI>
+<LI><SPAN  CLASS="texttt">Ranadu::Rsubset( ): </SPAN>This is not used in the present example
+but could be. It accepts start and end times like &ldquo;selectTime&rdquo;,
+selects variables like &ldquo;dplyr::select&rdquo;, and imposes limitations
+on the data like &ldquo;dplyr::filter( )&rdquo;, so several functions could
+be combined in one step: Ranadu::getNetCDF(fname, Variables) %&gt;%
+Ranadu::Rsubset(220500, 221500, c('ATX', 'DPXC')) %&gt;% plotWAC( ).
+This function also preserves attributes in the modified data.frame.
+</LI>
+</OL><FONT COLOR="#585858">
+&ldquo;Ranadu::plotWAC( )&rdquo; is designed primarily for time-series plots,
+but scatterplots can also be generated. In that case, the first two
+variables in the data.frame should be the variables for the scatterplot,
+not the Time variable, and an explicit label &ldquo;xlab=xxx&rdquo; should
+be supplied. Here is an example:
+</FONT>
+<P>
+<FONT COLOR="#585858">
+<FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<P>
 
-<p style="margin-bottom: 0in; line-height: 100%"><a name="fig:layout-example"></a><a name="752"></a>
-<br/>
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue2421">Data</SPAN> <SPAN ID="hue2423">%&gt;%</SPAN> <SPAN ID="hue2425"><SPAN &nbsp;CLASS="textbf">selectTime</SPAN></SPAN><SPAN ID="hue2428">(</SPAN><SPAN ID="hue2430">220000</SPAN><SPAN ID="hue2432">,</SPAN> <SPAN ID="hue2434">221500</SPAN><SPAN ID="hue2436">)</SPAN> <SPAN ID="hue2438">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2440">dplyr</SPAN><SPAN ID="hue2442">::</SPAN><SPAN ID="hue2444"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue2447">(ATX, DPXC)</SPAN> <SPAN ID="hue2449">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2451"><SPAN &nbsp;CLASS="textbf">plotWAC</SPAN></SPAN><SPAN ID="hue2454">(</SPAN><SPAN ID="hue2456">xlab</SPAN><SPAN ID="hue2458">=</SPAN><SPAN ID="hue2460">'ATX'</SPAN><SPAN ID="hue2462">,</SPAN> <SPAN ID="hue2464">type</SPAN><SPAN ID="hue2466">=</SPAN><SPAN ID="hue2468">'p'</SPAN><SPAN ID="hue2470">)</SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<FONT COLOR="#585858"><HR></FONT>
+<DIV class="CENTER"><A ID="fig:scat-ex"></A><A ID="625"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure 4.2:</STRONG>
+Example scatterplot.</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./scat-ex-1.png"
+ ALT="Image scat-ex-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
 
-</p>
-<p align="center" style="margin-bottom: 0in"><strong>Figure 4.3:</strong>
-Two-panel figure.</p>
-<center>
-	<table cellpadding="2" cellspacing="2">
-		<tr>
-			<td style="border: none; padding: 0in"><p align="center"><img src="layout-example-1.png" name="Image6" alt="Image layout-example-1" align="bottom" width="432" height="360" border="0"/>
+<P></TD></TR>
+</TABLE>
+</DIV>
 
-								</p>
-			</td>
-		</tr>
-	</table>
-</center>
-<h2 class="western"><a name="SECTION00422000000000000000"></a>4.2.2
-Panels and Facets in ggplotWAC( ): 
-</h2>
-<p><font color="#585858">The function Ranadu::ggplotWAC( ) is based
-on the ggplot2 package for R, which provides extensive plotting
-capabilities and is highly recommended. What is provided via
-ggplotWAC( ) is a very simplified and restricted approach, but it
-might be useful in preliminary applications. See <a href="http://had.co.nz/ggplot2/">this
-URL</a> for information on ggplot2. The Ranadu routine provides two
-approaches to multiple plots: </font>
-</p>
-<ul>
-	<li><p style="margin-bottom: 0in">“facets”: If the argument
-	“panels” is supplied (e.g., panels=N), ggplotWAC( ) will
-	construct N vertically aligned panels. All will contain time-series
-	plots. The first-argument to ggplotWAC(), the data.frame, should
-	contain the variable “Time” and N*M variables, where the first M
-	variables will be plotted in the first panel, the next M in the
-	second panel, etc. A set of M character-mode labels should be
-	supplied via labelN. 
-	</p>
-	<li><p>“viewports”: An optional argument “position=c(i, j)”
-	can be used to place a plot in the ith of j vertically aligned
-	viewports. 
-	</p>
-</ul>
-<p><a name="tex2html11"></a><font color="#585858">Examples are shown
-in Figs.&nbsp;<a href="#fig:gg-facets">4.4</a> and <a href="#fig:gg-viewports">4.5</a>.
+<P>
+
+<P>
+</FONT></FONT>
+<H1><A ID="SECTION00420000000000000000">
+<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">2</SPAN> Multi-Frame Plots</A>
+</H1><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">It is often desirable to combine several plots into a single plot.
+There are several ways to do this with Ranadu routines:
+</FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT>
+<H2><A ID="SECTION00421000000000000000">
+<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">1</SPAN> Multiple plotWAC( ) plots:</A>
+</H2><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">The &ldquo;layout()&rdquo; function in base-R can be used. Here is an example.
+The matrix layout can also be used to display plots in multiple columns
+or in multiple rows and columns.
+</FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
+</FONT></FONT><FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<P>
+
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue2472"><SPAN &nbsp;CLASS="textbf">layout</SPAN></SPAN><SPAN ID="hue2475">(</SPAN><SPAN ID="hue2477"><SPAN &nbsp;CLASS="textbf">matrix</SPAN></SPAN><SPAN ID="hue2480">(</SPAN><SPAN ID="hue2482">1</SPAN><SPAN ID="hue2484">:</SPAN><SPAN ID="hue2486">2</SPAN><SPAN ID="hue2488">,</SPAN> <SPAN ID="hue2490">ncol</SPAN><SPAN ID="hue2492">=</SPAN><SPAN ID="hue2494">1</SPAN><SPAN ID="hue2496">),</SPAN> <SPAN ID="hue2498">widths</SPAN><SPAN ID="hue2500">=</SPAN><SPAN ID="hue2502"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2505">(</SPAN><SPAN ID="hue2507">8</SPAN><SPAN ID="hue2509">,</SPAN><SPAN ID="hue2511">8</SPAN><SPAN ID="hue2513">),</SPAN> <SPAN ID="hue2515">heights</SPAN><SPAN ID="hue2517">=</SPAN><SPAN ID="hue2519"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2522">(</SPAN><SPAN ID="hue2524">5.5</SPAN><SPAN ID="hue2526">,</SPAN><SPAN ID="hue2528">8</SPAN><SPAN ID="hue2530">))</SPAN>
+<BR><SPAN ID="hue2532">op</SPAN> <SPAN ID="hue2534">&lt;-</SPAN> <SPAN ID="hue2536"><SPAN &nbsp;CLASS="textbf">par</SPAN></SPAN> <SPAN ID="hue2539">(</SPAN><SPAN ID="hue2541">mar</SPAN><SPAN ID="hue2543">=</SPAN><SPAN ID="hue2545"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2548">(</SPAN><SPAN ID="hue2550">2</SPAN><SPAN ID="hue2552">,</SPAN><SPAN ID="hue2554">4</SPAN><SPAN ID="hue2556">,</SPAN><SPAN ID="hue2558">1</SPAN><SPAN ID="hue2560">,</SPAN><SPAN ID="hue2562">1</SPAN><SPAN ID="hue2564">)</SPAN><SPAN ID="hue2566">+</SPAN><SPAN ID="hue2568">0.1</SPAN><SPAN ID="hue2570">,</SPAN> <SPAN ID="hue2572">oma</SPAN><SPAN ID="hue2574">=</SPAN><SPAN ID="hue2576"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2579">(</SPAN><SPAN ID="hue2581">1.1</SPAN><SPAN ID="hue2583">,</SPAN><SPAN ID="hue2585">0</SPAN><SPAN ID="hue2587">,</SPAN><SPAN ID="hue2589">0</SPAN><SPAN ID="hue2591">,</SPAN><SPAN ID="hue2593">0</SPAN><SPAN ID="hue2595">))</SPAN>
+<BR><SPAN ID="hue2597">Data</SPAN> <SPAN ID="hue2599">%&gt;%</SPAN> <SPAN ID="hue2601">dplyr</SPAN><SPAN ID="hue2603">::</SPAN><SPAN ID="hue2605"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue2608">(Time, ATX)</SPAN> <SPAN ID="hue2610">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2612"><SPAN &nbsp;CLASS="textbf">plotWAC</SPAN></SPAN><SPAN ID="hue2615">(</SPAN><SPAN ID="hue2617">ylab</SPAN><SPAN ID="hue2619">=</SPAN><SPAN ID="hue2621"><SPAN &nbsp;CLASS="textbf">expression</SPAN></SPAN><SPAN ID="hue2624">(</SPAN><SPAN ID="hue2626"><SPAN &nbsp;CLASS="textbf">paste</SPAN></SPAN><SPAN ID="hue2629">(</SPAN><SPAN ID="hue2631">&#34;T [&#34;</SPAN><SPAN ID="hue2633">, degree,</SPAN> <SPAN ID="hue2635">&#34;C]&#34;</SPAN><SPAN ID="hue2637">)))</SPAN>
+<BR><SPAN ID="hue2639">op</SPAN> <SPAN ID="hue2641">&lt;-</SPAN> <SPAN ID="hue2643"><SPAN &nbsp;CLASS="textbf">par</SPAN></SPAN> <SPAN ID="hue2646">(</SPAN><SPAN ID="hue2648">mar</SPAN><SPAN ID="hue2650">=</SPAN><SPAN ID="hue2652"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2655">(</SPAN><SPAN ID="hue2657">5</SPAN><SPAN ID="hue2659">,</SPAN><SPAN ID="hue2661">4</SPAN><SPAN ID="hue2663">,</SPAN><SPAN ID="hue2665">1</SPAN><SPAN ID="hue2667">,</SPAN><SPAN ID="hue2669">1</SPAN><SPAN ID="hue2671">)</SPAN><SPAN ID="hue2673">+</SPAN><SPAN ID="hue2675">0.1</SPAN><SPAN ID="hue2677">)</SPAN>
+<BR><SPAN ID="hue2679">Data</SPAN> <SPAN ID="hue2681">%&gt;%</SPAN> <SPAN ID="hue2683">dplyr</SPAN><SPAN ID="hue2685">::</SPAN><SPAN ID="hue2687"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue2690">(Time, WIC)</SPAN> <SPAN ID="hue2692">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2694"><SPAN &nbsp;CLASS="textbf">plotWAC</SPAN></SPAN><SPAN ID="hue2697">(</SPAN><SPAN ID="hue2699">ylab</SPAN><SPAN ID="hue2701">=</SPAN><SPAN ID="hue2703"><SPAN &nbsp;CLASS="textbf">expression</SPAN></SPAN><SPAN ID="hue2706">(</SPAN><SPAN ID="hue2708"><SPAN &nbsp;CLASS="textbf">paste</SPAN></SPAN><SPAN ID="hue2711">(</SPAN><SPAN ID="hue2713">'W [m/s]'</SPAN><SPAN ID="hue2715">)))</SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<FONT COLOR="#585858"><HR></FONT>
+<DIV class="CENTER"><A ID="fig:layout-example"></A><A ID="756"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure 4.3:</STRONG>
+Two-panel figure.</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./layout-example-1.png"
+ ALT="Image layout-example-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
+
+<P></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<P>
+</FONT>
+<H2><A ID="SECTION00422000000000000000">
+<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">2</SPAN> Panels and Facets in ggplotWAC( ):</A>
+</H2><FONT COLOR="#585858"></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858">The function <SPAN  CLASS="texttt">Ranadu::ggplotWAC( )</SPAN> is based on the ggplot2
+package for R, which provides extensive plotting capabilities and
+is highly recommended. What is provided via ggplotWAC( ) is a very
+simplified and restricted approach, but it might be useful in preliminary
+applications. See <a href="http://had.co.nz/ggplot2/">this URL</a> for
+information on ggplot2. The Ranadu routine provides two approaches
+to multiple plots:
+</FONT></FONT>
+<UL>
+<LI>&ldquo;facets&rdquo;: If the argument &ldquo;panels&rdquo; is supplied
+(e.g., panels=N), ggplotWAC( ) will construct N vertically aligned
+panels. All will contain time-series plots. The first-argument to
+ggplotWAC(), the data.frame, should contain the variable &ldquo;Time&rdquo;
+and N*M variables, where the first M variables will be plotted in
+the first panel, the next M in the second panel, etc. A set of M character-mode
+labels should be supplied via labelN.
+</LI>
+<LI>&ldquo;viewports&rdquo;: An optional argument &ldquo;position=c(i,
+j)&rdquo; can be used to place a plot in the ith of j vertically aligned
+viewports.
+</LI>
+</UL><FONT COLOR="#585858"><FONT COLOR="#585858">
+Examples are shown in Figs.&nbsp;<A HREF="#fig:gg-facets">4.4</A> and <A HREF="#fig:gg-viewports">4.5</A>.
 An advantage of the faceted plot is that vertical alignment of the
 plots is ensured; this can be a problem with other plots if the axis
-labels are of different size in the different plots.</font><a href="footnode.html#foot767"><font color="#585858"><sup>4.2</sup></font></a><font color="#585858">
-In the second case, the viewports are positioned so that the abscissa
-labels and title are obscured for the top plot. The intent is that
-this should be used for identical time scales for each plot, so that
-it is not necessary to duplicate the axis labels and title. </font>
-</p>
-<hr/>
-
-<p><font color="#585858">## Generating R code: </font>
-</p>
-<p align="left" style="margin-bottom: 0in"><a name="hue2724"></a><a name="hue2726"></a><a name="hue2728"></a><a name="hue2730"></a><a name="hue2733"></a><a name="hue2735"></a><a name="hue2737"></a><a name="hue2739"></a><a name="hue2741"></a><a name="hue2743"></a><a name="hue2746"></a><a name="hue2748"></a><a name="hue2750"></a><a name="hue2752"></a><a name="hue2754"></a><a name="hue2756"></a><a name="hue2758"></a><a name="hue2760"></a><a name="hue2762"></a><a name="hue2764"></a><a name="hue2766"></a><a name="hue2768"></a><a name="hue2770"></a><a name="hue2772"></a><a name="hue2774"></a><a name="hue2776"></a><a name="hue2779"></a><a name="hue2781"></a><a name="hue2783"></a><a name="hue2785"></a><a name="hue2788"></a><a name="hue2790"></a><a name="hue2792"></a><a name="hue2795"></a><a name="hue2797"></a><a name="hue2800"></a><a name="hue2802"></a><a name="hue2804"></a><a name="hue2806"></a><a name="hue2808"></a><a name="hue2810"></a><a name="hue2812"></a><a name="hue2815"></a><a name="hue2817"></a><a name="hue2819"></a><a name="hue2821"></a><a name="hue2823"></a><a name="hue2825"></a><a name="hue2827"></a><a name="hue2829"></a><a name="hue2832"></a><a name="hue2834"></a><a name="hue2836"></a><a name="hue2838"></a><a name="hue2840"></a><a name="hue2842"></a><a name="hue2844"></a><a name="hue2846"></a><a name="hue2848"></a><a name="hue2850"></a><a name="hue2853"></a><a name="hue2855"></a><a name="hue2858"></a><a name="hue2860"></a><a name="hue2862"></a><a name="hue2864"></a><a name="hue2866"></a><a name="hue2868"></a><a name="hue2870"></a><a name="hue2872"></a><a name="hue2875"></a><a name="hue2877"></a><a name="hue2879"></a><a name="hue2881"></a><a name="hue2883"></a><a name="hue2885"></a><a name="hue2887"></a><a name="hue2889"></a><a name="hue2891"></a><a name="hue2893"></a><a name="hue2896"></a><a name="hue2898"></a><a name="hue2900"></a><a name="hue2902"></a><a name="hue2904"></a><a name="hue2906"></a><a name="hue2908"></a><a name="hue2910"></a><a name="hue2912"></a><a name="hue2914"></a><a name="hue2917"></a><a name="hue2919"></a><a name="hue2921"></a><a name="hue2923"></a><a name="hue2925"></a><a name="hue2927"></a><a name="hue2929"></a><a name="hue2931"></a><a name="hue2934"></a><a name="hue2936"></a><a name="hue2938"></a><a name="hue2940"></a><a name="hue2942"></a><a name="hue2944"></a><a name="hue2946"></a><a name="hue2948"></a><a name="hue2950"></a><a name="hue2952"></a><a name="hue2955"></a><a name="hue2957"></a><a name="hue2959"></a><a name="hue2961"></a><a name="hue2963"></a><a name="hue2965"></a><a name="hue2967"></a>
-<font color="#585858"><font face="monospace"><font color="#55aa55">Project</font>
-&lt;- <font color="#bc5a65">'WECAN'</font> &nbsp;&nbsp;&nbsp;##
-faceted plot with ggplotWAC() <br/>
-<font color="#af0f91">Flight</font>
-&lt;- <font color="#af0f91">5</font> <br/>
-V <font color="#af0f91">&lt;-</font>
-c('ATH1', 'ATH2'<font color="#317ecc">,</font> 'ATF1'<font color="#317ecc">,</font>
-'RTH1'<font color="#55aa55">,</font> 'RTH2'<font color="#bc5a65">,</font>
-'RTF1') <br/>
-fname &lt;- sprintf<font color="#317ecc">(</font>'%s%s/%srf%02d.nc'<font color="#55aa55">,</font>
-DataDirectory(), Project, Project, <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flight)
-<br/>
-<font color="#af0f91">suppressWarnings</font> (
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;getNetCDF(fname, V, 200000<font color="#ad95af">,</font>
-201500) %&gt;% <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;ggplotWAC(panels=2,
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col=<font color="#bc5a65">c</font>(<font color="#bc5a65">'blue'</font>,
-'darkorange', 'forestgreen'),
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ylab<font color="#af0f91">=</font>expression(paste('temperature
-[', degree,'C]'<font color="#bc5a65">)),</font>
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lwd=c<font color="#bc5a65">(</font>1.5,
-0.8, 1), lty=<font color="#000000">c</font>(1,2<font color="#000000">,</font><font color="#bc5a65">1</font>),
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;labelP=c(<font color="#bc5a65">'
-&nbsp;&nbsp;air temperature'</font>, ' recovery temperature'),
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;labelL=<font color="#55aa55">c</font>('H1',
-'H2', 'F1'<font color="#000000">),</font>
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#bc5a65">legend.position</font>=c<font color="#bc5a65">(</font>0.5,0.95)
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;) <br/>
-<font color="#bc5a65">)</font> </font></font>
-</p>
-<hr/>
-
-<p style="margin-bottom: 0in; line-height: 100%"><a name="fig:gg-facets"></a><a name="894"></a>
-<br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><strong>Figure 4.4:</strong>
-Example of a faceted ggplotWAC plot. Three temperature measurements
-are shown from probes identified as H1, H2, and F2. The top panel
-shows the air temperature, and the bottom panel the directly measured
-recovery temperature before correction for dynamic heating.</p>
-<center>
-	<table cellpadding="2" cellspacing="2">
-		<tr>
-			<td style="border: none; padding: 0in"><p align="center"><img src="gg-facets-1.png" name="Image7" alt="Image gg-facets-1" align="bottom" width="432" height="360" border="0"/>
-
-								</p>
-			</td>
-		</tr>
-	</table>
-</center>
-<hr/>
-
-<p><font color="#585858">## Generating R code: </font>
-</p>
-<p align="left" style="margin-bottom: 0in"><a name="hue2969"></a><a name="hue2972"></a><a name="hue2974"></a><a name="hue2976"></a><a name="hue2979"></a><a name="hue2981"></a><a name="hue2983"></a><a name="hue2985"></a><a name="hue2987"></a><a name="hue2989"></a><a name="hue2992"></a><a name="hue2994"></a><a name="hue2997"></a><a name="hue2999"></a><a name="hue3002"></a><a name="hue3004"></a><a name="hue3006"></a><a name="hue3008"></a><a name="hue3011"></a><a name="hue3013"></a><a name="hue3015"></a><a name="hue3017"></a><a name="hue3019"></a><a name="hue3021"></a><a name="hue3024"></a><a name="hue3026"></a><a name="hue3029"></a><a name="hue3031"></a><a name="hue3034"></a><a name="hue3036"></a><a name="hue3038"></a><a name="hue3040"></a><a name="hue3043"></a><a name="hue3045"></a><a name="hue3047"></a><a name="hue3049"></a><a name="hue3051"></a>
-<font color="#585858"><font face="monospace">## viewport-plot with
-ggplotWAC() <br/>
-<font color="#55aa55">DG</font> &lt;-
-<font color="#000000">getNetCDF</font>(fname, V, 200000<font color="#bc5a65">,</font>
-201500) <br/>
-with<font color="#55aa55">(DG,</font>
-ggplotWAC(data.frame<font color="#bc5a65">(Time, ATH1),</font>
-position=c(1,2))) <br/>
-with<font color="#000000">(DG,</font>
-ggplotWAC(data.frame(Time, ATF1), position=c(2,2<font color="#bc5a65">)))</font>
-</font></font>
-</p>
-<hr/>
-
-<p style="margin-bottom: 0in; line-height: 100%"><a name="fig:gg-viewports"></a><a name="947"></a>
-<br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><strong>Figure 4.5:</strong>
-An example of selecting the figure position using viewports and the
-&quot;position&quot; argument to ggplotWAC().</p>
-<center>
-	<table cellpadding="2" cellspacing="2">
-		<tr>
-			<td style="border: none; padding: 0in"><p align="center"><img src="gg-viewports-1.png" name="Image8" alt="Image gg-viewports-1" align="bottom" width="432" height="360" border="0"/>
-
-								</p>
-			</td>
-		</tr>
-	</table>
-</center>
-<h1 class="western"><a name="SECTION00430000000000000000"></a>4.3
-Plotting the density of events 
-</h1>
-<p><font color="#585858">A scatterplot like that in Fig.&nbsp;<a href="#fig:scat-ex">4.2</a>
-often is used to show a two-dimensional display of where events
-occur. Such plots are useful when the number of events is small, but
-for large numbers of events the overlap of points can obscure
-relationships. The base-R function “smoothScatter()” is one
-option for plotting the density of points in such cases. Another is
-the “filled.contour()” function. Ranadu provides a third option
-in the function Ranadu::contourPlot(). The number of bins, colors,
-and linear vs.&nbsp;logarithmic density intervals can be provided as
-arguments to this function, although the defaults often work
-acceptably. The following figure and code illustrates the use of this
-plot. Additional more elegant solutions are provided by the ggplot2
-package. </font>
-</p>
-<hr/>
-
-<p><font color="#585858">## Generating R code: </font>
-</p>
-<p align="left" style="margin-bottom: 0in"><a name="hue3053"></a><a name="hue3056"></a><a name="hue3058"></a><a name="hue3060"></a><a name="hue3062"></a><a name="hue3064"></a><a name="hue3067"></a><a name="hue3069"></a><a name="hue3071"></a><a name="hue3074"></a><a name="hue3076"></a><a name="hue3078"></a><a name="hue3080"></a><a name="hue3082"></a>
-<font color="#585858"><font face="monospace">getNetCDF<font color="#317ecc">(fname)</font>
-%&gt;% <font color="#317ecc">dplyr</font>::<font color="#000000">select</font>(ATX,
-DPXC) %&gt;% <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#bc5a65">contourPlot</font>(<font color="#000000">title</font>=<font color="#000000">'WECAN
-flight #5'</font><font color="#bc5a65">)</font> </font></font>
-</p>
-<hr/>
-
-<p style="margin-bottom: 0in; line-height: 100%"><a name="fig:contourPlot"></a><a name="979"></a>
-<br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><br/>
-
-</p>
-<p align="left" style="margin-bottom: 0in"><strong>Figure 4.6:</strong>
-Example of a density plot generated using Ranadu::contourPlot().</p>
-<center>
-	<table cellpadding="2" cellspacing="2">
-		<tr>
-			<td style="border: none; padding: 0in"><p align="center"><img src="contourPlot-1.png" name="Image9" alt="Image contourPlot-1" align="bottom" width="432" height="360" border="0"/>
-
-								</p>
-			</td>
-		</tr>
-	</table>
-</center>
-<h1 class="western"><a name="SECTION00440000000000000000"></a>4.4
-Error bars and box-and-whisker plots 
-</h1>
-<p><font color="#585858">Ranadu provides the “binStats()”
-function to compile variable characteristics needed to generate plots
-like error-bar plots and box-and-whisker plots. The input should be a
-data.frame whose first two columns specify the expected respective
-ordinate and abscissa variables. Each row in the data.frame is
-assigned to a bin on the basis of the value of the second variable,
-and for each bin the mean, standard deviation, and number of events
-are accumulated for values of the first variable in the data.frame.
-The output from binStats() is a new four-column data.frame where the
-respective columns are the mean value of the abscissa for each bin,
-the mean value of the ordinate for all events in the bin, and
-corresponding standard deviation, and the number of events in the
-bin. </font>
-</p>
-<hr/>
-
-<p><font color="#585858">## Generating R code: </font>
-</p>
-<p align="left" style="margin-bottom: 0in"><a name="hue3084"></a><a name="hue3087"></a><a name="hue3089"></a><a name="hue3091"></a><a name="hue3094"></a><a name="hue3096"></a><a name="hue3098"></a><a name="hue3100"></a><a name="hue3102"></a><a name="hue3104"></a><a name="hue3106"></a><a name="hue3109"></a><a name="hue3111"></a><a name="hue3113"></a><a name="hue3116"></a><a name="hue3118"></a><a name="hue3120"></a><a name="hue3123"></a><a name="hue3125"></a><a name="hue3127"></a><a name="hue3130"></a><a name="hue3132"></a><a name="hue3135"></a><a name="hue3137"></a><a name="hue3139"></a><a name="hue3141"></a><a name="hue3143"></a><a name="hue3146"></a><a name="hue3148"></a><a name="hue3151"></a><a name="hue3153"></a><a name="hue3155"></a><a name="hue3157"></a><a name="hue3159"></a><a name="hue3161"></a><a name="hue3163"></a><a name="hue3165"></a><a name="hue3167"></a><a name="hue3170"></a><a name="hue3172"></a><a name="hue3175"></a><a name="hue3177"></a><a name="hue3179"></a><a name="hue3181"></a><a name="hue3183"></a><a name="hue3185"></a><a name="hue3187"></a><a name="hue3189"></a><a name="hue3191"></a><a name="hue3193"></a><a name="hue3195"></a><a name="hue3198"></a><a name="hue3200"></a><a name="hue3202"></a><a name="hue3204"></a><a name="hue3206"></a><a name="hue3209"></a><a name="hue3211"></a><a name="hue3214"></a><a name="hue3216"></a><a name="hue3219"></a><a name="hue3221"></a><a name="hue3223"></a><a name="hue3225"></a><a name="hue3227"></a><a name="hue3229"></a><a name="hue3231"></a><a name="hue3234"></a>
-<font color="#585858"><font face="monospace">getNetCDF<font color="#000000">(fname)</font>
-<font color="#bc5a65">%&gt;%</font> <br/>
-&nbsp;&nbsp;Rmutate<font color="#55aa55">(</font>DPD<font color="#af0f91">=ATX</font>-<font color="#000000">DPXC)</font>
-<font color="#bc5a65">%&gt;%</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;##
-define dew-point-depression variable <br/>
-&nbsp;&nbsp;<font color="#000000">dplyr</font><font color="#bc5a65">::</font>select<font color="#bc5a65">(DPD,
-GGALT)</font> %&gt;% <br/>
-&nbsp;&nbsp;binStats() <font color="#55aa55">%&gt;%</font>
-<br/>
-&nbsp;&nbsp;ggplot(aes(<font color="#af0f91">x</font>=xc)) <font color="#000000">+</font>
-<font color="#bc5a65">geom_point</font>(aes(y=ybar), color='blue') +
-<br/>
-&nbsp;&nbsp;geom_errorbar(aes(ymin=ybar-sigma,
-<font color="#000000">ymax</font><font color="#bc5a65">=ybar</font>+sigma))
-+ <br/>
-&nbsp;&nbsp;xlab(<font color="#000000">'geometric altitude
-[m]'</font><font color="#bc5a65">)</font> +
-<br/>
-&nbsp;&nbsp;ylab(<font color="#af0f91">expression</font>(paste('dew
-point depression [', degree, 'C]'))) <font color="#317ecc">+</font>
-<br/>
-&nbsp;&nbsp;theme_WAC() </font></font>
-</p>
-<hr/>
-
-<p style="margin-bottom: 0in; line-height: 100%"><a name="fig:errorbar-plot"></a><a name="1064"></a>
-<br/>
-
-</p>
-<p align="center" style="margin-bottom: 0in"><strong>Figure 4.7:</strong>
-Example of an error-bar plot generated using binStats().</p>
-<center>
-	<table cellpadding="2" cellspacing="2">
-		<tr>
-			<td style="border: none; padding: 0in"><p align="center"><img src="errorbar-plot-1.png" name="Image10" alt="Image errorbar-plot-1" align="bottom" width="432" height="252" border="0"/>
-
-								</p>
-			</td>
-		</tr>
-	</table>
-</center>
-<p><font color="#585858">The following code creates Fig.&nbsp;<a href="#fig:bwplot">4.8</a>,
-an example of creating a box-and-whisker plot. When used with the
-argument “addBin = TRUE”, binStats instead returns a modified
-data.frame with a variable “BIN” added that is suitable to use
-when grouping in ggplot aesthetics. </font>
-</p>
-<hr/>
-
-<p><font color="#585858">## Generating R code: </font>
-</p>
-<p align="left" style="margin-bottom: 0in"><a name="hue3236"></a><a name="hue3239"></a><a name="hue3241"></a><a name="hue3243"></a><a name="hue3245"></a><a name="hue3247"></a><a name="hue3250"></a><a name="hue3252"></a><a name="hue3254"></a><a name="hue3257"></a><a name="hue3259"></a><a name="hue3261"></a><a name="hue3263"></a><a name="hue3265"></a><a name="hue3267"></a><a name="hue3269"></a><a name="hue3272"></a><a name="hue3274"></a><a name="hue3276"></a><a name="hue3279"></a><a name="hue3281"></a><a name="hue3284"></a><a name="hue3286"></a><a name="hue3288"></a><a name="hue3290"></a><a name="hue3292"></a><a name="hue3294"></a><a name="hue3296"></a><a name="hue3298"></a><a name="hue3300"></a><a name="hue3302"></a><a name="hue3304"></a><a name="hue3306"></a><a name="hue3308"></a><a name="hue3311"></a>
-<font color="#585858"><font face="monospace">getNetCDF(fname) <font color="#000000">%&gt;%</font>
-<br/>
-&nbsp;&nbsp;<font color="#bc5a65">dplyr</font>::select(DPXC,
-GGALT) <font color="#af0f91">%&gt;%</font> <br/>
-&nbsp;&nbsp;binStats(addBin
-= <font color="#55aa55">TRUE</font>) <font color="#af0f91">%&gt;%</font>
-<br/>
-&nbsp;&nbsp;ggplot() + geom_boxplot<font color="#55aa55">(</font>aes(GGALT,
-DPXC, group=BIN), <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color<font color="#317ecc">=</font>'blue'<font color="#bc5a65">,</font>
-na.rm=TRUE) + <br/>
-&nbsp;&nbsp;theme_WAC() </font></font>
-</p>
-<hr/>
-
-<p style="margin-bottom: 0in; line-height: 100%"><a name="fig:bwplot"></a><a name="1115"></a>
-<br/>
-
-</p>
-<p align="center" style="margin-bottom: 0in"><strong>Figure 4.8:</strong>
-An example of a box-and-whisker plot.</p>
-<center>
-	<table cellpadding="2" cellspacing="2">
-		<tr>
-			<td style="border: none; padding: 0in"><p align="center"><img src="bwplot-1.png" name="Image11" alt="Image bwplot-1" align="bottom" width="432" height="360" border="0"/>
-
-								</p>
-			</td>
-		</tr>
-	</table>
-</center>
-<h1 class="western"><a name="SECTION00450000000000000000"></a>4.5 The
-skew-T thermodynamic diagram 
-</h1>
-<p><font color="#585858">Ranadu incorporates the ability to plot a
-set of measurements on the background of a skew-T diagram. The
-background is non-standard and is described in detail in <a href="https://drive.google.com/file/d/0B1kIUH45ca5ANVNoMnowUlhpYk0/view%3Fusp%3Dsharing">this
-document</a>. The “Ranadu::SkewTSounding()” function should be
-called with a data.frame containing measurements of pressure,
-temperature and dewpoint, which may be named either (“PSXC”,
-“ATX”, “DPXC”) or (“Pressure”, “Temperature”,
-“DewPoint”). A skew-T background is generated using the Ranadu
-data file “skewTDiagram.Rdata” and the values from the input
-data.frame are optionally averaged in pressure intervals and then
-plotted on this background. Figure&nbsp;<a href="#fig:skewT">4.9</a>
-is an example of this plot. </font>
-</p>
-<hr/>
-
-<p><font color="#585858">## Generating R code: </font>
-</p>
-<p align="left"><a name="hue3313"></a><a name="hue3315"></a><a name="hue3317"></a><a name="hue3319"></a><a name="hue3321"></a><a name="hue3323"></a><a name="hue3325"></a><a name="hue3327"></a><a name="hue3329"></a><a name="hue3332"></a><a name="hue3334"></a><a name="hue3336"></a><a name="hue3338"></a><a name="hue3341"></a><a name="hue3343"></a><a name="hue3345"></a><a name="hue3348"></a><a name="hue3350"></a><a name="hue3352"></a><a name="hue3355"></a><a name="hue3357"></a><a name="hue3359"></a><a name="hue3361"></a><a name="hue3363"></a><a name="hue3365"></a><a name="hue3367"></a><a name="hue3370"></a><a name="hue3372"></a><a name="hue3374"></a><a name="hue3376"></a><a name="hue3378"></a>
-<font color="#585858"><font face="monospace"><font color="#000000">Project</font>
-<font color="#bc5a65">&lt;-</font> 'PREDICT' <br/>
-Flight &lt;- 11
-<br/>
-fname &lt;- sprintf ('%s%s/%srf%02d.nc', DataDirectory(),
-Project, <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#55aa55">Project,
-Flight)</font> <br/>
-getNetCDF(fname) %&gt;% <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;selectTime<font color="#af0f91">(</font>0<font color="#55aa55">,</font>
-150000<font color="#af0f91">)</font> %&gt;%
-<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<font color="#bc5a65">SkewTSounding</font>(<font color="#317ecc">AverageInterval</font>=<font color="#55aa55">10</font>)
-</font></font>
-</p>
-<hr/>
-
-<p style="margin-bottom: 0in; line-height: 100%"><a name="fig:skewT"></a><a name="1171"></a>
-<br/>
-
-</p>
-<p align="center" style="margin-bottom: 0in"><strong>Figure 4.9:</strong>
-Sounding from PREDICT flight 11.</p>
-<center>
-	<table cellpadding="2" cellspacing="2">
-		<tr>
-			<td style="border: none; padding: 0in"><p align="center"><img src="skewT-1.png" name="Image12" alt="Image skewT-1" align="bottom" width="432" height="360" border="0"/>
-
-								</p>
-			</td>
-		</tr>
-	</table>
-</center>
-<h1 class="western"><a name="SECTION00460000000000000000"></a>4.6
-Aerosol- and hydrometeor-size distributions 
-</h1>
-<p><font color="#585858">The Ranadu function “plotSD()” displays
-the size distribution measured by various probes that produce arrays
-of measurements. The data.frame containing these measurements is
-special in that the column corresponding to a variable name like
-“CCDP_RPC” is a two-dimensional vector. This makes the data.frame
-inconsistent with the “tidy” structure and with the structure
-required for a “tibble”, so some special considerations are
-required if an analyst wants to use only tidy data. In this section,
-those considerations are not discussed further because the “plotSD()”
-function assumes Ranadu-style data.frame conventions. </font>
-</p>
-<p><font color="#585858">“Ranadu::getNetCDF()” accepts variable
-names like “CCDP_”, in which case it searches for the first
-variable starting with that name. This avoids the need to know the
-location of the CDP probe in various projects. However, if there are
-multiple probes with the same prefix name, they need to be specified
-in the variable list used to construct the data.frame. </font>
-</p>
-<p><font color="#585858">An example, Fig.&nbsp;<a href="#fig:SD1">4.10</a>,
-shows code that will construct a plot of the size distribution from
-several probes. The “exceedance” is added when the argument
-“CDF=TRUE” is used; it is the complement to a cumulative
-distribution and shows the fraction of particles that exceed the
-plotted size. The four numbers returned from the function are the
-mean concentration, mean diameter, standard deviation in the
-diameter, and liquid water content under the assumption that all
-particles are liquid. It is also possible to construct a plot of the
-distribution in liquid water content, as shown in Fig.&nbsp;<a href="#fig:SD2">4.11</a>.
-See “?Ranadu::plotSD” for more options including alternate
-specification of the size limits, bins to include, and log vs linear
-axes. </font>
-</p>
-<hr/>
-
-<p><font color="#585858">## Generating R code: </font>
-</p>
-<p align="left" style="margin-bottom: 0in"><a name="hue3380"></a><a name="hue3383"></a><a name="hue3385"></a><a name="hue3387"></a><a name="hue3389"></a><a name="hue3392"></a><a name="hue3394"></a><a name="hue3396"></a><a name="hue3398"></a><a name="hue3400"></a><a name="hue3402"></a><a name="hue3404"></a><a name="hue3406"></a><a name="hue3408"></a><a name="hue3411"></a><a name="hue3413"></a><a name="hue3415"></a><a name="hue3417"></a><a name="hue3419"></a><a name="hue3421"></a><a name="hue3423"></a><a name="hue3426"></a><a name="hue3428"></a><a name="hue3430"></a><a name="hue3432"></a><a name="hue3434"></a><a name="hue3436"></a><a name="hue3438"></a><a name="hue3440"></a><a name="hue3442"></a><a name="hue3444"></a><a name="hue3446"></a><a name="hue3448"></a><a name="hue3450"></a>
-<font color="#585858"><font face="monospace"><font color="#af0f91">getNetCDF</font>('/Data/CSET/CSETrf06.nc',
-c<font color="#000000">(</font><font color="#bc5a65">'CCDP_'</font>,
-'C1DC_', 'CUHSAS_')) %&gt;% <br/>
-&nbsp;&nbsp;selectTime(173000,
-173500<font color="#317ecc">)</font> %&gt;% <br/>
-&nbsp;&nbsp;<font color="#55aa55">plotSD</font>(CellLimits=NA,
-logAxis='xy', CDF<font color="#55aa55">=</font>TRUE<font color="#55aa55">)</font>
-</font></font>
-</p>
-<hr/>
-
-<p style="margin-bottom: 0in; line-height: 100%"><a name="fig:SD1"></a><a name="1223"></a>
-<br/>
-
-</p>
-<p align="center" style="margin-bottom: 0in"><strong>Figure 4.10:</strong>
-Example of a size distribution.</p>
-<center>
-	<table cellpadding="2" cellspacing="2">
-		<tr>
-			<td style="border: none; padding: 0in"><p align="center"><img src="SD1-1.png" name="Image13" alt="Image SD1-1" align="bottom" width="432" height="360" border="0"/>
-
-								</p>
-			</td>
-		</tr>
-	</table>
-</center>
-<hr/>
-
-<p><font color="#585858">## Generating R code: </font>
-</p>
-<p align="left" style="margin-bottom: 0in"><a name="hue3452"></a><a name="hue3455"></a><a name="hue3457"></a><a name="hue3459"></a><a name="hue3461"></a><a name="hue3464"></a><a name="hue3466"></a><a name="hue3468"></a><a name="hue3470"></a><a name="hue3472"></a><a name="hue3474"></a><a name="hue3476"></a><a name="hue3478"></a><a name="hue3480"></a><a name="hue3483"></a><a name="hue3485"></a><a name="hue3487"></a><a name="hue3489"></a><a name="hue3491"></a><a name="hue3493"></a><a name="hue3495"></a><a name="hue3498"></a><a name="hue3500"></a><a name="hue3502"></a><a name="hue3504"></a><a name="hue3506"></a><a name="hue3508"></a><a name="hue3510"></a><a name="hue3512"></a><a name="hue3514"></a><a name="hue3516"></a><a name="hue3518"></a><a name="hue3520"></a><a name="hue3522"></a><a name="hue3524"></a><a name="hue3526"></a><a name="hue3528"></a><a name="hue3530"></a>
-<font color="#585858"><font face="monospace">getNetCDF('/Data/CSET/CSETrf06.nc'<font color="#b05a65">,</font>
-<font color="#bc5a65">c</font>(<font color="#317ecc">'CCDP_'</font>,
-<font color="#55aa55">'C1DC_'</font>, <font color="#317ecc">'CUHSAS_'</font>))
-%&gt;% <br/>
-&nbsp;&nbsp;<font color="#b05a65">selectTime</font>(173000<font color="#317ecc">,</font>
-173500<font color="#55aa55">)</font> %&gt;% <br/>
-&nbsp;&nbsp;<font color="#317ecc">plotSD</font>(CellLimits=NA,
-logAxis='xy', LWC=TRUE, CDF=TRUE) </font></font>
-</p>
-<hr/>
-
-<p style="margin-bottom: 0in; line-height: 100%"><a name="fig:SD2"></a><a name="1281"></a>
-<br/>
-
-</p>
-<p align="center" style="margin-bottom: 0in"><strong>Figure 4.11:</strong>
-Example of a distribution in liquid water content.</p>
-<center>
-	<table cellpadding="2" cellspacing="2">
-		<tr>
-			<td style="border: none; padding: 0in"><p align="center"><img src="SD2-1.png" name="Image14" alt="Image SD2-1" align="bottom" width="432" height="360" border="0"/>
-
-								</p>
-			</td>
-		</tr>
-	</table>
-</center>
-<hr/>
-
-<p style="margin-bottom: 0in"><!--Navigation Panel--><a href="node5.html">
-  <font color="#000080">
-    <img src="next.png" name="Image15" alt="next" align="bottom" width="37" height="24" border="1"/>
-  </font>
-</a>
-
-<a href="R4RAF.html">
-  <font color="#000080">
-    <img src="up.png" name="Image16" alt="up" align="bottom" width="26" height="24" border="1"/>
-  </font>
-</a>
-
-<a href="node3.html">
-  <font color="#800000">
-    <img src="prev.png" name="Image17" alt="previous" align="bottom" width="63" height="24" border="1"/>
-  </font>
-</a>
-
-<br/>
-<b>Next:</b> <a href="node5.html">5. Variance Spectra</a> <b>Up:</b>
-<a href="R4RAF.html">R4RAF</a> <b>Previous:</b> <a href="node3.html">3.
-Overview of Ranadu</a></p>
-<p style="margin-bottom: 0in"><!--End of Navigation Panel--></p>
-</body>
-</html>
+labels are of different size in the different plots. In the second
+case, the viewports are positioned so that the abscissa labels and
+title are obscured for the top plot. The intent is that this should
+be used for identical time scales for each plot, so that it is not
+necessary to duplicate the axis labels and title.
+</FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858">
+</FONT><FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<P>
+
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue2717">Project</SPAN> <SPAN ID="hue2719">&lt;-</SPAN> <SPAN ID="hue2721">'WECAN'</SPAN> &nbsp;&nbsp;&nbsp;<SPAN ID="hue2723"><SPAN &nbsp;CLASS="textit">## faceted plot with ggplotWAC()</SPAN></SPAN>
+<BR><SPAN ID="hue2726">Flight</SPAN> <SPAN ID="hue2728">&lt;-</SPAN> <SPAN ID="hue2730">5</SPAN>
+<BR><SPAN ID="hue2732">V</SPAN> <SPAN ID="hue2734">&lt;-</SPAN> <SPAN ID="hue2736"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2739">(</SPAN><SPAN ID="hue2741">'ATH1'</SPAN><SPAN ID="hue2743">,</SPAN> <SPAN ID="hue2745">'ATH2'</SPAN><SPAN ID="hue2747">,</SPAN> <SPAN ID="hue2749">'ATF1'</SPAN><SPAN ID="hue2751">,</SPAN> <SPAN ID="hue2753">'RTH1'</SPAN><SPAN ID="hue2755">,</SPAN> <SPAN ID="hue2757">'RTH2'</SPAN><SPAN ID="hue2759">,</SPAN> <SPAN ID="hue2761">'RTF1'</SPAN><SPAN ID="hue2763">)</SPAN>
+<BR><SPAN ID="hue2765">fname</SPAN> <SPAN ID="hue2767">&lt;-</SPAN> <SPAN ID="hue2769"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN><SPAN ID="hue2772">(</SPAN><SPAN ID="hue2774">'%s%s/%srf%02d.nc'</SPAN><SPAN ID="hue2776">,</SPAN> <SPAN ID="hue2778"><SPAN &nbsp;CLASS="textbf">DataDirectory</SPAN></SPAN><SPAN ID="hue2781">(), Project, Project,</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2783">Flight)</SPAN>
+<BR><SPAN ID="hue2785"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue2788">(fname, V,</SPAN> <SPAN ID="hue2790">200000</SPAN><SPAN ID="hue2792">,</SPAN> <SPAN ID="hue2794">201500</SPAN><SPAN ID="hue2796">)</SPAN> <SPAN ID="hue2798">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2800"><SPAN &nbsp;CLASS="textbf">ggplotWAC</SPAN></SPAN><SPAN ID="hue2803">(</SPAN><SPAN ID="hue2805">panels</SPAN><SPAN ID="hue2807">=</SPAN><SPAN ID="hue2809">2</SPAN><SPAN ID="hue2811">,</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2813">col</SPAN><SPAN ID="hue2815">=</SPAN><SPAN ID="hue2817"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2820">(</SPAN><SPAN ID="hue2822">'blue'</SPAN><SPAN ID="hue2824">,</SPAN> <SPAN ID="hue2826">'darkorange'</SPAN><SPAN ID="hue2828">,</SPAN> <SPAN ID="hue2830">'forestgreen'</SPAN><SPAN ID="hue2832">),</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2834">ylab</SPAN><SPAN ID="hue2836">=</SPAN><SPAN ID="hue2838"><SPAN &nbsp;CLASS="textbf">expression</SPAN></SPAN><SPAN ID="hue2841">(</SPAN><SPAN ID="hue2843"><SPAN &nbsp;CLASS="textbf">paste</SPAN></SPAN><SPAN ID="hue2846">(</SPAN><SPAN ID="hue2848">'temperature ['</SPAN><SPAN ID="hue2850">, degree,</SPAN><SPAN ID="hue2852">'C]'</SPAN><SPAN ID="hue2854">)),</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2856">lwd</SPAN><SPAN ID="hue2858">=</SPAN><SPAN ID="hue2860"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2863">(</SPAN><SPAN ID="hue2865">1.5</SPAN><SPAN ID="hue2867">,</SPAN> <SPAN ID="hue2869">0.8</SPAN><SPAN ID="hue2871">,</SPAN> <SPAN ID="hue2873">1</SPAN><SPAN ID="hue2875">),</SPAN> <SPAN ID="hue2877">lty</SPAN><SPAN ID="hue2879">=</SPAN><SPAN ID="hue2881"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2884">(</SPAN><SPAN ID="hue2886">1</SPAN><SPAN ID="hue2888">,</SPAN><SPAN ID="hue2890">2</SPAN><SPAN ID="hue2892">,</SPAN><SPAN ID="hue2894">1</SPAN><SPAN ID="hue2896">),</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2898">labelP</SPAN><SPAN ID="hue2900">=</SPAN><SPAN ID="hue2902"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2905">(</SPAN><SPAN ID="hue2907">' &nbsp;&nbsp;air temperature'</SPAN><SPAN ID="hue2909">,</SPAN> <SPAN ID="hue2911">' recovery temperature'</SPAN><SPAN ID="hue2913">),</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2915">labelL</SPAN><SPAN ID="hue2917">=</SPAN><SPAN ID="hue2919"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2922">(</SPAN><SPAN ID="hue2924">'H1'</SPAN><SPAN ID="hue2926">,</SPAN> <SPAN ID="hue2928">'H2'</SPAN><SPAN ID="hue2930">,</SPAN> <SPAN ID="hue2932">'F1'</SPAN><SPAN ID="hue2934">),</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2936">legend.position</SPAN><SPAN ID="hue2938">=</SPAN><SPAN ID="hue2940"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2943">(</SPAN><SPAN ID="hue2945">0.5</SPAN><SPAN ID="hue2947">,</SPAN><SPAN ID="hue2949">0.95</SPAN><SPAN ID="hue2951">)</SPAN>
+<BR><SPAN ID="hue2953">)</SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<FONT COLOR="#585858"><HR></FONT>
+<DIV class="CENTER"><A ID="fig:gg-facets"></A><A ID="894"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure 4.4:</STRONG>
+Example of a faceted ggplotWAC plot. Three temperature measurements are shown from probes identified as H1, H2, and F2. The top panel shows the air temperature, and the bottom panel the directly measured recovery temperature before correction for dynamic heating.</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./gg-facets-1.png"
+ ALT="Image gg-facets-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
+
+<P></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<P>
+
+<P>
+<FONT COLOR="#585858">
+<FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<P>
+
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue2955"><SPAN &nbsp;CLASS="textit">## viewport-plot with ggplotWAC()</SPAN></SPAN>
+<BR><SPAN ID="hue2958">DG</SPAN> <SPAN ID="hue2960">&lt;-</SPAN> <SPAN ID="hue2962"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue2965">(fname, V,</SPAN> <SPAN ID="hue2967">200000</SPAN><SPAN ID="hue2969">,</SPAN> <SPAN ID="hue2971">201500</SPAN><SPAN ID="hue2973">)</SPAN>
+<BR><SPAN ID="hue2975"><SPAN &nbsp;CLASS="textbf">with</SPAN></SPAN><SPAN ID="hue2978">(DG,</SPAN> <SPAN ID="hue2980"><SPAN &nbsp;CLASS="textbf">ggplotWAC</SPAN></SPAN><SPAN ID="hue2983">(</SPAN><SPAN ID="hue2985"><SPAN &nbsp;CLASS="textbf">data.frame</SPAN></SPAN><SPAN ID="hue2988">(Time, ATH1),</SPAN> <SPAN ID="hue2990">position</SPAN><SPAN ID="hue2992">=</SPAN><SPAN ID="hue2994"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2997">(</SPAN><SPAN ID="hue2999">1</SPAN><SPAN ID="hue3001">,</SPAN><SPAN ID="hue3003">2</SPAN><SPAN ID="hue3005">)))</SPAN>
+<BR><SPAN ID="hue3007"><SPAN &nbsp;CLASS="textbf">with</SPAN></SPAN><SPAN ID="hue3010">(DG,</SPAN> <SPAN ID="hue3012"><SPAN &nbsp;CLASS="textbf">ggplotWAC</SPAN></SPAN><SPAN ID="hue3015">(</SPAN><SPAN ID="hue3017"><SPAN &nbsp;CLASS="textbf">data.frame</SPAN></SPAN><SPAN ID="hue3020">(Time, ATF1),</SPAN> <SPAN ID="hue3022">position</SPAN><SPAN ID="hue3024">=</SPAN><SPAN ID="hue3026"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue3029">(</SPAN><SPAN ID="hue3031">2</SPAN><SPAN ID="hue3033">,</SPAN><SPAN ID="hue3035">2</SPAN><SPAN ID="hue3037">)))</SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<FONT COLOR="#585858"><HR></FONT>
+<DIV class="CENTER"><A ID="fig:gg-viewports"></A><A ID="947"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure 4.5:</STRONG>
+An example of selecting the figure position using viewports and the "position" argument to ggplotWAC().</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./gg-viewports-1.png"
+ ALT="Image gg-viewports-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
+
+<P></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<P>
+
+<P>
+</FONT></FONT>
+<H1><A ID="SECTION00430000000000000000">
+<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">3</SPAN> Plotting the density of events</A>
+</H1><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">A scatterplot like that in Fig.&nbsp;<A HREF="#fig:scat-ex">4.2</A> often is used
+to show a two-dimensional display of where events occur. Such plots
+are useful when the number of events is small, but for large numbers
+of events the overlap of points can obscure relationships. The base-R
+function &ldquo;smoothScatter()&rdquo; is one option for plotting the density
+of points in such cases. Another is the &ldquo;filled.contour()&rdquo; function.
+Ranadu provides a third option in the function Ranadu::contourPlot().
+The number of bins, colors, and linear vs.&nbsp;logarithmic density intervals
+can be provided as arguments to this function, although the defaults
+often work acceptably. The following figure and code illustrates the
+use of this plot. Additional more elegant solutions are provided by
+the ggplot2 package.
+</FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
+</FONT></FONT><FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<P>
+
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue3039"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue3042">(fname)</SPAN> <SPAN ID="hue3044">%&gt;%</SPAN> <SPAN ID="hue3046">dplyr</SPAN><SPAN ID="hue3048">::</SPAN><SPAN ID="hue3050"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue3053">(ATX, DPXC)</SPAN> <SPAN ID="hue3055">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3057"><SPAN &nbsp;CLASS="textbf">contourPlot</SPAN></SPAN><SPAN ID="hue3060">(</SPAN><SPAN ID="hue3062">title</SPAN><SPAN ID="hue3064">=</SPAN><SPAN ID="hue3066">'WECAN flight #5'</SPAN><SPAN ID="hue3068">)</SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<FONT COLOR="#585858"><HR></FONT>
+<DIV class="CENTER"><A ID="fig:contourPlot"></A><A ID="979"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure 4.6:</STRONG>
+Example of a density plot generated using Ranadu::contourPlot().</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./contourPlot-1.png"
+ ALT="Image contourPlot-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
+
+<P></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<P>
+
+<P>
+</FONT>
+<H1><A ID="SECTION00440000000000000000">
+<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">4</SPAN> Error bars and box-and-whisker plots</A>
+</H1><FONT COLOR="#585858"></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858">Ranadu provides the &ldquo;binStats()&rdquo; function to compile variable
+characteristics needed to generate plots like error-bar plots and
+box-and-whisker plots. The input should be a data.frame whose first
+two columns specify the expected respective ordinate and abscissa
+variables. Each row in the data.frame is assigned to a bin on the
+basis of the value of the second variable, and for each bin the mean,
+standard deviation, and number of events are accumulated for values
+of the first variable in the data.frame. The output from binStats()
+is a new four-column data.frame where the respective columns are the
+mean value of the abscissa for each bin, the mean value of the ordinate
+for all events in the bin, and corresponding standard deviation, and
+the number of events in the bin.
+</FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858">
+</FONT><FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<P>
+
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue3070"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue3073">(fname)</SPAN> <SPAN ID="hue3075">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3077"><SPAN &nbsp;CLASS="textbf">Rmutate</SPAN></SPAN><SPAN ID="hue3080">(</SPAN><SPAN ID="hue3082">DPD</SPAN><SPAN ID="hue3084">=ATX</SPAN><SPAN ID="hue3086">-</SPAN><SPAN ID="hue3088">DPXC)</SPAN> <SPAN ID="hue3090">%&gt;%</SPAN> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3092"><SPAN &nbsp;CLASS="textit">## define dew-point-depression variable</SPAN></SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3095">dplyr</SPAN><SPAN ID="hue3097">::</SPAN><SPAN ID="hue3099"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue3102">(DPD, GGALT)</SPAN> <SPAN ID="hue3104">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3106"><SPAN &nbsp;CLASS="textbf">binStats</SPAN></SPAN><SPAN ID="hue3109">()</SPAN> <SPAN ID="hue3111">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3113"><SPAN &nbsp;CLASS="textbf">ggplot</SPAN></SPAN><SPAN ID="hue3116">(</SPAN><SPAN ID="hue3118"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue3121">(</SPAN><SPAN ID="hue3123">x</SPAN><SPAN ID="hue3125">=xc))</SPAN> <SPAN ID="hue3127">+</SPAN> <SPAN ID="hue3129"><SPAN &nbsp;CLASS="textbf">geom_point</SPAN></SPAN><SPAN ID="hue3132">(</SPAN><SPAN ID="hue3134"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue3137">(</SPAN><SPAN ID="hue3139">y</SPAN><SPAN ID="hue3141">=ybar),</SPAN> <SPAN ID="hue3143">color</SPAN><SPAN ID="hue3145">=</SPAN><SPAN ID="hue3147">'blue'</SPAN><SPAN ID="hue3149">)</SPAN> <SPAN ID="hue3151">+</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3153"><SPAN &nbsp;CLASS="textbf">geom_errorbar</SPAN></SPAN><SPAN ID="hue3156">(</SPAN><SPAN ID="hue3158"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue3161">(</SPAN><SPAN ID="hue3163">ymin</SPAN><SPAN ID="hue3165">=ybar</SPAN><SPAN ID="hue3167">-</SPAN><SPAN ID="hue3169">sigma,</SPAN> <SPAN ID="hue3171">ymax</SPAN><SPAN ID="hue3173">=ybar</SPAN><SPAN ID="hue3175">+</SPAN><SPAN ID="hue3177">sigma))</SPAN> <SPAN ID="hue3179">+</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3181"><SPAN &nbsp;CLASS="textbf">xlab</SPAN></SPAN><SPAN ID="hue3184">(</SPAN><SPAN ID="hue3186">'geometric altitude [m]'</SPAN><SPAN ID="hue3188">)</SPAN> <SPAN ID="hue3190">+</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3192"><SPAN &nbsp;CLASS="textbf">ylab</SPAN></SPAN><SPAN ID="hue3195">(</SPAN><SPAN ID="hue3197"><SPAN &nbsp;CLASS="textbf">expression</SPAN></SPAN><SPAN ID="hue3200">(</SPAN><SPAN ID="hue3202"><SPAN &nbsp;CLASS="textbf">paste</SPAN></SPAN><SPAN ID="hue3205">(</SPAN><SPAN ID="hue3207">'dew point depression ['</SPAN><SPAN ID="hue3209">, degree,</SPAN> <SPAN ID="hue3211">'C]'</SPAN><SPAN ID="hue3213">)))</SPAN> <SPAN ID="hue3215">+</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3217"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue3220">()</SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<FONT COLOR="#585858"><HR></FONT>
+<DIV class="CENTER"><A ID="fig:errorbar-plot"></A><A ID="1064"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure 4.7:</STRONG>
+Example of an error-bar plot generated using binStats().</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./errorbar-plot-1.png"
+ ALT="Image errorbar-plot-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
+
+<P></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<P>
+<FONT COLOR="#585858">The following code creates Fig.&nbsp;<A HREF="#fig:bwplot">4.8</A>, an
+example of creating a box-and-whisker plot. When used with the argument
+&ldquo;addBin = TRUE&rdquo;, binStats instead returns a modified data.frame
+with a variable &ldquo;BIN&rdquo; added that is suitable to use when grouping
+in ggplot aesthetics.
+</FONT>
+<P>
+<FONT COLOR="#585858">
+<FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<P>
+
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue3222"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue3225">(fname)</SPAN> <SPAN ID="hue3227">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3229">dplyr</SPAN><SPAN ID="hue3231">::</SPAN><SPAN ID="hue3233"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue3236">(DPXC, GGALT)</SPAN> <SPAN ID="hue3238">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3240"><SPAN &nbsp;CLASS="textbf">binStats</SPAN></SPAN><SPAN ID="hue3243">(</SPAN><SPAN ID="hue3245">addBin</SPAN> <SPAN ID="hue3247">=</SPAN> <SPAN ID="hue3249">TRUE</SPAN><SPAN ID="hue3251">)</SPAN> <SPAN ID="hue3253">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3255"><SPAN &nbsp;CLASS="textbf">ggplot</SPAN></SPAN><SPAN ID="hue3258">()</SPAN> <SPAN ID="hue3260">+</SPAN> <SPAN ID="hue3262"><SPAN &nbsp;CLASS="textbf">geom_boxplot</SPAN></SPAN><SPAN ID="hue3265">(</SPAN><SPAN ID="hue3267"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue3270">(GGALT, DPXC,</SPAN> <SPAN ID="hue3272">group</SPAN><SPAN ID="hue3274">=BIN),</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3276">color</SPAN><SPAN ID="hue3278">=</SPAN><SPAN ID="hue3280">'blue'</SPAN><SPAN ID="hue3282">,</SPAN> <SPAN ID="hue3284">na.rm</SPAN><SPAN ID="hue3286">=</SPAN><SPAN ID="hue3288">TRUE</SPAN><SPAN ID="hue3290">)</SPAN> <SPAN ID="hue3292">+</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3294"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue3297">()</SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<FONT COLOR="#585858"><HR></FONT>
+<DIV class="CENTER"><A ID="fig:bwplot"></A><A ID="1115"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure 4.8:</STRONG>
+An example of a box-and-whisker plot.</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./bwplot-1.png"
+ ALT="Image bwplot-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
+
+<P></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<P>
+
+<P>
+</FONT></FONT>
+<H1><A ID="SECTION00450000000000000000">
+<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">5</SPAN> The skew-T thermodynamic diagram</A>
+</H1><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">Ranadu incorporates the ability to plot a set of measurements on the
+background of a skew-T diagram. The background is non-standard and
+is described in detail in <a href="https://WilliamCooper.github.io/blob/master/www/SkewT.pdf">this document</a>.
+The &ldquo;<SPAN  CLASS="texttt">Ranadu::SkewTSounding()</SPAN>&rdquo; function should be called
+with a data.frame containing measurements of pressure, temperature
+and dewpoint, which may be named either (&ldquo;PSXC&rdquo;, &ldquo;ATX&rdquo;, &ldquo;DPXC&rdquo;)
+or (&ldquo;Pressure&rdquo;, &ldquo;Temperature&rdquo;, &ldquo;DewPoint&rdquo;). A skew-T background
+is generated using the Ranadu data file &ldquo;skewTDiagram.Rdata&rdquo; and
+the values from the input data.frame are optionally averaged in pressure
+intervals and then plotted on this background. Figure&nbsp;<A HREF="#fig:skewT">4.9</A>
+is an example of this plot.
+</FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
+</FONT></FONT><FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<P>
+
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue3299">Project</SPAN> <SPAN ID="hue3301">&lt;-</SPAN> <SPAN ID="hue3303">'PREDICT'</SPAN>
+<BR><SPAN ID="hue3305">Flight</SPAN> <SPAN ID="hue3307">&lt;-</SPAN> <SPAN ID="hue3309">11</SPAN>
+<BR><SPAN ID="hue3311">fname</SPAN> <SPAN ID="hue3313">&lt;-</SPAN> <SPAN ID="hue3315"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN> <SPAN ID="hue3318">(</SPAN><SPAN ID="hue3320">'%s%s/%srf%02d.nc'</SPAN><SPAN ID="hue3322">,</SPAN> <SPAN ID="hue3324"><SPAN &nbsp;CLASS="textbf">DataDirectory</SPAN></SPAN><SPAN ID="hue3327">(), Project,</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3329">Project, Flight)</SPAN>
+<BR><SPAN ID="hue3331"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue3334">(fname)</SPAN> <SPAN ID="hue3336">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3338"><SPAN &nbsp;CLASS="textbf">selectTime</SPAN></SPAN><SPAN ID="hue3341">(</SPAN><SPAN ID="hue3343">0</SPAN><SPAN ID="hue3345">,</SPAN> <SPAN ID="hue3347">150000</SPAN><SPAN ID="hue3349">)</SPAN> <SPAN ID="hue3351">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3353"><SPAN &nbsp;CLASS="textbf">SkewTSounding</SPAN></SPAN><SPAN ID="hue3356">(</SPAN><SPAN ID="hue3358">AverageInterval</SPAN><SPAN ID="hue3360">=</SPAN><SPAN ID="hue3362">10</SPAN><SPAN ID="hue3364">)</SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<FONT COLOR="#585858"><HR></FONT>
+<DIV class="CENTER"><A ID="fig:skewT"></A><A ID="1167"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure 4.9:</STRONG>
+Sounding from PREDICT flight 11.</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./skewT-1.png"
+ ALT="Image skewT-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
+
+<P></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<P>
+
+<P>
+</FONT>
+<H1><A ID="SECTION00460000000000000000">
+<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">6</SPAN> Aerosol- and hydrometeor-size distributions</A>
+</H1><FONT COLOR="#585858"></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858">The Ranadu function &ldquo;plotSD()&rdquo; displays the size distribution
+measured by various probes that produce arrays of measurements. The
+data.frame containing these measurements is special in that the column
+corresponding to a variable name like &ldquo;CCDP_RPC&rdquo; is a two-dimensional
+vector. This makes the data.frame inconsistent with the &ldquo;tidy&rdquo;
+structure and with the structure required for a &ldquo;tibble&rdquo;, so some
+special considerations are required if an analyst wants to use only
+tidy data. In this section, those considerations are not discussed
+further because the &ldquo;plotSD()&rdquo; function assumes Ranadu-style data.frame
+conventions.
+</FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858">&ldquo;Ranadu::getNetCDF()&rdquo; accepts variable names like &ldquo;CCDP_&rdquo;,
+in which case it searches for the first variable starting with that
+name. This avoids the need to know the location of the CDP probe in
+various projects. However, if there are multiple probes with the same
+prefix name, they need to be specified in the variable list used to
+construct the data.frame.
+</FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858">An example, Fig.&nbsp;<A HREF="#fig:SD1">4.10</A>, shows code that will construct a
+plot of the size distribution from several probes. The &ldquo;exceedance&rdquo;
+is added when the argument &ldquo;CDF=TRUE&rdquo; is used; it is the complement
+to a cumulative distribution and shows the fraction of particles that
+exceed the plotted size. The four numbers returned from the function
+are the mean concentration, mean diameter, standard deviation in the
+diameter, and liquid water content under the assumption that all particles
+are liquid. It is also possible to construct a plot of the distribution
+in liquid water content, as shown in Fig.&nbsp;<A HREF="#fig:SD2">4.11</A>. See &ldquo;?Ranadu::plotSD&rdquo;
+for more options including alternate specification of the size limits,
+bins to include, and log vs linear axes.
+</FONT></FONT>
+<P>
+<FONT COLOR="#585858"></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858">
+</FONT><FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<P>
+
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue3366"><SPAN &nbsp;CLASS="textit"># assignment to A just suppresses printing of the list returned from plotSD</SPAN></SPAN>
+<BR><SPAN ID="hue3369">A</SPAN> <SPAN ID="hue3371">&lt;-</SPAN> <SPAN ID="hue3373"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue3376">(</SPAN><SPAN ID="hue3378">'/Data/CSET/CSETrf06.nc'</SPAN><SPAN ID="hue3380">,</SPAN> <SPAN ID="hue3382"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue3385">(</SPAN><SPAN ID="hue3387">'CCDP_'</SPAN><SPAN ID="hue3389">,</SPAN> <SPAN ID="hue3391">'C1DC_'</SPAN><SPAN ID="hue3393">,</SPAN> <SPAN ID="hue3395">'CUHSAS_'</SPAN><SPAN ID="hue3397">))</SPAN> <SPAN ID="hue3399">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3401"><SPAN &nbsp;CLASS="textbf">selectTime</SPAN></SPAN><SPAN ID="hue3404">(</SPAN><SPAN ID="hue3406">173000</SPAN><SPAN ID="hue3408">,</SPAN> <SPAN ID="hue3410">173500</SPAN><SPAN ID="hue3412">)</SPAN> <SPAN ID="hue3414">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3416"><SPAN &nbsp;CLASS="textbf">plotSD</SPAN></SPAN><SPAN ID="hue3419">(</SPAN><SPAN ID="hue3421">CellLimits</SPAN><SPAN ID="hue3423">=</SPAN><SPAN ID="hue3425">NA</SPAN><SPAN ID="hue3427">,</SPAN> <SPAN ID="hue3429">logAxis</SPAN><SPAN ID="hue3431">=</SPAN><SPAN ID="hue3433">'xy'</SPAN><SPAN ID="hue3435">,</SPAN> <SPAN ID="hue3437">CDF</SPAN><SPAN ID="hue3439">=</SPAN><SPAN ID="hue3441">TRUE</SPAN><SPAN ID="hue3443">)</SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<FONT COLOR="#585858"><HR></FONT>
+<DIV class="CENTER"><A ID="fig:SD1"></A><A ID="1224"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure 4.10:</STRONG>
+Example of a size distribution.</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./SD1-1.png"
+ ALT="Image SD1-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
+
+<P></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<P>
+
+<P>
+<FONT COLOR="#585858">
+<FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<P>
+
+<DIV CLASS="alltt" ALIGN="LEFT">
+<FONT COLOR="#585858"><SPAN style="font-family:monospace">
+ <SPAN ID="hue3445">A</SPAN> <SPAN ID="hue3447">&lt;-</SPAN> <SPAN ID="hue3449"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue3452">(</SPAN><SPAN ID="hue3454">'/Data/CSET/CSETrf06.nc'</SPAN><SPAN ID="hue3456">,</SPAN> <SPAN ID="hue3458"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue3461">(</SPAN><SPAN ID="hue3463">'CCDP_'</SPAN><SPAN ID="hue3465">,</SPAN> <SPAN ID="hue3467">'C1DC_'</SPAN><SPAN ID="hue3469">,</SPAN> <SPAN ID="hue3471">'CUHSAS_'</SPAN><SPAN ID="hue3473">))</SPAN> <SPAN ID="hue3475">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3477"><SPAN &nbsp;CLASS="textbf">selectTime</SPAN></SPAN><SPAN ID="hue3480">(</SPAN><SPAN ID="hue3482">173000</SPAN><SPAN ID="hue3484">,</SPAN> <SPAN ID="hue3486">173500</SPAN><SPAN ID="hue3488">)</SPAN> <SPAN ID="hue3490">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3492"><SPAN &nbsp;CLASS="textbf">plotSD</SPAN></SPAN><SPAN ID="hue3495">(</SPAN><SPAN ID="hue3497">CellLimits</SPAN><SPAN ID="hue3499">=</SPAN><SPAN ID="hue3501">NA</SPAN><SPAN ID="hue3503">,</SPAN> <SPAN ID="hue3505">logAxis</SPAN><SPAN ID="hue3507">=</SPAN><SPAN ID="hue3509">'xy'</SPAN><SPAN ID="hue3511">,</SPAN> <SPAN ID="hue3513">LWC</SPAN><SPAN ID="hue3515">=</SPAN><SPAN ID="hue3517">TRUE</SPAN><SPAN ID="hue3519">,</SPAN> <SPAN ID="hue3521">CDF</SPAN><SPAN ID="hue3523">=</SPAN><SPAN ID="hue3525">TRUE</SPAN><SPAN ID="hue3527">)</SPAN>
+<BR></SPAN></FONT>
+</DIV>
+<FONT COLOR="#585858"><HR></FONT>
+<DIV class="CENTER"><A ID="fig:SD2"></A><A ID="1280"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure 4.11:</STRONG>
+Example of a distribution in liquid water content.</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./SD2-1.png"
+ ALT="Image SD2-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
+
+<P></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<P>
+</FONT></FONT>
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="R4RAF.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node5.html">5. Variance Spectra</A>
+<B> Up:</B> <A
+ HREF="R4RAF.html">Ranadu: An R Package</A>
+<B> Previous:</B> <A
+ HREF="node3.html">3. Overview of Ranadu</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>
