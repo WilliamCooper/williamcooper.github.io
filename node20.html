@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2018.3 (Released July 19, 2018) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Background regarding spectral variance</TITLE>
-<META NAME="description" CONTENT="Background regarding spectral variance">
+<TITLE>Error bars and box-and-whisker plots</TITLE>
+<META NAME="description" CONTENT="Error bars and box-and-whisker plots">
 <META NAME="keywords" CONTENT="R4RAF">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,240 +27,148 @@
  HREF="node21.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node19.html">
+ HREF="node14.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node19.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
 <BR>
 <B> Next:</B> <A
- HREF="node21.html">Generating plots of variance</A>
+ HREF="node21.html">The skew-T thermodynamic diagram</A>
 <B> Up:</B> <A
- HREF="node19.html">Variance Spectra</A>
+ HREF="node14.html">More Details About Plotting</A>
 <B> Previous:</B> <A
- HREF="node19.html">Variance Spectra</A>
+ HREF="node19.html">Plotting the density of</A>
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html87"
-  HREF="node20.html#SECTION00511000000000000000">Terminology</A>
-<LI><A ID="tex2html88"
-  HREF="node20.html#SECTION00512000000000000000">Transformations among spectra; &ldquo;proper&rdquo; spectra</A>
-<LI><A ID="tex2html89"
-  HREF="node20.html#SECTION00513000000000000000">Methods used to estimate spectral variance</A>
-</UL>
-<!--End of Table of Child-Links-->
-<HR>
+<H1><A ID="SECTION00440000000000000000">
+Error bars and box-and-whisker plots</A>
+</H1><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">Ranadu provides the &ldquo;binStats()&rdquo; function to compile variable
+characteristics needed to generate plots like error-bar plots and
+box-and-whisker plots. The input should be a data.frame whose first
+two columns specify the expected respective ordinate and abscissa
+variables. Each row in the data.frame is assigned to a bin on the
+basis of the value of the second variable, and for each bin the mean,
+standard deviation, and number of events are accumulated for values
+of the first variable in the data.frame. The output from binStats()
+is a new four-column data.frame where the respective columns are the
+mean value of the abscissa for each bin, the mean value of the ordinate
+for all events in the bin, and corresponding standard deviation, and
+the number of events in the bin.
+</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
+<FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT><TABLE   STYLE="width:0%;">
+<TR><TD>
+ <SPAN ID="cbox2075"></SPAN>
+<P>
 
-<H1><A ID="SECTION00510000000000000000">
-Background regarding spectral variance</A>
-</H1><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<H2><A ID="SECTION00511000000000000000">
-Terminology</A>
-</H2><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">The plots discussed here as &ldquo;variance spectra&rdquo; are often referred
-to as &ldquo;power spectra.&rdquo; That term is not used here because the
-spectra representing variance in the data.frame measurements from
-NCAR/EOL/RAF netCDF files are not power. Even in the case of wind
-(with variance dimensions 
-<FONT COLOR="#585858"><!-- MATH
- $\mathrm{m}^{2}\mathrm{s}^{-1}/Hz$
- -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.51ex; vertical-align: -0.65ex; " SRC="img1.png"
- ALT="\bgroup\color{fgcolor}$\mathrm{m}^{2}\mathrm{s}^{-1}/Hz$\egroup"></SPAN></FONT>), the
-variance spectrum is better described as a kinetic-energy spectrum.
-For this reason, the plots discussed in this chapter will be called
-&ldquo;variance spectra&rdquo; and the plotted quantity will be called the
-spectral variance.
-</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<H2><A ID="SECTION00512000000000000000">
-Transformations among spectra; &ldquo;proper&rdquo; spectra</A>
-</H2><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">Consider the cumulative distribution function for variance 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 2.23ex; vertical-align: -0.65ex; " SRC="img2.png"
- ALT="\bgroup\color{fgcolor}$C(\nu)$\egroup"></SPAN></FONT>,
-the fraction of the variance that is contributed by frequencies smaller
-than 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 1.23ex; vertical-align: -0.13ex; " SRC="img3.png"
- ALT="\bgroup\color{fgcolor}$\nu$\egroup"></SPAN></FONT>. The differential distribution function with respect to
-frequency is then
-</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<BR><P></P>
-<DIV CLASS="mathdisplay">
-<!-- MATH
- \begin{displaymath}
-P(\nu)=\frac{dC(\nu)}{d\nu}\,\,\,\,.
-\end{displaymath}
- -->
-
-<IMG STYLE=""
- SRC="img4.png"
- ALT="\begin{displaymath}\bgroup\color{fgcolor}
-P(\nu)=\frac{dC(\nu)}{d\nu}\,\,\,\,.
-\egroup\end{displaymath}">
+<DIV CLASS="alltt" ALIGN="LEFT">
+<SPAN style="font-family:monospace">
+ <SPAN ID="hue3247"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue3250">(fname)</SPAN> <SPAN ID="hue3252">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3254"><SPAN &nbsp;CLASS="textbf">Rmutate</SPAN></SPAN><SPAN ID="hue3257">(</SPAN><SPAN ID="hue3259">DPD</SPAN><SPAN ID="hue3261">=ATX</SPAN><SPAN ID="hue3263">-</SPAN><SPAN ID="hue3265">DPXC)</SPAN> <SPAN ID="hue3267">%&gt;%</SPAN> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3269"><SPAN &nbsp;CLASS="textit">## define dew-point-depression variable</SPAN></SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3272">dplyr</SPAN><SPAN ID="hue3274">::</SPAN><SPAN ID="hue3276"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue3279">(DPD, GGALT)</SPAN> <SPAN ID="hue3281">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3283"><SPAN &nbsp;CLASS="textbf">binStats</SPAN></SPAN><SPAN ID="hue3286">()</SPAN> <SPAN ID="hue3288">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3290"><SPAN &nbsp;CLASS="textbf">ggplot</SPAN></SPAN><SPAN ID="hue3293">(</SPAN><SPAN ID="hue3295"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue3298">(</SPAN><SPAN ID="hue3300">x</SPAN><SPAN ID="hue3302">=xc))</SPAN> <SPAN ID="hue3304">+</SPAN> <SPAN ID="hue3306"><SPAN &nbsp;CLASS="textbf">geom_point</SPAN></SPAN><SPAN ID="hue3309">(</SPAN><SPAN ID="hue3311"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue3314">(</SPAN><SPAN ID="hue3316">y</SPAN><SPAN ID="hue3318">=ybar),</SPAN> <SPAN ID="hue3320">color</SPAN><SPAN ID="hue3322">=</SPAN><SPAN ID="hue3324">'blue'</SPAN><SPAN ID="hue3326">)</SPAN> <SPAN ID="hue3328">+</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3330"><SPAN &nbsp;CLASS="textbf">geom_errorbar</SPAN></SPAN><SPAN ID="hue3333">(</SPAN><SPAN ID="hue3335"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue3338">(</SPAN><SPAN ID="hue3340">ymin</SPAN><SPAN ID="hue3342">=ybar</SPAN><SPAN ID="hue3344">-</SPAN><SPAN ID="hue3346">sigma,</SPAN> <SPAN ID="hue3348">ymax</SPAN><SPAN ID="hue3350">=ybar</SPAN><SPAN ID="hue3352">+</SPAN><SPAN ID="hue3354">sigma))</SPAN> <SPAN ID="hue3356">+</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3358"><SPAN &nbsp;CLASS="textbf">xlab</SPAN></SPAN><SPAN ID="hue3361">(</SPAN><SPAN ID="hue3363">'geometric altitude [m]'</SPAN><SPAN ID="hue3365">)</SPAN> <SPAN ID="hue3367">+</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3369"><SPAN &nbsp;CLASS="textbf">ylab</SPAN></SPAN><SPAN ID="hue3372">(</SPAN><SPAN ID="hue3374"><SPAN &nbsp;CLASS="textbf">expression</SPAN></SPAN><SPAN ID="hue3377">(</SPAN><SPAN ID="hue3379"><SPAN &nbsp;CLASS="textbf">paste</SPAN></SPAN><SPAN ID="hue3382">(</SPAN><SPAN ID="hue3384">'dew point depression ['</SPAN><SPAN ID="hue3386">, degree,</SPAN> <SPAN ID="hue3388">'C]'</SPAN><SPAN ID="hue3390">)))</SPAN> <SPAN ID="hue3392">+</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3394"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue3397">()</SPAN>
+<BR></SPAN>
 </DIV>
-<BR CLEAR="ALL">
-<P></P><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
-Consider how this distribution function would change if defined in
-terms of a new variable 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 2.23ex; vertical-align: -0.65ex; " SRC="img5.png"
- ALT="\bgroup\color{fgcolor}$x(v)$\egroup"></SPAN></FONT> starting with the specific variable
 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 1.56ex; vertical-align: -0.13ex; " SRC="img6.png"
- ALT="\bgroup\color{fgcolor}$x=\ln\nu$\egroup"></SPAN></FONT>. The differential distribution function would then be
-
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 2.23ex; vertical-align: -0.65ex; " SRC="img7.png"
- ALT="\bgroup\color{fgcolor}$T(x)$\egroup"></SPAN></FONT> specified by
-<BR></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<BR><P></P>
-<DIV CLASS="mathdisplay">
-<!-- MATH
- \begin{displaymath}
-T(x)=\frac{dC(x)}{dx}=\frac{dC(\nu)}{d\nu}\frac{d\nu}{dx}=\nu P(\nu)
-\end{displaymath}
- -->
-
-<IMG STYLE=""
- SRC="img8.png"
- ALT="\begin{displaymath}\bgroup\color{fgcolor}
-T(x)=\frac{dC(x)}{dx}=\frac{dC(\nu)}{d\nu}\frac{d\nu}{dx}=\nu P(\nu)
-\egroup\end{displaymath}">
+<P>
+<DIV class="CENTER"><A ID="fig:errorbar-plot"></A><A ID="1043"></A>
+<TABLE WIDTH="0%">
+<CAPTION class="BOTTOM"><STRONG>Figure:</STRONG>
+Example of an error-bar plot generated using binStats().</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./errorbar-plot-1.png"
+ ALT="Image errorbar-plot-1"> 
 </DIV>
-<BR CLEAR="ALL">
-<P></P><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
+<P>
+<DIV class="CENTER"></DIV>
 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 2.23ex; vertical-align: -0.65ex; " SRC="img9.png"
- ALT="\bgroup\color{fgcolor}$\nu P(\nu)$\egroup"></SPAN></FONT> thus gives the spectral density in terms of 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 1.56ex; vertical-align: -0.13ex; " SRC="img10.png"
- ALT="\bgroup\color{fgcolor}$\ln\nu$\egroup"></SPAN></FONT>
-and so in terms of 
-<FONT COLOR="#585858"><!-- MATH
- $\ln(10)\log_{10}\nu\approx2.30\log_{10}\nu$
- -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.29ex; vertical-align: -0.68ex; " SRC="img11.png"
- ALT="\bgroup\color{fgcolor}$\ln(10)\log_{10}\nu\approx2.30\log_{10}\nu$\egroup"></SPAN></FONT>.
-</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">In the following, two options for variance spectra are emphasized:
+<P></TD></TR>
+</TABLE>
+</DIV>
 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 2.23ex; vertical-align: -0.65ex; " SRC="img12.png"
- ALT="\bgroup\color{fgcolor}$P(\nu)$\egroup"></SPAN></FONT> vs 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 1.23ex; vertical-align: -0.13ex; " SRC="img3.png"
- ALT="\bgroup\color{fgcolor}$\nu$\egroup"></SPAN></FONT> on a linear plot and 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 2.23ex; vertical-align: -0.65ex; " SRC="img9.png"
- ALT="\bgroup\color{fgcolor}$\nu P(\nu)$\egroup"></SPAN></FONT> vs 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.68ex; " SRC="img13.png"
- ALT="\bgroup\color{fgcolor}$\log_{10}\nu$\egroup"></SPAN></FONT>
-with a logarithmic abscissa and either a linear or logarithmic ordinate
-scale. These are regarded here as &ldquo;proper&rdquo; displays because the
-area under segments of the plotted curves represent contributions
-to the variance so it is possible to estimate the contributions to
-variance from various intervals in frequency by using the areas on
-the plot. This direct representation is compromised in the case where
-the variable 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 2.23ex; vertical-align: -0.65ex; " SRC="img9.png"
- ALT="\bgroup\color{fgcolor}$\nu P(\nu)$\egroup"></SPAN></FONT> is plotted on a logarithmic scale because
-then it is necessary to consider the logarithmic ordinate when evaluating
-areas. This minor inconvenience nevertheless is less significant than
-the problems that arise from using a linear ordinate scale, in which
-case the ordinate range obscures relationships and the common &ldquo;
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 2.23ex; vertical-align: -0.65ex; " SRC="img14.png"
- ALT="\bgroup\color{fgcolor}$-5/3$\egroup"></SPAN></FONT>&rdquo;
-slope seen in logarithmic plots becomes a parabolic line that is difficult
-to interpret. For that reason, plots of spectral variance here will
-emphasis plots of 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 2.23ex; vertical-align: -0.65ex; " SRC="img9.png"
- ALT="\bgroup\color{fgcolor}$\nu P(\nu)$\egroup"></SPAN></FONT> vs 
-<FONT COLOR="#585858"><!-- MATH
- $\log_{10}(\nu)$
- -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.29ex; vertical-align: -0.68ex; " SRC="img15.png"
- ALT="\bgroup\color{fgcolor}$\log_{10}(\nu)$\egroup"></SPAN></FONT> on log-log scales.
-It is suggested that plots of 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 2.23ex; vertical-align: -0.65ex; " SRC="img12.png"
- ALT="\bgroup\color{fgcolor}$P(\nu)$\egroup"></SPAN></FONT> vs 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 1.23ex; vertical-align: -0.13ex; " SRC="img3.png"
- ALT="\bgroup\color{fgcolor}$\nu$\egroup"></SPAN></FONT> on log-log scales
-should be avoided because the connection between area on the plot
-and variance is lost, making the plot harder to interpret. In addition,
-&ldquo;
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 2.23ex; vertical-align: -0.65ex; " SRC="img14.png"
- ALT="\bgroup\color{fgcolor}$-5/3$\egroup"></SPAN></FONT>&rdquo; spectra are steep, the range of ordinate values is higher,
-and the plots are therefore more difficult to interpret than those
-plotting 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 2.23ex; vertical-align: -0.65ex; " SRC="img9.png"
- ALT="\bgroup\color{fgcolor}$\nu P(\nu)$\egroup"></SPAN></FONT> vs 
-<FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 1.23ex; vertical-align: -0.13ex; " SRC="img3.png"
- ALT="\bgroup\color{fgcolor}$\nu$\egroup"></SPAN></FONT> on a log-log scale.
-</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
 <P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<H2><A ID="SECTION00513000000000000000">
-Methods used to estimate spectral variance</A>
-</H2><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+
 <P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">The function &ldquo;Ranadu::VSpec()&rdquo; includes three methods that can
-be selected to estimate the spectral variance:
-</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<OL>
-<LI>The function &ldquo;spectrum()&rdquo; from the &ldquo;stats&rdquo; R package, which
-estimates a periodogram using Fourier-series estimation and then optionally
-smooths the spectrum using modified Daniell smoothers. The amount
-of smoothing can be controlled with the &ldquo;spans&rdquo; parameter in the
-function call.
-</LI>
-<LI>The &ldquo;Welch&rdquo; method as implemented by the R package &ldquo;bspec&rdquo;.
-In this method, the time series is divided into subsets and the spectra
-resulting from the subsets are averaged to reduce the variance in
-the result. The degree of smoothing is controlled by the &ldquo;segLength&rdquo;
-parameter that specifies the length of the segments to use.
-</LI>
-<LI>The &ldquo;maximum entropy&rdquo; method in which the spectrum is represented
-by &ldquo;poles&rdquo; and evaluated from the contributions of those poles
-across the frequency spectrum. A higher number of poles and a smaller
-value of the &ldquo;resolution&rdquo; will lead to more structure in the result.
-</LI>
-</OL><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
-In addition, it is possible to smooth the resulting spectrum further
-by specifying a value for the parameter &ldquo;smoothBins&rdquo;, in which
-case the frequency range will be partitioned into the specified number
-of logarithmically spaced bins and the values of the spectral density
-will be averaged in each bin.
-</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+The following code creates Fig.&nbsp;<A HREF="#fig:bwplot"><IMG  ALT="[*]" SRC="crossref.png"></A>, an
+example of creating a box-and-whisker plot. When used with the argument
+&ldquo;addBin = TRUE&rdquo;, binStats instead returns a modified data.frame
+with a variable &ldquo;BIN&rdquo; added that is suitable to use when grouping
+in ggplot aesthetics.
+
 <P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+
+<FONT COLOR="#585858"></FONT></TD></TR>
+</TABLE><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT><TABLE   STYLE="width:0%;">
+<TR><TD>
+ <SPAN ID="cbox2084"></SPAN>
 <P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+
+<DIV CLASS="alltt" ALIGN="LEFT">
+<SPAN style="font-family:monospace">
+ <SPAN ID="hue3399"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue3402">(fname)</SPAN> <SPAN ID="hue3404">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3406">dplyr</SPAN><SPAN ID="hue3408">::</SPAN><SPAN ID="hue3410"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue3413">(DPXC, GGALT)</SPAN> <SPAN ID="hue3415">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3417"><SPAN &nbsp;CLASS="textbf">binStats</SPAN></SPAN><SPAN ID="hue3420">(</SPAN><SPAN ID="hue3422">addBin</SPAN> <SPAN ID="hue3424">=</SPAN> <SPAN ID="hue3426">TRUE</SPAN><SPAN ID="hue3428">)</SPAN> <SPAN ID="hue3430">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3432"><SPAN &nbsp;CLASS="textbf">ggplot</SPAN></SPAN><SPAN ID="hue3435">()</SPAN> <SPAN ID="hue3437">+</SPAN> <SPAN ID="hue3439"><SPAN &nbsp;CLASS="textbf">geom_boxplot</SPAN></SPAN><SPAN ID="hue3442">(</SPAN><SPAN ID="hue3444"><SPAN &nbsp;CLASS="textbf">aes</SPAN></SPAN><SPAN ID="hue3447">(GGALT, DPXC,</SPAN> <SPAN ID="hue3449">group</SPAN><SPAN ID="hue3451">=BIN),</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3453">color</SPAN><SPAN ID="hue3455">=</SPAN><SPAN ID="hue3457">'blue'</SPAN><SPAN ID="hue3459">,</SPAN> <SPAN ID="hue3461">na.rm</SPAN><SPAN ID="hue3463">=</SPAN><SPAN ID="hue3465">TRUE</SPAN><SPAN ID="hue3467">)</SPAN> <SPAN ID="hue3469">+</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3471"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue3474">()</SPAN>
+<BR></SPAN>
+</DIV>
+
+<P>
+<DIV class="CENTER"><A ID="fig:bwplot"></A><A ID="1094"></A>
+<TABLE WIDTH="0%">
+<CAPTION class="BOTTOM"><STRONG>Figure:</STRONG>
+An example of a box-and-whisker plot.</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./bwplot-1.png"
+ ALT="Image bwplot-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
+
+<P></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<P>
+
+
+<P>
+</TD></TR>
+</TABLE></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
 <A
  HREF="node21.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node19.html">
+ HREF="node14.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node19.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
 <BR>
 <B> Next:</B> <A
- HREF="node21.html">Generating plots of variance</A>
+ HREF="node21.html">The skew-T thermodynamic diagram</A>
 <B> Up:</B> <A
- HREF="node19.html">Variance Spectra</A>
+ HREF="node14.html">More Details About Plotting</A>
 <B> Previous:</B> <A
- HREF="node19.html">Variance Spectra</A></DIV>
+ HREF="node19.html">Plotting the density of</A></DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

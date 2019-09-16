@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2018.3 (Released July 19, 2018) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Variance Spectra</TITLE>
-<META NAME="description" CONTENT="Variance Spectra">
+<TITLE>Plotting the density of events</TITLE>
+<META NAME="description" CONTENT="Plotting the density of events">
 <META NAME="keywords" CONTENT="R4RAF">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="R4RAF.css">
 
-<LINK REL="next" HREF="node22.html">
-<LINK REL="previous" HREF="node12.html">
+<LINK REL="next" HREF="node20.html">
+<LINK REL="previous" HREF="node16.html">
 <LINK REL="next" HREF="node20.html">
 </HEAD>
 
@@ -27,53 +27,97 @@
  HREF="node20.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="R4RAF.html">
+ HREF="node14.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node18.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
 <BR>
 <B> Next:</B> <A
- HREF="node20.html">Background regarding spectral variance</A>
+ HREF="node20.html">Error bars and box-and-whisker</A>
 <B> Up:</B> <A
- HREF="R4RAF.html">R4RAF</A>
+ HREF="node14.html">More Details About Plotting</A>
 <B> Previous:</B> <A
- HREF="node18.html">Aerosol- and hydrometeor-size distributions</A>
+ HREF="node18.html">Panels and Facets in</A>
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00500000000000000000">
-Variance Spectra</A>
-</H1><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<H1><A ID="SECTION00430000000000000000">
+Plotting the density of events</A>
+</H1><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT>
 <P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">Variance spectra are also plots and perhaps belong in the preceding
-chapter, but they are discussed here in greater detail than the preceding
-plots and so seemed to fit better in a separate chapter.
-</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">A scatterplot like that in Fig.&nbsp;<A HREF="node15.html#fig:scat-ex"><IMG  ALT="[*]" SRC="crossref.png"></A> often is used
+to show a two-dimensional display of where events occur. Such plots
+are useful when the number of events is small, but for large numbers
+of events the overlap of points can obscure relationships. The base-R
+function &ldquo;smoothScatter()&rdquo; is one option for plotting the density
+of points in such cases. Another is the &ldquo;filled.contour()&rdquo; function.
+Ranadu provides a third option in the function Ranadu::contourPlot().
+The number of bins, colors, and linear vs.&nbsp;logarithmic density intervals
+can be provided as arguments to this function, although the defaults
+often work acceptably. The following figure and code illustrates the
+use of this plot. Additional more elegant solutions are provided by
+the ggplot2 package.
+</FONT></FONT></FONT></FONT></FONT></FONT></FONT>
 <P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
+<FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT><TABLE   STYLE="width:0%;">
+<TR><TD>
+ <SPAN ID="cbox2066"></SPAN>
+<P>
 
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html82"
-  HREF="node20.html">Background regarding spectral variance</A>
-<UL>
-<LI><A ID="tex2html83"
-  HREF="node20.html#SECTION00511000000000000000">Terminology</A>
-<LI><A ID="tex2html84"
-  HREF="node20.html#SECTION00512000000000000000">Transformations among spectra; &ldquo;proper&rdquo; spectra</A>
-<LI><A ID="tex2html85"
-  HREF="node20.html#SECTION00513000000000000000">Methods used to estimate spectral variance</A>
-</UL>
+<DIV CLASS="alltt" ALIGN="LEFT">
+<SPAN style="font-family:monospace">
+ <SPAN ID="hue3216"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue3219">(fname)</SPAN> <SPAN ID="hue3221">%&gt;%</SPAN> <SPAN ID="hue3223">dplyr</SPAN><SPAN ID="hue3225">::</SPAN><SPAN ID="hue3227"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue3230">(ATX, DPXC)</SPAN> <SPAN ID="hue3232">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3234"><SPAN &nbsp;CLASS="textbf">contourPlot</SPAN></SPAN><SPAN ID="hue3237">(</SPAN><SPAN ID="hue3239">title</SPAN><SPAN ID="hue3241">=</SPAN><SPAN ID="hue3243">'WECAN flight #5'</SPAN><SPAN ID="hue3245">)</SPAN>
+<BR></SPAN>
+</DIV>
+
+<P>
+<DIV class="CENTER"><A ID="fig:contourPlot"></A><A ID="958"></A>
+<TABLE WIDTH="0%">
+<CAPTION class="BOTTOM"><STRONG>Figure:</STRONG>
+Example of a density plot generated using Ranadu::contourPlot().</CAPTION>
+<TR><TD><P>
+<DIV class="CENTER"><IMG STYLE=""
+ SRC="./contourPlot-1.png"
+ ALT="Image contourPlot-1"> 
+</DIV>
+<P>
+<DIV class="CENTER"></DIV>
+
+<P></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<P>
+
+
+<P>
+</TD></TR>
+</TABLE></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node20.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node14.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node18.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
 <BR>
-<LI><A ID="tex2html86"
-  HREF="node21.html">Generating plots of variance spectra</A>
-</UL>
-<!--End of Table of Child-Links-->
-<BR><HR>
+<B> Next:</B> <A
+ HREF="node20.html">Error bars and box-and-whisker</A>
+<B> Up:</B> <A
+ HREF="node14.html">More Details About Plotting</A>
+<B> Previous:</B> <A
+ HREF="node18.html">Panels and Facets in</A></DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

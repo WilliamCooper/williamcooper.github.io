@@ -36,7 +36,7 @@
 <B> Next:</B> <A
  HREF="node6.html">6. Miscellaneous</A>
 <B> Up:</B> <A
- HREF="R4RAF.html">Ranadu: An R Package</A>
+ HREF="R4RAF.html">R4RAF</A>
 <B> Previous:</B> <A
  HREF="node4.html">4. More Details About</A>
 <BR>
@@ -46,18 +46,18 @@
 <A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
 <UL CLASS="ChildLinks">
-<LI><A ID="tex2html79"
+<LI><A ID="tex2html80"
   HREF="node5.html#SECTION00510000000000000000"><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">1</SPAN> Background regarding spectral variance</A>
 <UL>
-<LI><A ID="tex2html80"
-  HREF="node5.html#SECTION00511000000000000000"><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">1</SPAN> Terminology</A>
 <LI><A ID="tex2html81"
-  HREF="node5.html#SECTION00512000000000000000"><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">2</SPAN> Transformations among spectra; &ldquo;proper&rdquo; spectra</A>
+  HREF="node5.html#SECTION00511000000000000000"><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">1</SPAN> Terminology</A>
 <LI><A ID="tex2html82"
+  HREF="node5.html#SECTION00512000000000000000"><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">2</SPAN> Transformations among spectra; &ldquo;proper&rdquo; spectra</A>
+<LI><A ID="tex2html83"
   HREF="node5.html#SECTION00513000000000000000"><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">3</SPAN> Methods used to estimate spectral variance</A>
 </UL>
 <BR>
-<LI><A ID="tex2html83"
+<LI><A ID="tex2html84"
   HREF="node5.html#SECTION00520000000000000000"><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">2</SPAN> Generating plots of variance spectra</A>
 </UL>
 <!--End of Table of Child-Links-->
@@ -88,10 +88,10 @@ spectra representing variance in the data.frame measurements from
 NCAR/EOL/RAF netCDF files are not power. Even in the case of wind
 (with variance dimensions 
 <FONT COLOR="#585858"><!-- MATH
- $\mathrm{m}^{2}\mathrm{s}^{-2}/Hz$
+ $\mathrm{m}^{2}\mathrm{s}^{-1}/Hz$
  -->
 <SPAN CLASS="MATH"><IMG STYLE="height: 2.51ex; vertical-align: -0.65ex; " SRC="img1.png"
- ALT="\bgroup\color{fgcolor}$\mathrm{m}^{2}\mathrm{s}^{-2}/Hz$\egroup"></SPAN></FONT>), the
+ ALT="\bgroup\color{fgcolor}$\mathrm{m}^{2}\mathrm{s}^{-1}/Hz$\egroup"></SPAN></FONT>), the
 variance spectrum is better described as a kinetic-energy spectrum.
 For this reason, the plots discussed in this chapter will be called
 &ldquo;variance spectra&rdquo; and the plotted quantity will be called the
@@ -112,8 +112,6 @@ than
  ALT="\bgroup\color{fgcolor}$\nu$\egroup"></SPAN></FONT>. The differential distribution function with respect to
 frequency is then
 </FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT>
 <BR><P></P>
 <DIV CLASS="mathdisplay">
 <!-- MATH
@@ -168,9 +166,7 @@ and so in terms of
  -->
 <SPAN CLASS="MATH"><IMG STYLE="height: 2.29ex; vertical-align: -0.68ex; " SRC="img11.png"
  ALT="\bgroup\color{fgcolor}$\ln(10)\log_{10}\nu\approx2.30\log_{10}\nu$\egroup"></SPAN></FONT>.
-</FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">In the following, two options for variance spectra are emphasized:
+In the following, two options for variance spectra are emphasized:
 
 <FONT COLOR="#585858"><SPAN CLASS="MATH"><IMG STYLE="height: 2.23ex; vertical-align: -0.65ex; " SRC="img12.png"
  ALT="\bgroup\color{fgcolor}$P(\nu)$\egroup"></SPAN></FONT> vs 
@@ -273,17 +269,17 @@ using the default specifications.
 </FONT></FONT></FONT>
 <P>
 <FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
-</FONT></FONT><FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+</FONT></FONT><FONT COLOR="#585858"><HR></FONT>
 <P>
 
 <DIV CLASS="alltt" ALIGN="LEFT">
 <FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue3529"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue3532">(</SPAN><SPAN ID="hue3534">'/Data/SOCRATES/SOCRATESrf08h.nc'</SPAN><SPAN ID="hue3536">,</SPAN> <SPAN ID="hue3538">Start</SPAN><SPAN ID="hue3540">=</SPAN><SPAN ID="hue3542">45600</SPAN><SPAN ID="hue3544">,</SPAN> <SPAN ID="hue3546">End</SPAN><SPAN ID="hue3548">=</SPAN><SPAN ID="hue3550">50100</SPAN><SPAN ID="hue3552">)</SPAN> <SPAN ID="hue3554">%&gt;%</SPAN>
-<BR>&nbsp;&nbsp;<SPAN ID="hue3556"><SPAN &nbsp;CLASS="textbf">VSpec</SPAN></SPAN><SPAN ID="hue3559">(</SPAN><SPAN ID="hue3561">'WIC'</SPAN><SPAN ID="hue3563">)</SPAN> <SPAN ID="hue3565">+</SPAN> <SPAN ID="hue3567"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue3570">()</SPAN>
+ <SPAN ID="hue3429"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue3432">(</SPAN><SPAN ID="hue3434">'/Data/SOCRATES/SOCRATESrf08h.nc'</SPAN><SPAN ID="hue3436">,</SPAN> <SPAN ID="hue3438">Start</SPAN><SPAN ID="hue3440">=</SPAN><SPAN ID="hue3442">45600</SPAN><SPAN ID="hue3444">,</SPAN> <SPAN ID="hue3446">End</SPAN><SPAN ID="hue3448">=</SPAN><SPAN ID="hue3450">50100</SPAN><SPAN ID="hue3452">)</SPAN> <SPAN ID="hue3454">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3456"><SPAN &nbsp;CLASS="textbf">VSpec</SPAN></SPAN><SPAN ID="hue3459">(</SPAN><SPAN ID="hue3461">'WIC'</SPAN><SPAN ID="hue3463">)</SPAN> <SPAN ID="hue3465">+</SPAN> <SPAN ID="hue3467"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue3470">()</SPAN>
 <BR></SPAN></FONT>
 </DIV>
 <FONT COLOR="#585858"><HR></FONT>
-<DIV class="CENTER"><A ID="fig:VS1"></A><A ID="1341"></A>
+<DIV class="CENTER"><A ID="fig:VS1"></A><A ID="1329"></A>
 <TABLE>
 <CAPTION class="BOTTOM"><STRONG>Figure 5.1:</STRONG>
 Variance spectrum for measurements of vertical wind during SOCRATES flight 8, 4:56:00 - 5:01:00.</CAPTION>
@@ -308,22 +304,22 @@ estimation available in VSpec(), all for the WIC variable:
 </FONT>
 <P>
 <FONT COLOR="#585858">
-<FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<FONT COLOR="#585858"><HR></FONT>
 <P>
 
 <DIV CLASS="alltt" ALIGN="LEFT">
 <FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue3572">D</SPAN> <SPAN ID="hue3574">&lt;-</SPAN> <SPAN ID="hue3576"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue3579">(</SPAN><SPAN ID="hue3581">'/Data/SOCRATES/SOCRATESrf08h.nc'</SPAN><SPAN ID="hue3583">,</SPAN> <SPAN ID="hue3585">Start</SPAN><SPAN ID="hue3587">=</SPAN><SPAN ID="hue3589">45600</SPAN><SPAN ID="hue3591">,</SPAN> <SPAN ID="hue3593">End</SPAN><SPAN ID="hue3595">=</SPAN><SPAN ID="hue3597">50100</SPAN><SPAN ID="hue3599">)</SPAN> <SPAN ID="hue3601">%&gt;%</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3603"><SPAN &nbsp;CLASS="textbf">Rmutate</SPAN></SPAN><SPAN ID="hue3606">(</SPAN><SPAN ID="hue3608">WIC2</SPAN><SPAN ID="hue3610">=WIC,</SPAN> <SPAN ID="hue3612">WIC3</SPAN><SPAN ID="hue3614">=WIC)</SPAN> <SPAN ID="hue3616"><SPAN &nbsp;CLASS="textit">## duplicate the variable</SPAN></SPAN>
-<BR><SPAN ID="hue3619">g</SPAN> <SPAN ID="hue3621">&lt;-</SPAN> <SPAN ID="hue3623"><SPAN &nbsp;CLASS="textbf">VSpec</SPAN></SPAN><SPAN ID="hue3626">(D,</SPAN> <SPAN ID="hue3628">'WIC'</SPAN><SPAN ID="hue3630">,</SPAN> <SPAN ID="hue3632">VLabel</SPAN><SPAN ID="hue3634">=</SPAN><SPAN ID="hue3636">'spectrum'</SPAN><SPAN ID="hue3638">)</SPAN>
-<BR><SPAN ID="hue3640">g</SPAN> <SPAN ID="hue3642">&lt;-</SPAN> <SPAN ID="hue3644"><SPAN &nbsp;CLASS="textbf">VSpec</SPAN></SPAN><SPAN ID="hue3647">(D,</SPAN> <SPAN ID="hue3649">'WIC2'</SPAN><SPAN ID="hue3651">,</SPAN> <SPAN ID="hue3653">method</SPAN><SPAN ID="hue3655">=</SPAN><SPAN ID="hue3657">'Welch'</SPAN><SPAN ID="hue3659">,</SPAN> <SPAN ID="hue3661">VLabel</SPAN><SPAN ID="hue3663">=</SPAN><SPAN ID="hue3665">'Welch'</SPAN><SPAN ID="hue3667">,</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3669">segLength</SPAN><SPAN ID="hue3671">=</SPAN><SPAN ID="hue3673">128</SPAN><SPAN ID="hue3675">,</SPAN> <SPAN ID="hue3677">smoothBins</SPAN><SPAN ID="hue3679">=</SPAN><SPAN ID="hue3681">50</SPAN><SPAN ID="hue3683">,</SPAN> <SPAN ID="hue3685">add</SPAN><SPAN ID="hue3687">=g)</SPAN>
-<BR><SPAN ID="hue3689"><SPAN &nbsp;CLASS="textbf">VSpec</SPAN></SPAN><SPAN ID="hue3692">(D,</SPAN> <SPAN ID="hue3694">'WIC3'</SPAN><SPAN ID="hue3696">,</SPAN> <SPAN ID="hue3698">method</SPAN><SPAN ID="hue3700">=</SPAN><SPAN ID="hue3702">'MEM'</SPAN><SPAN ID="hue3704">,</SPAN> <SPAN ID="hue3706">VLabel</SPAN><SPAN ID="hue3708">=</SPAN><SPAN ID="hue3710">'MEM'</SPAN><SPAN ID="hue3712">,</SPAN> <SPAN ID="hue3714">add</SPAN><SPAN ID="hue3716">=g)</SPAN> <SPAN ID="hue3718">+</SPAN>
-<BR>&nbsp;&nbsp;<SPAN ID="hue3720"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue3723">(</SPAN><SPAN ID="hue3725">1</SPAN><SPAN ID="hue3727">)</SPAN>
+ <SPAN ID="hue3472">D</SPAN> <SPAN ID="hue3474">&lt;-</SPAN> <SPAN ID="hue3476"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue3479">(</SPAN><SPAN ID="hue3481">'/Data/SOCRATES/SOCRATESrf08h.nc'</SPAN><SPAN ID="hue3483">,</SPAN> <SPAN ID="hue3485">Start</SPAN><SPAN ID="hue3487">=</SPAN><SPAN ID="hue3489">45600</SPAN><SPAN ID="hue3491">,</SPAN> <SPAN ID="hue3493">End</SPAN><SPAN ID="hue3495">=</SPAN><SPAN ID="hue3497">50100</SPAN><SPAN ID="hue3499">)</SPAN> <SPAN ID="hue3501">%&gt;%</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3503"><SPAN &nbsp;CLASS="textbf">Rmutate</SPAN></SPAN><SPAN ID="hue3506">(</SPAN><SPAN ID="hue3508">WIC2</SPAN><SPAN ID="hue3510">=WIC,</SPAN> <SPAN ID="hue3512">WIC3</SPAN><SPAN ID="hue3514">=WIC)</SPAN> <SPAN ID="hue3516"><SPAN &nbsp;CLASS="textit">## duplicate the variable</SPAN></SPAN>
+<BR><SPAN ID="hue3519">g</SPAN> <SPAN ID="hue3521">&lt;-</SPAN> <SPAN ID="hue3523"><SPAN &nbsp;CLASS="textbf">VSpec</SPAN></SPAN><SPAN ID="hue3526">(D,</SPAN> <SPAN ID="hue3528">'WIC'</SPAN><SPAN ID="hue3530">,</SPAN> <SPAN ID="hue3532">VLabel</SPAN><SPAN ID="hue3534">=</SPAN><SPAN ID="hue3536">'spectrum'</SPAN><SPAN ID="hue3538">)</SPAN>
+<BR><SPAN ID="hue3540">g</SPAN> <SPAN ID="hue3542">&lt;-</SPAN> <SPAN ID="hue3544"><SPAN &nbsp;CLASS="textbf">VSpec</SPAN></SPAN><SPAN ID="hue3547">(D,</SPAN> <SPAN ID="hue3549">'WIC2'</SPAN><SPAN ID="hue3551">,</SPAN> <SPAN ID="hue3553">method</SPAN><SPAN ID="hue3555">=</SPAN><SPAN ID="hue3557">'Welch'</SPAN><SPAN ID="hue3559">,</SPAN> <SPAN ID="hue3561">VLabel</SPAN><SPAN ID="hue3563">=</SPAN><SPAN ID="hue3565">'Welch'</SPAN><SPAN ID="hue3567">,</SPAN>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue3569">segLength</SPAN><SPAN ID="hue3571">=</SPAN><SPAN ID="hue3573">128</SPAN><SPAN ID="hue3575">,</SPAN> <SPAN ID="hue3577">smoothBins</SPAN><SPAN ID="hue3579">=</SPAN><SPAN ID="hue3581">50</SPAN><SPAN ID="hue3583">,</SPAN> <SPAN ID="hue3585">add</SPAN><SPAN ID="hue3587">=g)</SPAN>
+<BR><SPAN ID="hue3589"><SPAN &nbsp;CLASS="textbf">VSpec</SPAN></SPAN><SPAN ID="hue3592">(D,</SPAN> <SPAN ID="hue3594">'WIC3'</SPAN><SPAN ID="hue3596">,</SPAN> <SPAN ID="hue3598">method</SPAN><SPAN ID="hue3600">=</SPAN><SPAN ID="hue3602">'MEM'</SPAN><SPAN ID="hue3604">,</SPAN> <SPAN ID="hue3606">VLabel</SPAN><SPAN ID="hue3608">=</SPAN><SPAN ID="hue3610">'MEM'</SPAN><SPAN ID="hue3612">,</SPAN> <SPAN ID="hue3614">add</SPAN><SPAN ID="hue3616">=g)</SPAN> <SPAN ID="hue3618">+</SPAN>
+<BR>&nbsp;&nbsp;<SPAN ID="hue3620"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue3623">()</SPAN>
 <BR></SPAN></FONT>
 </DIV>
 <FONT COLOR="#585858"><HR></FONT>
-<DIV class="CENTER"><A ID="fig:VS2"></A><A ID="1431"></A>
+<DIV class="CENTER"><A ID="fig:VS2"></A><A ID="1417"></A>
 <TABLE>
 <CAPTION class="BOTTOM"><STRONG>Figure 5.2:</STRONG>
 Variance spectra for the same data shown in the preceding plot but generated by the three methods indicated in the legend.</CAPTION>
@@ -366,19 +362,19 @@ should equal the eddy dissipation rate in an inertial subrange.
 </FONT>
 <P>
 <FONT COLOR="#585858">
-<FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<FONT COLOR="#585858"><HR></FONT>
 <P>
 
 <DIV CLASS="alltt" ALIGN="LEFT">
 <FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue3729"><SPAN &nbsp;CLASS="textbf">VSpec</SPAN></SPAN><SPAN ID="hue3732">(D,</SPAN> <SPAN ID="hue3734">'WIC'</SPAN><SPAN ID="hue3736">,</SPAN> <SPAN ID="hue3738">EDR</SPAN><SPAN ID="hue3740">=</SPAN><SPAN ID="hue3742">TRUE</SPAN><SPAN ID="hue3744">)</SPAN> <SPAN ID="hue3746">+</SPAN> <SPAN ID="hue3748"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue3751">(</SPAN><SPAN ID="hue3753">1</SPAN><SPAN ID="hue3755">)</SPAN> &nbsp;<SPAN ID="hue3757"><SPAN &nbsp;CLASS="textit">## theme_WAC(1) =&gt; smaller title</SPAN></SPAN>
+ <SPAN ID="hue3625"><SPAN &nbsp;CLASS="textbf">VSpec</SPAN></SPAN><SPAN ID="hue3628">(D,</SPAN> <SPAN ID="hue3630">'WIC'</SPAN><SPAN ID="hue3632">,</SPAN> <SPAN ID="hue3634">EDR</SPAN><SPAN ID="hue3636">=</SPAN><SPAN ID="hue3638">TRUE</SPAN><SPAN ID="hue3640">)</SPAN> <SPAN ID="hue3642">+</SPAN> <SPAN ID="hue3644"><SPAN &nbsp;CLASS="textbf">theme_WAC</SPAN></SPAN><SPAN ID="hue3647">(</SPAN><SPAN ID="hue3649">1</SPAN><SPAN ID="hue3651">)</SPAN> &nbsp;<SPAN ID="hue3653"><SPAN &nbsp;CLASS="textit">## theme_WAC(1) =&gt; smaller title</SPAN></SPAN>
 <BR></SPAN></FONT>
 </DIV>
 <FONT COLOR="#585858"><HR></FONT>
-<DIV class="CENTER"><A ID="fig:VS3"></A><A ID="1465"></A>
+<DIV class="CENTER"><A ID="fig:VS3"></A><A ID="1451"></A>
 <TABLE>
 <CAPTION class="BOTTOM"><STRONG>Figure 5.3:</STRONG>
-An eddy-dissipation-rate plot for the same data shown in the preceding plot.</CAPTION>
+An eddy-dissipation-rate plot for the same data shown in the preceding plot. but generated by the three methods indicated in the legend.</CAPTION>
 <TR><TD><P>
 <DIV class="CENTER"><IMG STYLE=""
  SRC="./VS3-1.png"
@@ -392,10 +388,10 @@ An eddy-dissipation-rate plot for the same data shown in the preceding plot.</CA
 </DIV>
 
 <P>
-<FONT COLOR="#585858"><HR>## Generating R code:</FONT>
+<FONT COLOR="#585858"><HR></FONT>
 <DIV CLASS="alltt" ALIGN="LEFT">
 <FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue3760"><SPAN &nbsp;CLASS="textit">## to suppress the title, add &#34;+ ggtitle(' ')&#34;</SPAN></SPAN>
+ <SPAN ID="hue3656"><SPAN &nbsp;CLASS="textit">## to suppress the title, add &#34;+ ggtitle(&rdquo;)</SPAN></SPAN>
 <BR></SPAN></FONT>
 </DIV>
 <FONT COLOR="#585858"><HR></FONT>
@@ -416,7 +412,7 @@ An eddy-dissipation-rate plot for the same data shown in the preceding plot.</CA
 <B> Next:</B> <A
  HREF="node6.html">6. Miscellaneous</A>
 <B> Up:</B> <A
- HREF="R4RAF.html">Ranadu: An R Package</A>
+ HREF="R4RAF.html">R4RAF</A>
 <B> Previous:</B> <A
  HREF="node4.html">4. More Details About</A></DIV>
 <!--End of Navigation Panel-->

@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2018.3 (Released July 19, 2018) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Multi-Frame Plots</TITLE>
-<META NAME="description" CONTENT="Multi-Frame Plots">
+<TITLE>More Details About Plotting</TITLE>
+<META NAME="description" CONTENT="More Details About Plotting">
 <META NAME="keywords" CONTENT="R4RAF">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="R4RAF.css">
 
-<LINK REL="next" HREF="node15.html">
-<LINK REL="previous" HREF="node13.html">
+<LINK REL="next" HREF="node23.html">
+<LINK REL="previous" HREF="node8.html">
 <LINK REL="next" HREF="node15.html">
 </HEAD>
 
@@ -27,223 +27,58 @@
  HREF="node15.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node12.html">
+ HREF="R4RAF.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node13.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
 <BR>
 <B> Next:</B> <A
- HREF="node15.html">Plotting the density of</A>
+ HREF="node15.html">Pipes</A>
 <B> Up:</B> <A
- HREF="node12.html">More Details About Plotting</A>
+ HREF="R4RAF.html">R4RAF</A>
 <B> Previous:</B> <A
- HREF="node13.html">Pipes</A>
+ HREF="node13.html">Utility Functions</A>
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
+
+<H1><A ID="SECTION00400000000000000000">
+More Details About Plotting</A>
+</H1><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">This chapter includes additional details about the plot functions
+available in Ranadu.
+</FONT></FONT></FONT></FONT>
+<P>
+<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT>
+<BR><HR>
 <!--Table of Child-Links-->
 <A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
 <UL CLASS="ChildLinks">
-<LI><A ID="tex2html80"
-  HREF="node14.html#SECTION00421000000000000000">Multiple plotWAC( ) plots:</A>
-<LI><A ID="tex2html81"
-  HREF="node14.html#SECTION00422000000000000000">Panels and Facets in ggplotWAC( ):</A>
+<LI><A ID="tex2html72"
+  HREF="node15.html">Pipes</A>
+<LI><A ID="tex2html73"
+  HREF="node16.html">Multi-Frame Plots</A>
+<UL>
+<LI><A ID="tex2html74"
+  HREF="node17.html">Multiple plotWAC( ) plots:</A>
+<LI><A ID="tex2html75"
+  HREF="node18.html">Panels and Facets in ggplotWAC( ):</A>
+</UL>
+<BR>
+<LI><A ID="tex2html76"
+  HREF="node19.html">Plotting the density of events</A>
+<LI><A ID="tex2html77"
+  HREF="node20.html">Error bars and box-and-whisker plots</A>
+<LI><A ID="tex2html78"
+  HREF="node21.html">The skew-T thermodynamic diagram</A>
+<LI><A ID="tex2html79"
+  HREF="node22.html">Aerosol- and hydrometeor-size distributions</A>
 </UL>
 <!--End of Table of Child-Links-->
-<HR>
-
-<H1><A ID="SECTION00420000000000000000">
-Multi-Frame Plots</A>
-</H1><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">It is often desirable to combine several plots into a single plot.
-There are several ways to do this with Ranadu routines:
-</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<H2><A ID="SECTION00421000000000000000">
-Multiple plotWAC( ) plots:</A>
-</H2><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">The &ldquo;layout()&rdquo; function in base-R can be used. Here is an example.
-The matrix layout can also be used to display plots in multiple columns
-or in multiple rows and columns.
-</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
-</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<DIV CLASS="alltt" ALIGN="LEFT">
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT><FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue2314"><SPAN &nbsp;CLASS="textbf">layout</SPAN></SPAN><SPAN ID="hue2317">(</SPAN><SPAN ID="hue2319"><SPAN &nbsp;CLASS="textbf">matrix</SPAN></SPAN><SPAN ID="hue2322">(</SPAN><SPAN ID="hue2324">1</SPAN><SPAN ID="hue2326">:</SPAN><SPAN ID="hue2328">2</SPAN><SPAN ID="hue2330">,</SPAN> <SPAN ID="hue2332">ncol</SPAN><SPAN ID="hue2334">=</SPAN><SPAN ID="hue2336">1</SPAN><SPAN ID="hue2338">),</SPAN> <SPAN ID="hue2340">widths</SPAN><SPAN ID="hue2342">=</SPAN><SPAN ID="hue2344"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2347">(</SPAN><SPAN ID="hue2349">8</SPAN><SPAN ID="hue2351">,</SPAN><SPAN ID="hue2353">8</SPAN><SPAN ID="hue2355">),</SPAN> <SPAN ID="hue2357">heights</SPAN><SPAN ID="hue2359">=</SPAN><SPAN ID="hue2361"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2364">(</SPAN><SPAN ID="hue2366">5.5</SPAN><SPAN ID="hue2368">,</SPAN><SPAN ID="hue2370">8</SPAN><SPAN ID="hue2372">))</SPAN>
-<BR><SPAN ID="hue2374">op</SPAN> <SPAN ID="hue2376">&lt;-</SPAN> <SPAN ID="hue2378"><SPAN &nbsp;CLASS="textbf">par</SPAN></SPAN> <SPAN ID="hue2381">(</SPAN><SPAN ID="hue2383">mar</SPAN><SPAN ID="hue2385">=</SPAN><SPAN ID="hue2387"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2390">(</SPAN><SPAN ID="hue2392">2</SPAN><SPAN ID="hue2394">,</SPAN><SPAN ID="hue2396">4</SPAN><SPAN ID="hue2398">,</SPAN><SPAN ID="hue2400">1</SPAN><SPAN ID="hue2402">,</SPAN><SPAN ID="hue2404">1</SPAN><SPAN ID="hue2406">)</SPAN><SPAN ID="hue2408">+</SPAN><SPAN ID="hue2410">0.1</SPAN><SPAN ID="hue2412">,</SPAN> <SPAN ID="hue2414">oma</SPAN><SPAN ID="hue2416">=</SPAN><SPAN ID="hue2418"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2421">(</SPAN><SPAN ID="hue2423">1.1</SPAN><SPAN ID="hue2425">,</SPAN><SPAN ID="hue2427">0</SPAN><SPAN ID="hue2429">,</SPAN><SPAN ID="hue2431">0</SPAN><SPAN ID="hue2433">,</SPAN><SPAN ID="hue2435">0</SPAN><SPAN ID="hue2437">))</SPAN>
-<BR><SPAN ID="hue2439">Data</SPAN> <SPAN ID="hue2441">%&gt;%</SPAN> <SPAN ID="hue2443">dplyr</SPAN><SPAN ID="hue2445">::</SPAN><SPAN ID="hue2447"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue2450">(Time, ATX)</SPAN> <SPAN ID="hue2452">%&gt;%</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2454"><SPAN &nbsp;CLASS="textbf">plotWAC</SPAN></SPAN><SPAN ID="hue2457">(</SPAN><SPAN ID="hue2459">ylab</SPAN><SPAN ID="hue2461">=</SPAN><SPAN ID="hue2463"><SPAN &nbsp;CLASS="textbf">expression</SPAN></SPAN><SPAN ID="hue2466">(</SPAN><SPAN ID="hue2468"><SPAN &nbsp;CLASS="textbf">paste</SPAN></SPAN><SPAN ID="hue2471">(</SPAN><SPAN ID="hue2473">&#34;T [&#34;</SPAN><SPAN ID="hue2475">, degree,</SPAN> <SPAN ID="hue2477">&#34;C]&#34;</SPAN><SPAN ID="hue2479">)))</SPAN>
-<BR><SPAN ID="hue2481">op</SPAN> <SPAN ID="hue2483">&lt;-</SPAN> <SPAN ID="hue2485"><SPAN &nbsp;CLASS="textbf">par</SPAN></SPAN> <SPAN ID="hue2488">(</SPAN><SPAN ID="hue2490">mar</SPAN><SPAN ID="hue2492">=</SPAN><SPAN ID="hue2494"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2497">(</SPAN><SPAN ID="hue2499">5</SPAN><SPAN ID="hue2501">,</SPAN><SPAN ID="hue2503">4</SPAN><SPAN ID="hue2505">,</SPAN><SPAN ID="hue2507">1</SPAN><SPAN ID="hue2509">,</SPAN><SPAN ID="hue2511">1</SPAN><SPAN ID="hue2513">)</SPAN><SPAN ID="hue2515">+</SPAN><SPAN ID="hue2517">0.1</SPAN><SPAN ID="hue2519">)</SPAN>
-<BR><SPAN ID="hue2521">Data</SPAN> <SPAN ID="hue2523">%&gt;%</SPAN> <SPAN ID="hue2525">dplyr</SPAN><SPAN ID="hue2527">::</SPAN><SPAN ID="hue2529"><SPAN &nbsp;CLASS="textbf">select</SPAN></SPAN><SPAN ID="hue2532">(Time, WIC)</SPAN> <SPAN ID="hue2534">%&gt;%</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2536"><SPAN &nbsp;CLASS="textbf">plotWAC</SPAN></SPAN><SPAN ID="hue2539">(</SPAN><SPAN ID="hue2541">ylab</SPAN><SPAN ID="hue2543">=</SPAN><SPAN ID="hue2545"><SPAN &nbsp;CLASS="textbf">expression</SPAN></SPAN><SPAN ID="hue2548">(</SPAN><SPAN ID="hue2550"><SPAN &nbsp;CLASS="textbf">paste</SPAN></SPAN><SPAN ID="hue2553">(</SPAN><SPAN ID="hue2555">'W [m/s]'</SPAN><SPAN ID="hue2557">)))</SPAN>
-<BR></SPAN><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-</DIV>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<DIV class="CENTER"><A ID="fig:layout-example"></A><A ID="711"></A>
-<TABLE>
-<CAPTION class="BOTTOM"><STRONG>Figure:</STRONG>
-Two-panel figure.</CAPTION>
-<TR><TD><P>
-<DIV class="CENTER"><IMG STYLE=""
- SRC="./layout-example-1.png"
- ALT="Image layout-example-1"> 
-</DIV>
-<P>
-<DIV class="CENTER"></DIV>
-
-<P></TD></TR>
-</TABLE>
-</DIV>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<H2><A ID="SECTION00422000000000000000">
-Panels and Facets in ggplotWAC( ):</A>
-</H2><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">The function <SPAN  CLASS="texttt">Ranadu::ggplotWAC( )</SPAN> is based on the ggplot2
-package for R, which provides extensive plotting capabilities and
-is highly recommended. What is provided via ggplotWAC( ) is a very
-simplified and restricted approach, but it might be useful in preliminary
-applications. See <a href="http://had.co.nz/ggplot2/">this URL</a> for
-information on ggplot2. The Ranadu routine provides two approaches
-to multiple plots:
-</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<UL>
-<LI>&ldquo;facets&rdquo;: If the argument &ldquo;panels&rdquo; is supplied
-(e.g., panels=N), ggplotWAC( ) will construct N vertically aligned
-panels. All will contain time-series plots. The first-argument to
-ggplotWAC(), the data.frame, should contain the variable &ldquo;Time&rdquo;
-and N*M variables, where the first M variables will be plotted in
-the first panel, the next M in the second panel, etc. A set of M character-mode
-labels should be supplied via labelN.
-</LI>
-<LI>&ldquo;viewports&rdquo;: An optional argument &ldquo;position=c(i,
-j)&rdquo; can be used to place a plot in the ith of j vertically aligned
-viewports.
-</LI>
-</UL><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
-Examples are shown in Figs.&nbsp;<A HREF="#fig:gg-facets"><IMG  ALT="[*]" SRC="crossref.png"></A> and <A HREF="#fig:gg-viewports"><IMG  ALT="[*]" SRC="crossref.png"></A>.
-An advantage of the faceted plot is that vertical alignment of the
-plots is ensured; this can be a problem with other plots if the axis
-labels are of different size in the different plots.<A ID="tex2html10"
-  HREF="footnode.html#foot726"><SUP><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A> In the second case, the viewports are positioned so that the abscissa
-labels and title are obscured for the top plot. The intent is that
-this should be used for identical time scales for each plot, so that
-it is not necessary to duplicate the axis labels and title.
-</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
-</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<DIV CLASS="alltt" ALIGN="LEFT">
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT><FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue2559">Project</SPAN> <SPAN ID="hue2561">&lt;-</SPAN> <SPAN ID="hue2563">'WECAN'</SPAN> &nbsp;&nbsp;&nbsp;<SPAN ID="hue2565"><SPAN &nbsp;CLASS="textit">## faceted plot with ggplotWAC()</SPAN></SPAN>
-<BR><SPAN ID="hue2568">Flight</SPAN> <SPAN ID="hue2570">&lt;-</SPAN> <SPAN ID="hue2572">5</SPAN>
-<BR><SPAN ID="hue2574">V</SPAN> <SPAN ID="hue2576">&lt;-</SPAN> <SPAN ID="hue2578"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2581">(</SPAN><SPAN ID="hue2583">'ATH1'</SPAN><SPAN ID="hue2585">,</SPAN> <SPAN ID="hue2587">'ATH2'</SPAN><SPAN ID="hue2589">,</SPAN> <SPAN ID="hue2591">'ATF1'</SPAN><SPAN ID="hue2593">,</SPAN> <SPAN ID="hue2595">'RTH1'</SPAN><SPAN ID="hue2597">,</SPAN> <SPAN ID="hue2599">'RTH2'</SPAN><SPAN ID="hue2601">,</SPAN> <SPAN ID="hue2603">'RTF1'</SPAN><SPAN ID="hue2605">)</SPAN>
-<BR><SPAN ID="hue2607">fname</SPAN> <SPAN ID="hue2609">&lt;-</SPAN> <SPAN ID="hue2611"><SPAN &nbsp;CLASS="textbf">sprintf</SPAN></SPAN><SPAN ID="hue2614">(</SPAN><SPAN ID="hue2616">'%s%s/%srf%02d.nc'</SPAN><SPAN ID="hue2618">,</SPAN> <SPAN ID="hue2620"><SPAN &nbsp;CLASS="textbf">DataDirectory</SPAN></SPAN><SPAN ID="hue2623">(), Project, Project,</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2625">Flight)</SPAN>
-<BR><SPAN ID="hue2627"><SPAN &nbsp;CLASS="textbf">suppressWarnings</SPAN></SPAN> <SPAN ID="hue2630">(</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2632"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue2635">(fname, V,</SPAN> <SPAN ID="hue2637">200000</SPAN><SPAN ID="hue2639">,</SPAN> <SPAN ID="hue2641">201500</SPAN><SPAN ID="hue2643">)</SPAN> <SPAN ID="hue2645">%&gt;%</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2647"><SPAN &nbsp;CLASS="textbf">ggplotWAC</SPAN></SPAN><SPAN ID="hue2650">(</SPAN><SPAN ID="hue2652">panels</SPAN><SPAN ID="hue2654">=</SPAN><SPAN ID="hue2656">2</SPAN><SPAN ID="hue2658">,</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2660">col</SPAN><SPAN ID="hue2662">=</SPAN><SPAN ID="hue2664"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2667">(</SPAN><SPAN ID="hue2669">'blue'</SPAN><SPAN ID="hue2671">,</SPAN> <SPAN ID="hue2673">'darkorange'</SPAN><SPAN ID="hue2675">,</SPAN> <SPAN ID="hue2677">'forestgreen'</SPAN><SPAN ID="hue2679">),</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2681">ylab</SPAN><SPAN ID="hue2683">=</SPAN><SPAN ID="hue2685"><SPAN &nbsp;CLASS="textbf">expression</SPAN></SPAN><SPAN ID="hue2688">(</SPAN><SPAN ID="hue2690"><SPAN &nbsp;CLASS="textbf">paste</SPAN></SPAN><SPAN ID="hue2693">(</SPAN><SPAN ID="hue2695">'temperature ['</SPAN><SPAN ID="hue2697">, degree,</SPAN><SPAN ID="hue2699">'C]'</SPAN><SPAN ID="hue2701">)),</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2703">lwd</SPAN><SPAN ID="hue2705">=</SPAN><SPAN ID="hue2707"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2710">(</SPAN><SPAN ID="hue2712">1.5</SPAN><SPAN ID="hue2714">,</SPAN> <SPAN ID="hue2716">0.8</SPAN><SPAN ID="hue2718">,</SPAN> <SPAN ID="hue2720">1</SPAN><SPAN ID="hue2722">),</SPAN> <SPAN ID="hue2724">lty</SPAN><SPAN ID="hue2726">=</SPAN><SPAN ID="hue2728"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2731">(</SPAN><SPAN ID="hue2733">1</SPAN><SPAN ID="hue2735">,</SPAN><SPAN ID="hue2737">2</SPAN><SPAN ID="hue2739">,</SPAN><SPAN ID="hue2741">1</SPAN><SPAN ID="hue2743">),</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2745">labelP</SPAN><SPAN ID="hue2747">=</SPAN><SPAN ID="hue2749"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2752">(</SPAN><SPAN ID="hue2754">' &nbsp;&nbsp;air temperature'</SPAN><SPAN ID="hue2756">,</SPAN> <SPAN ID="hue2758">' recovery temperature'</SPAN><SPAN ID="hue2760">),</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2762">labelL</SPAN><SPAN ID="hue2764">=</SPAN><SPAN ID="hue2766"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2769">(</SPAN><SPAN ID="hue2771">'H1'</SPAN><SPAN ID="hue2773">,</SPAN> <SPAN ID="hue2775">'H2'</SPAN><SPAN ID="hue2777">,</SPAN> <SPAN ID="hue2779">'F1'</SPAN><SPAN ID="hue2781">),</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2783">legend.position</SPAN><SPAN ID="hue2785">=</SPAN><SPAN ID="hue2787"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2790">(</SPAN><SPAN ID="hue2792">0.5</SPAN><SPAN ID="hue2794">,</SPAN><SPAN ID="hue2796">0.95</SPAN><SPAN ID="hue2798">)</SPAN>
-<BR>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2800">)</SPAN>
-<BR><SPAN ID="hue2802">)</SPAN>
-<BR></SPAN><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-</DIV>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<DIV class="CENTER"><A ID="fig:gg-facets"></A><A ID="851"></A>
-<TABLE>
-<CAPTION class="BOTTOM"><STRONG>Figure:</STRONG>
-Example of a faceted ggplotWAC plot. Three temperature measurements are shown from probes identified as H1, H2, and F2. The top panel shows the air temperature, and the bottom panel the directly measured recovery temperature before correction for dynamic heating.</CAPTION>
-<TR><TD><P>
-<DIV class="CENTER"><IMG STYLE=""
- SRC="./gg-facets-1.png"
- ALT="Image gg-facets-1"> 
-</DIV>
-<P>
-<DIV class="CENTER"></DIV>
-
-<P></TD></TR>
-</TABLE>
-</DIV>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858">
-</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<DIV CLASS="alltt" ALIGN="LEFT">
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT><FONT COLOR="#585858"><SPAN style="font-family:monospace">
- <SPAN ID="hue2804"><SPAN &nbsp;CLASS="textit">## viewport-plot with ggplotWAC()</SPAN></SPAN>
-<BR><SPAN ID="hue2807">DG</SPAN> <SPAN ID="hue2809">&lt;-</SPAN> <SPAN ID="hue2811"><SPAN &nbsp;CLASS="textbf">getNetCDF</SPAN></SPAN><SPAN ID="hue2814">(fname, V,</SPAN> <SPAN ID="hue2816">200000</SPAN><SPAN ID="hue2818">,</SPAN> <SPAN ID="hue2820">201500</SPAN><SPAN ID="hue2822">)</SPAN>
-<BR><SPAN ID="hue2824"><SPAN &nbsp;CLASS="textbf">with</SPAN></SPAN><SPAN ID="hue2827">(DG,</SPAN> <SPAN ID="hue2829"><SPAN &nbsp;CLASS="textbf">ggplotWAC</SPAN></SPAN><SPAN ID="hue2832">(</SPAN><SPAN ID="hue2834"><SPAN &nbsp;CLASS="textbf">data.frame</SPAN></SPAN><SPAN ID="hue2837">(Time, ATH1),</SPAN> <SPAN ID="hue2839">position</SPAN><SPAN ID="hue2841">=</SPAN><SPAN ID="hue2843"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2846">(</SPAN><SPAN ID="hue2848">1</SPAN><SPAN ID="hue2850">,</SPAN><SPAN ID="hue2852">2</SPAN><SPAN ID="hue2854">)))</SPAN>
-<BR><SPAN ID="hue2856"><SPAN &nbsp;CLASS="textbf">with</SPAN></SPAN><SPAN ID="hue2859">(DG,</SPAN> <SPAN ID="hue2861"><SPAN &nbsp;CLASS="textbf">ggplotWAC</SPAN></SPAN><SPAN ID="hue2864">(</SPAN><SPAN ID="hue2866"><SPAN &nbsp;CLASS="textbf">data.frame</SPAN></SPAN><SPAN ID="hue2869">(Time, ATF1),</SPAN> <SPAN ID="hue2871">position</SPAN><SPAN ID="hue2873">=</SPAN><SPAN ID="hue2875"><SPAN &nbsp;CLASS="textbf">c</SPAN></SPAN><SPAN ID="hue2878">(</SPAN><SPAN ID="hue2880">2</SPAN><SPAN ID="hue2882">,</SPAN><SPAN ID="hue2884">2</SPAN><SPAN ID="hue2886">)))</SPAN>
-<BR></SPAN><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-</DIV>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<DIV class="CENTER"><A ID="fig:gg-viewports"></A><A ID="902"></A>
-<TABLE>
-<CAPTION class="BOTTOM"><STRONG>Figure:</STRONG>
-An example of selecting the figure position using viewports and the "position" argument to ggplotWAC().</CAPTION>
-<TR><TD><P>
-<DIV class="CENTER"><IMG STYLE=""
- SRC="./gg-viewports-1.png"
- ALT="Image gg-viewports-1"> 
-</DIV>
-<P>
-<DIV class="CENTER"></DIV>
-
-<P></TD></TR>
-</TABLE>
-</DIV>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<P>
-<FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"><FONT COLOR="#585858"></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node15.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node12.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node13.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
-<BR>
-<B> Next:</B> <A
- HREF="node15.html">Plotting the density of</A>
-<B> Up:</B> <A
- HREF="node12.html">More Details About Plotting</A>
-<B> Previous:</B> <A
- HREF="node13.html">Pipes</A></DIV>
-<!--End of Navigation Panel-->
+<BR><HR>
 
 </BODY>
 </HTML>
